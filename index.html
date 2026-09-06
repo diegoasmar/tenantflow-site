@@ -53,7 +53,7 @@
     --border-strong: rgba(255,255,255,0.18);
     --text-1:        #f5f6f7;
     --text-2:        #9b9ca4;
-    --text-3:        #6c6d75;
+    --text-3:        #80818a; /* ajustado para ~5:1 de contraste sobre --bg (era #6c6d75, ficava abaixo do mínimo de acessibilidade) */
     --accent:        #6e6ff6;
     --accent-2:      #9192f8;
     --accent-ink:    #0a0a0c;
@@ -163,6 +163,12 @@
   @media (max-width: 640px){
     .grid-3, .grid-2{ grid-template-columns: 1fr; }
   }
+  /* protege contra rolagem lateral: por padrão uma coluna de grid não
+     encolhe além do conteúdo interno (ex: um <input>), então toda coluna
+     de grid do site fica com min-width:0 para poder encolher no mobile. */
+  .grid-3 > *, .grid-2 > *, .contact > *, .hero__grid > *, .footer__grid > *{
+    min-width: 0;
+  }
 
   /* ==========================================================================
      4. COMPONENTES
@@ -211,9 +217,14 @@
   .card__text{ margin-top: .5rem; color: var(--text-2); font-size: .9375rem; line-height: 1.6; }
 
   /* inputs */
-  .field{ display:flex; flex-direction:column; gap:.4rem; }
+  /* min-width:0 é necessário porque .field vive dentro de grids (.grid-2,
+     .contact) — sem isso, o tamanho padrão do <input>/<select> do navegador
+     impede a coluna de encolher no mobile e a página ganha rolagem lateral. */
+  .field{ display:flex; flex-direction:column; gap:.4rem; min-width: 0; }
   .field label{ font-size: .8125rem; color: var(--text-2); }
   .field input, .field select, .field textarea{
+    width: 100%;
+    min-width: 0;
     font: inherit;
     background: rgba(255,255,255,.02);
     border: 1px solid var(--border-strong);
@@ -253,6 +264,9 @@
   }
   .mobile-panel{
     max-height: 0; overflow: hidden;
+    /* fundo sólido (não só o blur translúcido do .navbar) — sem isso o
+       conteúdo do hero "vaza" por trás dos links do menu aberto no celular */
+    background: var(--bg-raised);
     border-top: 1px solid transparent;
     transition: max-height .25s var(--ease);
   }
@@ -325,6 +339,7 @@
     display:flex; align-items:center; gap:.75rem;
     background: var(--surface);
     border: 1px solid var(--border);
+    border-left: 3px solid var(--border-strong);
     border-radius: var(--radius-md);
     padding: .85rem 1.25rem .85rem 1rem;
     color: var(--text-1);
@@ -337,17 +352,27 @@
     box-shadow: 0 16px 30px -22px rgba(0,0,0,.6);
   }
   .tech-item__icon{
-    width: 2rem; height: 2rem; flex-shrink:0;
+    width: 2.25rem; height: 2.25rem; flex-shrink:0;
     display:grid; place-items:center;
     border-radius: 8px;
   }
   /* cor de destaque de cada integração — usamos apenas a cor de marca
-     principal de cada empresa (não o logotipo completo, que é marca
-     registrada de terceiros e não deve ser reproduzido). */
+     principal de cada empresa, tanto no ícone quanto na borda esquerda do
+     card (não o logotipo completo, que é marca registrada de terceiros e
+     não deve ser reproduzido). */
+  .tech-item--ms{ border-left-color: rgba(0,120,212,.55); }
   .tech-item--ms .tech-item__icon{ background: rgba(0,120,212,.16); color: #3aa0ff; }
+  .tech-item--google{ border-left-color: rgba(66,133,244,.55); }
   .tech-item--google .tech-item__icon{ background: rgba(66,133,244,.16); color: #669df6; }
+  .tech-item--meta{ border-left-color: rgba(8,102,255,.55); }
   .tech-item--meta .tech-item__icon{ background: rgba(8,102,255,.16); color: #5b93ff; }
   .tech-item svg{ color: inherit; }
+
+  @media (max-width: 560px){
+    /* em telas estreitas, cards de largura variável ficam com visual
+       "escadinha"; em coluna única e largura igual fica mais organizado */
+    .tech-row{ flex-direction: column; align-items: stretch; }
+  }
 
   /* ==========================================================================
      9. COMO FUNCIONA
