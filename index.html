@@ -331,9 +331,8 @@
     background: linear-gradient(180deg, var(--bg-raised), var(--bg) 65%);
   }
 
-  /* grupos: organiza as integrações por categoria (Microsoft 365, Armazenamento
-     em nuvem, Marketing digital, E-commerce) em vez de uma lista única sem
-     hierarquia. */
+  /* grupos: organiza as integrações por categoria (Microsoft 365, Marketing
+     digital, E-commerce) em vez de uma lista única sem hierarquia. */
   .tech-groups{ margin-top: 3.25rem; display:flex; flex-direction:column; gap: 2.25rem; }
   .tech-group__label{
     text-align:center;
@@ -437,7 +436,18 @@
   .footer__links{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap: .65rem; }
   .footer__links a{ color: var(--text-3); font-size: .875rem; transition: color .15s var(--ease); }
   .footer__links a:hover{ color: var(--text-1); }
-  .footer__bottom{ margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); display:flex; flex-wrap:wrap; gap: 1rem; justify-content:space-between; color: var(--text-3); font-size: .8125rem; }
+  /* aviso legal de independência de marca — texto pequeno e discreto,
+     mas sempre visível, sem precisar abrir nenhum link */
+  .footer__disclaimer{
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    max-width: 52rem;
+    color: var(--text-3);
+    font-size: .8125rem;
+    line-height: 1.6;
+  }
+  .footer__bottom{ margin-top: 1.5rem; display:flex; flex-wrap:wrap; gap: 1rem; justify-content:space-between; color: var(--text-3); font-size: .8125rem; }
 
   /* reveal-on-scroll */
   .reveal{ opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
@@ -658,13 +668,19 @@
         </div>
 
         <div class="tech-group reveal">
-          <p class="tech-group__label">E-commerce</p>
+          <p class="tech-group__label">Sites &amp; E-commerce</p>
           <div class="tech-row">
             <span class="tech-item tech-item--brand">
               <span class="tech-item__icon">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.2 6.5h9.6l-.75 6.6a1.5 1.5 0 0 1-1.5 1.33H6.45a1.5 1.5 0 0 1-1.5-1.33L4.2 6.5Z" stroke-linejoin="round"/><path d="M6.75 6.5V5a2.25 2.25 0 0 1 4.5 0v1.5" stroke-linecap="round"/></svg>
               </span>
               Criação de loja virtual (E-commerce)
+            </span>
+            <span class="tech-item tech-item--brand">
+              <span class="tech-item__icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="4" width="13" height="10" rx="1.2"/><path d="M2.5 6.6h13" stroke-linecap="round"/><circle cx="4.4" cy="5.3" r=".45" fill="currentColor" stroke="none"/></svg>
+              </span>
+              Criação de sites sob medida
             </span>
           </div>
         </div>
@@ -880,9 +896,17 @@
       </div>
     </div>
 
+    <!-- aviso de independência: citamos nomes e cores de marcas de terceiros
+         (Microsoft, Google, Meta) só para indicar compatibilidade técnica —
+         este texto deixa claro que não há afiliação, patrocínio ou
+         certificação oficial dessas empresas. -->
+    <p class="footer__disclaimer">
+      A Tenant Flow é uma empresa de TI independente, especializada em infraestrutura, e-mail corporativo e suporte técnico. Não somos a Microsoft, o Google ou a Meta, nem somos afiliados, patrocinados ou certificados por essas empresas — os nomes e as cores de marca citados aqui aparecem apenas para indicar compatibilidade com essas plataformas.
+    </p>
+
     <div class="footer__bottom">
       <span>© 2026 Tenant Flow. Todos os direitos reservados.</span>
-      <span>SharePoint · OneDrive · Google Drive · Dropbox · Teams · Exchange Online · Google Ads · Meta Ads · E-commerce</span>
+      <span>SharePoint · OneDrive · Google Drive · Dropbox · Teams · Exchange Online · Google Ads · Meta Ads · Sites &amp; E-commerce</span>
     </div>
   </div>
 </footer>
