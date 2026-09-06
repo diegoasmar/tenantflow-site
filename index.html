@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tenant Flow — Infraestrutura de TI &amp; Microsoft 365</title>
+<meta name="description" content="E-mail corporativo, Microsoft 365, SharePoint e gestão de anúncios no Google e Meta para pequenas e médias empresas. Diagnóstico técnico gratuito." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================================
+  TENANT FLOW — Landing Page
+  ============================================================================
+  Arquivo único (HTML + CSS + JS) sem dependência de build ou framework —
+  basta abrir no navegador ou subir em qualquer host estático.
+
+  ÍNDICE (use Ctrl+F para pular direto na seção):
+    1. TOKENS ..... variáveis de design (cor, tipografia, espaçamento)
+    2. BASE ....... reset e estilos globais
+    3. LAYOUT ..... container, grid helpers
+    4. COMPONENTES  botão, badge, card, input, etc. (reutilizáveis)
+    5. NAVBAR
+    6. HERO
+    7. TECH STRIP . barra "trabalhamos com"
+    8. SERVIÇOS ... grid de soluções
+    9. COMO FUNCIONA
+   10. CONTATO .... formulário de lead
+   11. FOOTER
+   12. JS ......... menu mobile, scroll reveal, envio do formulário
+
+  PARA PERSONALIZAR:
+  - Cores/identidade → edite apenas a seção 1 (TOKENS). Todo o resto herda
+    dessas variáveis, então trocar a cor de destaque é uma linha só.
+  - Textos → estão diretamente no HTML, em português, um bloco por seção.
+  - Formulário → aponte a constante `FORM_ENDPOINT` no JS (seção 12) para o
+    seu backend, CRM ou serviço de formulário (Formspree, HubSpot, etc.).
+  ============================================================================
+-->
+
+<style>
+  /* ==========================================================================
+     1. TOKENS — design system
+     ========================================================================== */
+  :root{
+    /* cor */
+    --bg:            #08090a;
+    --bg-raised:     #0c0d10;
+    --surface:       #111216;
+    --surface-2:     #16171c;
+    --border:        rgba(255,255,255,0.09);
+    --border-strong: rgba(255,255,255,0.18);
+    --text-1:        #f5f6f7;
+    --text-2:        #9b9ca4;
+    --text-3:        #6c6d75;
+    --accent:        #6e6ff6;
+    --accent-2:      #9192f8;
+    --accent-ink:    #0a0a0c;
+    --success:       #3ddc97;
+
+    /* tipografia */
+    --font: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --fs-eyebrow: 0.8125rem;
+    --fs-body:    1rem;
+    --fs-h1: clamp(2.25rem, 1.55rem + 3vw, 3.75rem);
+    --fs-h2: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+    --fs-h3: 1.0625rem;
+
+    /* forma */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --container: 1180px;
+
+    /* movimento */
+    --ease: cubic-bezier(.16,.8,.24,1);
+  }
+
+  /* ==========================================================================
+     2. BASE
+     ========================================================================== */
+  *, *::before, *::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: var(--font);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,p,figure{ margin: 0; }
+  a{ color: inherit; text-decoration: none; }
+  img,svg{ display:block; max-width:100%; }
+  ::selection{ background: var(--accent); color:#fff; }
+
+  /* textura de grão sutil — dá o acabamento "produto premium" sem pesar */
+  body::before{
+    content:"";
+    position: fixed; inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: .05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* grade técnica de fundo, usada atrás do hero */
+  .grid-bg{
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 85%);
+            mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 85%);
+  }
+
+  /* ==========================================================================
+     3. LAYOUT
+     ========================================================================== */
+  .container{ max-width: var(--container); margin-inline: auto; padding-inline: 24px; }
+  .section{ padding-block: 6.5rem; }
+  .section--bordered{ border-top: 1px solid var(--border); }
+  .section-head{ max-width: 40rem; }
+  .section-head + .section-body{ margin-top: 3.25rem; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size: var(--fs-eyebrow); font-weight: 600;
+    color: var(--accent-2);
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+  .section-title{
+    margin-top: .75rem;
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .section-lead{
+    margin-top: 1rem;
+    color: var(--text-2);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .grid-2{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  @media (max-width: 900px){
+    .grid-3{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px){
+    .grid-3, .grid-2{ grid-template-columns: 1fr; }
+  }
+
+  /* ==========================================================================
+     4. COMPONENTES
+     ========================================================================== */
+
+  /* botões */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    padding: .8rem 1.35rem;
+    border-radius: var(--radius-sm);
+    font-size: .9375rem; font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .15s var(--ease), box-shadow .15s var(--ease), border-color .15s var(--ease), background-color .15s var(--ease);
+    white-space: nowrap;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .btn--primary{ background: var(--text-1); color: var(--accent-ink); }
+  .btn--primary:hover{ box-shadow: 0 10px 30px -10px rgba(255,255,255,.3); transform: translateY(-1px); }
+  .btn--ghost{ background: rgba(255,255,255,.02); border-color: var(--border-strong); color: var(--text-1); }
+  .btn--ghost:hover{ background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.35); transform: translateY(-1px); }
+  .btn--block{ width: 100%; }
+
+  /* cartão */
+  .card{
+    background: linear-gradient(180deg, var(--surface), var(--bg-raised));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    transition: border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+  }
+  .card:hover{
+    border-color: rgba(110,111,246,.4);
+    box-shadow: 0 0 0 1px rgba(110,111,246,.12), 0 20px 40px -28px rgba(0,0,0,.7);
+    transform: translateY(-2px);
+  }
+  .card__icon{
+    width: 2.375rem; height: 2.375rem;
+    display:grid; place-items:center;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-strong);
+    color: var(--accent-2);
+    margin-bottom: 1.25rem;
+  }
+  .card__title{ font-size: var(--fs-h3); font-weight: 600; }
+  .card__text{ margin-top: .5rem; color: var(--text-2); font-size: .9375rem; line-height: 1.6; }
+
+  /* inputs */
+  .field{ display:flex; flex-direction:column; gap:.4rem; }
+  .field label{ font-size: .8125rem; color: var(--text-2); }
+  .field input, .field select, .field textarea{
+    font: inherit;
+    background: rgba(255,255,255,.02);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: .7rem .9rem;
+    color: var(--text-1);
+  }
+  .field input::placeholder, .field textarea::placeholder{ color: var(--text-3); }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none; border-color: rgba(110,111,246,.65);
+    box-shadow: 0 0 0 3px rgba(110,111,246,.16);
+  }
+  .field textarea{ resize: vertical; min-height: 5.5rem; }
+
+  /* ==========================================================================
+     5. NAVBAR
+     ========================================================================== */
+  .navbar{
+    position: fixed; inset-inline: 0; top: 0; z-index: 50;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,9,10,.7);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+  .navbar__inner{ height: 4.25rem; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:.6rem; }
+  .brand__name{ font-weight: 600; font-size: .9375rem; letter-spacing: -0.01em; }
+  .nav-links{ display:flex; align-items:center; gap: 2rem; font-size: .9rem; color: var(--text-2); }
+  .nav-links a{ transition: color .15s var(--ease); }
+  .nav-links a:hover{ color: var(--text-1); }
+  .navbar__actions{ display:flex; align-items:center; gap: .75rem; }
+  .nav-toggle{
+    display:none; width: 2.25rem; height: 2.25rem;
+    align-items:center; justify-content:center;
+    border-radius: var(--radius-sm); border: 1px solid var(--border-strong);
+    color: var(--text-2); background: transparent; cursor:pointer;
+  }
+  .mobile-panel{
+    max-height: 0; overflow: hidden;
+    border-top: 1px solid transparent;
+    transition: max-height .25s var(--ease);
+  }
+  .mobile-panel.is-open{ max-height: 20rem; border-top-color: var(--border); }
+  .mobile-panel__inner{ padding: 1.25rem 24px; display:flex; flex-direction:column; gap: 1rem; font-size: .9375rem; color: var(--text-2); }
+
+  @media (max-width: 820px){
+    .nav-links, .navbar__actions .btn{ display:none; }
+    .nav-toggle{ display:flex; }
+  }
+
+  /* ==========================================================================
+     6. HERO
+     ========================================================================== */
+  .hero{ padding-top: 9.5rem; padding-bottom: 6rem; position: relative; overflow: hidden; }
+  .hero__grid{ display:grid; grid-template-columns: 1.05fr .95fr; gap: 4rem; align-items:center; }
+  @media (max-width: 980px){ .hero__grid{ grid-template-columns: 1fr; } }
+
+  .hero__title{ font-size: var(--fs-h1); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; }
+  .hero__lead{ margin-top: 1.5rem; max-width: 34rem; font-size: 1.125rem; color: var(--text-2); line-height: 1.6; }
+  .hero__actions{ margin-top: 2.25rem; display:flex; flex-wrap:wrap; gap: 1rem; }
+  .hero__stats{ margin-top: 3rem; display:flex; gap: 2rem; flex-wrap: wrap; }
+  .stat b{ display:block; font-size: 1.0625rem; font-weight: 600; }
+  .stat span{ font-size: .8125rem; color: var(--text-3); }
+
+  /* mockup de painel no hero */
+  .panel{
+    position: relative;
+    background: linear-gradient(180deg, var(--surface-2), var(--bg-raised));
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.04), 0 40px 80px -40px rgba(0,0,0,.8), 0 0 60px -25px rgba(110,111,246,.35);
+    padding: 1.5rem;
+  }
+  .panel__bar{ display:flex; align-items:center; justify-content:space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .panel__dots{ display:flex; gap: .4rem; }
+  .panel__dots span{ width:.5rem; height:.5rem; border-radius:50%; background: var(--border-strong); }
+  .panel__label{ font-size: .75rem; color: var(--text-3); }
+  .panel__grid{ margin-top: 1.25rem; display:grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+  .panel__card{ grid-column: span 2; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
+  .panel__card--half{ grid-column: span 1; }
+  .panel__metric-top{ display:flex; align-items:center; justify-content:space-between; font-size: .8125rem; color: var(--text-2); }
+  .panel__metric-value{ margin-top: .4rem; display:flex; align-items:baseline; gap: .5rem; }
+  .panel__metric-value b{ font-size: 1.75rem; font-weight: 700; }
+  .panel__metric-value em{ font-style:normal; font-size: .8125rem; color: var(--success); }
+  .status-dot{ width: .5rem; height: .5rem; border-radius:50%; background: var(--success); position:relative; }
+  .status-dot::after{
+    content:''; position:absolute; inset:-3px; border-radius:50%;
+    border:1px solid rgba(61,220,151,.5); animation: ping 2.4s ease-out infinite;
+  }
+  @keyframes ping{ 0%{ transform:scale(.7); opacity:.9;} 100%{ transform:scale(1.9); opacity:0;} }
+  @media (prefers-reduced-motion: reduce){ .status-dot::after{ animation:none; } }
+
+  /* ==========================================================================
+     7. TECH STRIP
+     ========================================================================== */
+  .tech-strip{ padding-block: 3rem; }
+  .tech-strip__label{ text-align:center; font-size: .8125rem; color: var(--text-3); margin-bottom: 2rem; }
+  .tech-row{
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap: 2.5rem 3rem;
+  }
+  .tech-item{
+    display:flex; align-items:center; gap:.6rem;
+    color: var(--text-3);
+    font-weight: 600; font-size: .95rem;
+    filter: grayscale(1);
+    opacity: .75;
+    transition: opacity .2s var(--ease), color .2s var(--ease), filter .2s var(--ease);
+  }
+  .tech-item:hover{ opacity: 1; color: var(--text-1); filter: grayscale(0); }
+  .tech-item svg{ color: inherit; }
+
+  /* ==========================================================================
+     9. COMO FUNCIONA
+     ========================================================================== */
+  .steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; counter-reset: step; }
+  @media (max-width: 780px){ .steps{ grid-template-columns: 1fr; } }
+  .step{ position:relative; padding-left: 3rem; }
+  .step::before{
+    counter-increment: step; content: counter(step);
+    position:absolute; left:0; top:0;
+    width: 2.25rem; height: 2.25rem;
+    border-radius:50%; border: 1px solid var(--border-strong);
+    display:grid; place-items:center;
+    font-size:.875rem; font-weight:700; color: var(--accent-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .step h3{ font-size: 1rem; font-weight:600; }
+  .step p{ margin-top:.5rem; color: var(--text-2); font-size:.9375rem; line-height:1.6; }
+
+  /* ==========================================================================
+     10. CONTATO
+     ========================================================================== */
+  .contact{ display:grid; grid-template-columns: .85fr 1.15fr; gap: 3.5rem; }
+  @media (max-width: 900px){ .contact{ grid-template-columns: 1fr; } }
+  .contact-info{ display:flex; flex-direction:column; gap: 1rem; margin-top: 2rem; }
+  .contact-info__row{ display:flex; align-items:center; gap:.75rem; color: var(--text-2); font-size:.9375rem; }
+  .contact-info__icon{ width: 2rem; height:2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); display:grid; place-items:center; flex-shrink:0; }
+  .form-note{ margin-top: 1rem; text-align:center; font-size: .8125rem; color: var(--text-3); }
+
+  /* ==========================================================================
+     11. FOOTER
+     ========================================================================== */
+  .footer{ padding-block: 4rem 2.5rem; }
+  .footer__grid{ display:grid; grid-template-columns: 1.4fr .8fr .8fr .8fr; gap: 2.5rem; }
+  @media (max-width: 780px){ .footer__grid{ grid-template-columns: 1fr 1fr; } }
+  .footer__blurb{ margin-top: 1rem; max-width: 20rem; color: var(--text-3); font-size: .875rem; line-height: 1.6; }
+  .footer__heading{ font-size: .75rem; text-transform: uppercase; letter-spacing:.06em; color: var(--text-2); margin-bottom: 1rem; }
+  .footer__links{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap: .65rem; }
+  .footer__links a{ color: var(--text-3); font-size: .875rem; transition: color .15s var(--ease); }
+  .footer__links a:hover{ color: var(--text-1); }
+  .footer__bottom{ margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); display:flex; flex-wrap:wrap; gap: 1rem; justify-content:space-between; color: var(--text-3); font-size: .8125rem; }
+
+  /* reveal-on-scroll */
+  .reveal{ opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .reveal.is-visible{ opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+</style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     5. NAVBAR
+     ========================================================================== -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="#top" class="brand">
+      <svg width="26" height="26" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="logoGrad" x1="6" y1="4" x2="38" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#9d9ffb"/>
+            <stop offset="100%" stop-color="#5457e0"/>
+          </linearGradient>
+        </defs>
+        <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M22 22 L22 4" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
+        <path d="M22 22 L6.4 31" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
+        <path d="M22 22 L37.6 31" stroke="url(#logoGrad)" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="22" cy="22" r="1.9" fill="url(#logoGrad)"/>
+        <circle cx="37.6" cy="31" r="1.9" fill="url(#logoGrad)"/>
+      </svg>
+      <span class="brand__name">Tenant Flow</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#m365">Microsoft 365</a>
+      <a href="#anuncios">Anúncios</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="#contato" class="btn btn--primary">Falar com especialista</a>
+      <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4.5h12M2 11.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobilePanel" class="mobile-panel">
+    <div class="mobile-panel__inner">
+      <a href="#servicos">Serviços</a>
+      <a href="#m365">Microsoft 365</a>
+      <a href="#anuncios">Anúncios</a>
+      <a href="#contato">Contato</a>
+      <a href="#contato" class="btn btn--primary btn--block">Falar com especialista</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ======================================================================
+       6. HERO
+       ====================================================================== -->
+  <section class="hero grid-bg">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;"></span>
+          TI sob medida para pequenas e médias empresas
+        </span>
+
+        <h1 class="hero__title">
+          Sua empresa não precisa<br/>entender de TI. Só precisa<br/>de TI que funciona.
+        </h1>
+
+        <p class="hero__lead">
+          Cuidamos do seu e-mail corporativo, dos seus arquivos na nuvem e dos seus anúncios no Google e no Meta — para você não perder mais tempo, cliente ou dinheiro com problema de tecnologia.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#contato" class="btn btn--primary">
+            Falar com um especialista
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#servicos" class="btn btn--ghost">Ver o que fazemos</a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat"><b>99,9%</b><span>disponibilidade de e-mail</span></div>
+          <div class="stat"><b>0 paradas</b><span>durante a migração</span></div>
+          <div class="stat"><b>&lt; 1 dia útil</b><span>para o primeiro retorno</span></div>
+        </div>
+      </div>
+
+      <div class="reveal panel">
+        <div class="panel__bar">
+          <div class="panel__dots"><span></span><span></span><span></span></div>
+          <span class="panel__label">painel · tenantflow.io</span>
+        </div>
+
+        <div class="panel__grid">
+          <div class="panel__card">
+            <div class="panel__metric-top">
+              <span>Entregabilidade de e-mail</span>
+              <span class="status-dot"></span>
+            </div>
+            <div class="panel__metric-value">
+              <b>98,4%</b>
+              <em>▲ 12,1%</em>
+            </div>
+          </div>
+
+          <div class="panel__card panel__card--half">
+            <div class="panel__metric-top"><span>SPF</span></div>
+            <div class="panel__metric-value" style="color:var(--success); font-size:.9375rem; font-weight:600;">Válido</div>
+          </div>
+          <div class="panel__card panel__card--half">
+            <div class="panel__metric-top"><span>DKIM</span></div>
+            <div class="panel__metric-value" style="color:var(--success); font-size:.9375rem; font-weight:600;">Válido</div>
+          </div>
+          <div class="panel__card panel__card--half">
+            <div class="panel__metric-top"><span>DMARC</span></div>
+            <div class="panel__metric-value" style="color:var(--success); font-size:.9375rem; font-weight:600;">Reject</div>
+          </div>
+          <div class="panel__card panel__card--half">
+            <div class="panel__metric-top"><span>Licenças M365</span></div>
+            <div class="panel__metric-value" style="font-size:.9375rem; font-weight:600;">128 / 130</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       7. TECH STRIP
+       ====================================================================== -->
+  <section class="section--bordered tech-strip">
+    <div class="container">
+      <p class="tech-strip__label">Trabalhamos com as ferramentas que sua empresa já usa</p>
+      <div class="tech-row">
+        <span class="tech-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1.5" y="1.5" width="6.5" height="6.5" rx="1"/><rect x="10" y="1.5" width="6.5" height="6.5" rx="1"/><rect x="1.5" y="10" width="6.5" height="6.5" rx="1"/><rect x="10" y="10" width="6.5" height="6.5" rx="1"/></svg>
+          Microsoft 365
+        </span>
+        <span class="tech-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 4.5h14v9H2z" stroke-linejoin="round"/><path d="M2 4.5 9 10l7-5.5"/></svg>
+          Exchange Online
+        </span>
+        <span class="tech-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="2" width="14" height="14" rx="2"/><path d="M2 7h14M7 7v9" stroke-linecap="round"/></svg>
+          SharePoint
+        </span>
+        <span class="tech-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="9" cy="9" r="6.75"/><circle cx="9" cy="9" r="3.25"/><circle cx="9" cy="9" r=".5" fill="currentColor"/></svg>
+          Google Ads
+        </span>
+        <span class="tech-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="6.5" cy="9" r="4.5"/><circle cx="11.5" cy="9" r="4.5"/></svg>
+          Meta Ads
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       8. SERVIÇOS
+       ====================================================================== -->
+  <section id="servicos" class="section section--bordered">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">O que fazemos</span>
+        <h2 class="section-title">Seis problemas de TI que sua empresa não precisa mais ter.</h2>
+        <p class="section-lead">Cada serviço resolve uma dor concreta — não vendemos pacote genérico de "suporte técnico".</p>
+      </div>
+
+      <div class="section-body grid-3">
+        <div id="m365" class="card reveal">
+          <div class="card__icon">
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2.5 5.5h14v9h-14z" stroke-linejoin="round"/><path d="M2.5 5.5 9.5 11l7-5.5"/></svg>
+          </div>
+          <h3 class="card__title">E-mail que não cai no SPAM</h3>
+          <p class="card__text">Configuramos corretamente SPF, DKIM e DMARC no Microsoft 365 para seus e-mails chegarem na caixa de entrada dos seus clientes — não na lixeira deles.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__icon">
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2.5 9.5a7 7 0 0 1 12-4.9M16.5 9.5a7 7 0 0 1-12 4.9" stroke-linecap="round"/><path d="M14.5 2.5v3h-3M4.5 16.5v-3h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card__title">Troca de sistema sem parar a empresa</h3>
+          <p class="card__text">Migramos e-mail, arquivos e acessos para o Microsoft 365 com janela de corte mínima. Sua equipe trabalha normal enquanto a mudança acontece.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__icon">
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="4" width="14" height="11" rx="1.5"/><path d="M2.5 8h14" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="card__title">Arquivos organizados e seguros</h3>
+          <p class="card__text">Estrutura de pastas, permissões por setor e backup automático no SharePoint, OneDrive e Teams. Chega de arquivo perdido em pendrive.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__icon">
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9.5" cy="9.5" r="7"/><path d="M9.5 5.5v4l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card__title">Você paga só pelo que usa</h3>
+          <p class="card__text">Auditamos as licenças do Microsoft 365 contratadas e ajustamos ao uso real da sua equipe — sem pagar por recursos parados.</p>
+        </div>
+
+        <div id="anuncios" class="card reveal">
+          <div class="card__icon">
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9.5" cy="9.5" r="7"/><circle cx="9.5" cy="9.5" r="3.3"/><circle cx="9.5" cy="9.5" r=".6" fill="currentColor"/></svg>
+          </div>
+          <h3 class="card__title">Loja virtual e anúncios que vendem</h3>
+          <p class="card__text">Configuração técnica de e-commerce e gestão de campanhas no Google Ads e Meta Ads com foco em retorno — não em cliques bonitos no relatório.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="card__icon">
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9.5 2.5 3.5 5v4.3c0 4.2 2.7 7 6 7.8 3.3-.8 6-3.6 6-7.8V5l-6-2.5Z" stroke-linejoin="round"/><path d="M7 9.7l1.8 1.8 3.7-3.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="card__title">Proteção contra invasão e perda de dados</h3>
+          <p class="card__text">Autenticação em duas etapas, controle de acesso por perfil e backup gerenciado — reduzindo o risco sem travar o dia a dia da equipe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       9. COMO FUNCIONA
+       ====================================================================== -->
+  <section class="section section--bordered">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Como funciona</span>
+        <h2 class="section-title">Três passos, sem enrolação.</h2>
+      </div>
+
+      <div class="section-body steps">
+        <div class="step reveal">
+          <h3>Diagnóstico gratuito</h3>
+          <p>Em uma chamada de 30 minutos, avaliamos seu e-mail, suas licenças e sua infraestrutura atual.</p>
+        </div>
+        <div class="step reveal">
+          <h3>Plano e execução</h3>
+          <p>Você recebe um plano por escrito, com prazo e custo definidos, antes de qualquer mudança começar.</p>
+        </div>
+        <div class="step reveal">
+          <h3>Suporte contínuo</h3>
+          <p>Depois da entrega, continuamos acompanhando a operação — sem letra miúda e sem sumir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       10. CONTATO
+       ====================================================================== -->
+  <section id="contato" class="section section--bordered">
+    <div class="container contact">
+      <div class="reveal">
+        <span class="eyebrow">Contato</span>
+        <h2 class="section-title">Solicite um diagnóstico técnico gratuito.</h2>
+        <p class="section-lead">Sem compromisso. Em 30 minutos você já sabe o que está custando dinheiro na sua TI atual.</p>
+
+        <div class="contact-info">
+          <div class="contact-info__row">
+            <span class="contact-info__icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1.5 3.5h11v7h-11z" stroke-linejoin="round"/><path d="M1.5 3.5 7 7.8l5.5-4.3"/></svg>
+            </span>
+            contato@tenantflow.com.br
+          </div>
+          <div class="contact-info__row">
+            <span class="contact-info__icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 3.5c0 5 3.5 8.5 8.5 8.5l1.5-2.3c.1-.2 0-.5-.2-.6L9.4 8c-.2-.1-.4 0-.5.1l-.8 1C7 8.6 5.9 7.5 5.4 6.4l1-.8c.1-.1.2-.3.1-.5L5.4 2.7c-.1-.2-.4-.3-.6-.2L2.5 4C2.2 4.2 2 3.9 2 3.5Z" stroke-linejoin="round"/></svg>
+            </span>
+            +55 (11) 4000-0000
+          </div>
+        </div>
+      </div>
+
+      <form id="leadForm" class="reveal card" novalidate style="display:grid; gap:1.25rem;">
+        <div class="grid-2">
+          <div class="field">
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" type="text" required placeholder="Seu nome" />
+          </div>
+          <div class="field">
+            <label for="empresa">Empresa</label>
+            <input id="empresa" name="empresa" type="text" required placeholder="Nome da empresa" />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" required placeholder="voce@empresa.com" />
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input id="telefone" name="telefone" type="tel" placeholder="(11) 90000-0000" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="necessidade">O que você precisa?</label>
+          <select id="necessidade" name="necessidade">
+            <option>Migração para Microsoft 365</option>
+            <option>E-mail corporativo / Exchange Online</option>
+            <option>SharePoint, OneDrive &amp; Teams</option>
+            <option>E-commerce &amp; Anúncios (Google/Meta)</option>
+            <option>Segurança &amp; Conformidade</option>
+            <option>Outro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o cenário atual"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">Solicitar diagnóstico gratuito</button>
+        <p id="formNote" class="form-note">Respondemos em até 1 dia útil. Nenhum dado é compartilhado com terceiros.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================================================================
+     11. FOOTER
+     ========================================================================== -->
+<footer class="footer section--bordered">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="#top" class="brand">
+          <svg width="22" height="22" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M22 22 L37.6 31" stroke="#9192f8" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="22" cy="22" r="1.8" fill="#9192f8"/>
+          </svg>
+          <span class="brand__name">Tenant Flow</span>
+        </a>
+        <p class="footer__blurb">Infraestrutura de TI, Microsoft 365 e operação técnica de e-commerce para empresas que não podem parar.</p>
+      </div>
+
+      <div>
+        <p class="footer__heading">Soluções</p>
+        <ul class="footer__links">
+          <li><a href="#m365">Microsoft 365 &amp; Exchange</a></li>
+          <li><a href="#servicos">Migração sem downtime</a></li>
+          <li><a href="#anuncios">E-commerce &amp; Anúncios</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__heading">Empresa</p>
+        <ul class="footer__links">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__heading">Legal</p>
+        <ul class="footer__links">
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 Tenant Flow. Todos os direitos reservados.</span>
+      <span>Microsoft 365 · Exchange Online · SharePoint · Google Ads · Meta Ads</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     12. JS
+     ========================================================================== -->
+<script>
+  (function(){
+    "use strict";
+
+    /* menu mobile */
+    var toggle = document.getElementById('navToggle');
+    var panel = document.getElementById('mobilePanel');
+    toggle && toggle.addEventListener('click', function(){
+      var open = panel.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    panel && panel.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        panel.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* scroll reveal */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+      revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+
+    /* formulário de lead — aponte FORM_ENDPOINT para seu backend/CRM */
+    var FORM_ENDPOINT = null; // ex: '/api/lead' ou 'https://formspree.io/f/xxxxxx'
+    var form = document.getElementById('leadForm');
+    var note = document.getElementById('formNote');
+
+    form && form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!form.checkValidity()){ form.reportValidity(); return; }
+
+      var btn = form.querySelector('button[type="submit"]');
+      var original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      var send = FORM_ENDPOINT
+        ? fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        : new Promise(function(resolve){ setTimeout(resolve, 500); });
+
+      send
+        .then(function(){
+          form.reset();
+          note.textContent = 'Recebemos sua solicitação. Retornaremos em até 1 dia útil.';
+          note.style.color = 'var(--success)';
+        })
+        .catch(function(){
+          note.textContent = 'Não foi possível enviar agora. Tente novamente ou use o e-mail acima.';
+          note.style.color = '#f87171';
+        })
+        .finally(function(){
+          btn.disabled = false;
+          btn.textContent = original;
+        });
+    });
+  })();
+</script>
+</body>
+</html>
