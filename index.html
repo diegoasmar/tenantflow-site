@@ -348,34 +348,44 @@
   .float-card{
     position: absolute;
     z-index: 2;
-    width: 14.5rem;
+    width: 18.5rem;
     background: linear-gradient(180deg, var(--surface-2), var(--bg-raised));
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-md);
-    box-shadow: 0 24px 48px -20px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.04);
-    padding: .85rem .95rem;
-    animation: floatY 6s ease-in-out infinite;
+    box-shadow: 0 28px 60px -20px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.04);
+    padding: 1rem 1.15rem;
     transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg));
     overflow: hidden;
+    will-change: transform;
   }
-  .float-card--teams{ top: -1.75rem; left: -2.25rem; --rot: -3deg; }
-  .float-card--mail{ bottom: -2rem; right: -2rem; width: 15.5rem; --rot: 2.5deg; animation-delay: -3.1s; }
-  /* amplitude maior (drift + leve giro) e resposta ao mouse via --px/--py
-     (atualizadas por JS) somada na mesma transformação — dá o efeito de
-     janelas "flutuando" sobre a página, como na referência da Linear. */
-  @keyframes floatY{
+  .float-card--teams{ top: -2.5rem; left: -3rem; --rot: -3deg; animation: floatTeams 5.5s ease-in-out infinite; }
+  .float-card--mail{ bottom: -2.75rem; right: -3rem; width: 19.5rem; --rot: 2.5deg; animation: floatMail 7.5s ease-in-out infinite; animation-delay: -2.4s; }
+  /* trajeto de flutuação bem visível (drift amplo + leve giro), somado à
+     resposta ao mouse via --px/--py (atualizadas por JS) — dá o efeito de
+     janelas "flutuando" de verdade sobre a página, como na referência da
+     Linear. Cada janela tem um trajeto, amplitude e duração diferentes pra
+     nunca ficarem sincronizadas — sensação mais orgânica e viva. */
+  @keyframes floatTeams{
     0%, 100%{ transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg)); }
-    50%{ transform: translate(calc(var(--px, 0px) + 6px), calc(var(--py, 0px) - 16px)) rotate(calc(var(--rot, 0deg) + 1.5deg)); }
+    25%{      transform: translate(calc(var(--px, 0px) + 10px), calc(var(--py, 0px) - 16px)) rotate(calc(var(--rot, 0deg) + 1.6deg)); }
+    50%{      transform: translate(calc(var(--px, 0px) - 4px),  calc(var(--py, 0px) - 27px)) rotate(calc(var(--rot, 0deg) - .8deg)); }
+    75%{      transform: translate(calc(var(--px, 0px) - 12px), calc(var(--py, 0px) - 10px)) rotate(calc(var(--rot, 0deg) + .6deg)); }
+  }
+  @keyframes floatMail{
+    0%, 100%{ transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg)); }
+    30%{      transform: translate(calc(var(--px, 0px) - 12px), calc(var(--py, 0px) + 15px)) rotate(calc(var(--rot, 0deg) - 1.4deg)); }
+    60%{      transform: translate(calc(var(--px, 0px) + 6px),  calc(var(--py, 0px) + 25px)) rotate(calc(var(--rot, 0deg) + 1deg)); }
+    85%{      transform: translate(calc(var(--px, 0px) + 12px), calc(var(--py, 0px) + 8px))  rotate(calc(var(--rot, 0deg) - .6deg)); }
   }
   @media (prefers-reduced-motion: reduce){ .float-card{ animation: none; } }
 
-  .float-card__bar{ display:flex; align-items:center; gap:.45rem; font-size:.75rem; font-weight:600; color: var(--text-2); padding-bottom:.6rem; border-bottom:1px solid var(--border); }
-  .float-card__icon{ display:inline-flex; align-items:center; justify-content:center; width:1.4rem; height:1.4rem; border-radius:.4rem; flex:none; }
+  .float-card__bar{ display:flex; align-items:center; gap:.5rem; font-size:.8125rem; font-weight:600; color: var(--text-2); padding-bottom:.7rem; border-bottom:1px solid var(--border); }
+  .float-card__icon{ display:inline-flex; align-items:center; justify-content:center; width:1.55rem; height:1.55rem; border-radius:.45rem; flex:none; }
   .float-card__icon--teams{ background: rgba(123,131,235,.18); color:#9aa0f5; }
   .float-card__icon--mail{ background: rgba(0,120,212,.16); color:#3aa0ff; }
 
   /* indicador "digitando..." — some por padrão, JS ativa antes de trocar a mensagem */
-  .float-card__typing{ margin-left:auto; display:none; align-items:center; gap:.35rem; font-size:.625rem; font-weight:500; color: var(--accent-2); white-space:nowrap; }
+  .float-card__typing{ margin-left:auto; display:none; align-items:center; gap:.35rem; font-size:.6875rem; font-weight:500; color: var(--accent-2); white-space:nowrap; }
   .float-card__typing.is-active{ display:inline-flex; }
   .float-card__typing-dots{ display:inline-flex; gap:.15rem; }
   .float-card__typing-dots i{ width:.25rem; height:.25rem; border-radius:50%; background: var(--accent-2); display:inline-block; animation: typingBounce 1s ease-in-out infinite; }
@@ -383,36 +393,46 @@
   .float-card__typing-dots i:nth-child(3){ animation-delay:.3s; }
   @keyframes typingBounce{ 0%,60%,100%{ transform: translateY(0); opacity:.5; } 30%{ transform: translateY(-3px); opacity:1; } }
 
-  .float-card__chat{ margin-top:.75rem; display:flex; flex-direction:column; gap:.65rem; min-width:0; }
-  .float-card__msg{ display:flex; gap:.55rem; align-items:flex-start; min-width:0; transition: opacity .32s ease, transform .32s ease; }
+  .float-card__chat{ margin-top:.85rem; display:flex; flex-direction:column; gap:.75rem; min-width:0; }
+  .float-card__msg{ display:flex; gap:.6rem; align-items:flex-start; min-width:0; transition: opacity .32s ease, transform .32s ease; }
   .float-card__msg > div{ min-width:0; flex:1; }
-  .float-card__avatar{ flex:none; width:1.5rem; height:1.5rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.625rem; font-weight:700; transition: background-color .32s ease, color .32s ease; }
-  .float-card__msg-top{ display:flex; justify-content:space-between; gap:.5rem; font-size:.6875rem; min-width:0; }
+  .float-card__avatar{ flex:none; width:1.65rem; height:1.65rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.6875rem; font-weight:700; transition: background-color .32s ease, color .32s ease; }
+  .float-card__msg-top{ display:flex; justify-content:space-between; gap:.5rem; font-size:.75rem; min-width:0; }
   .float-card__msg-top b{ color: var(--text-1); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .float-card__msg-top span{ color: var(--text-3); flex:none; }
-  .float-card__msg p{ margin-top:.15rem; font-size:.75rem; color: var(--text-2); line-height:1.4; }
+  .float-card__msg p{ margin-top:.2rem; font-size:.8125rem; color: var(--text-2); line-height:1.4; }
 
-  .float-card__mail-list{ margin-top:.75rem; }
-  .float-card__mail-item{ display:flex; gap:.55rem; align-items:flex-start; min-width:0; transition: opacity .32s ease, transform .32s ease; }
+  .float-card__mail-list{ margin-top:.85rem; }
+  .float-card__mail-item{ display:flex; gap:.6rem; align-items:flex-start; min-width:0; transition: opacity .32s ease, transform .32s ease; }
   .float-card__mail-item > div{ min-width:0; flex:1; }
-  .float-card__mail-item + .float-card__mail-item{ margin-top:.6rem; padding-top:.6rem; border-top:1px solid var(--border); }
-  .float-card__dot{ flex:none; margin-top:.3rem; width:.4rem; height:.4rem; border-radius:50%; background: var(--accent-2); animation: dotPulse 2.2s ease-in-out infinite; }
+  .float-card__mail-item + .float-card__mail-item{ margin-top:.7rem; padding-top:.7rem; border-top:1px solid var(--border); }
+  .float-card__dot{ flex:none; margin-top:.35rem; width:.45rem; height:.45rem; border-radius:50%; background: var(--accent-2); animation: dotPulse 2.2s ease-in-out infinite; }
   .float-card__dot--muted{ background: var(--border-strong); animation: none; }
   @keyframes dotPulse{ 0%,100%{ box-shadow: 0 0 0 0 rgba(145,146,248,.55); } 50%{ box-shadow: 0 0 0 4px rgba(145,146,248,0); } }
-  .float-card__mail-top{ display:flex; justify-content:space-between; gap:.5rem; font-size:.6875rem; min-width:0; }
+  .float-card__mail-top{ display:flex; justify-content:space-between; gap:.5rem; font-size:.75rem; min-width:0; }
   .float-card__mail-top b{ color: var(--text-1); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .float-card__mail-top span{ color: var(--text-3); flex:none; }
-  .float-card__mail-subject{ margin-top:.1rem; font-size:.75rem; color: var(--text-1); font-weight:500; }
-  .float-card__mail-preview{ margin-top:.15rem; font-size:.6875rem; color: var(--text-3); line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .float-card__mail-subject{ margin-top:.15rem; font-size:.8125rem; color: var(--text-1); font-weight:500; }
+  .float-card__mail-preview{ margin-top:.2rem; font-size:.75rem; color: var(--text-3); line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .float-card__msg.is-fading, .float-card__mail-item.is-fading{ opacity:0; transform: translateY(4px); }
   @media (prefers-reduced-motion: reduce){
     .float-card__dot{ animation:none; }
     .float-card__typing-dots i{ animation:none; }
   }
 
+  /* entre 981px e 1240px a coluna do visual ainda é estreita (grid de 2
+     colunas) e o container ainda não atingiu a margem externa que sobra em
+     telas bem largas — por isso aqui o deslocamento negativo das janelas
+     precisa ficar mais contido, senão elas vazam pra fora da viewport. */
+  @media (max-width: 1240px) and (min-width: 981px){
+    .float-card{ width: 16.5rem; }
+    .float-card--teams{ left: -1.25rem; top: -1.75rem; }
+    .float-card--mail{ right: -1.25rem; bottom: -2rem; width: 17.5rem; }
+  }
   @media (max-width: 980px){
-    .float-card--teams{ left: -.5rem; top: -1.25rem; }
-    .float-card--mail{ right: -.5rem; bottom: -1.5rem; }
+    .float-card{ width: 16rem; }
+    .float-card--teams{ left: -.75rem; top: -1.5rem; }
+    .float-card--mail{ right: -.75rem; bottom: -1.75rem; width: 17rem; }
   }
   @media (max-width: 640px){
     .float-card{ display:none; }
