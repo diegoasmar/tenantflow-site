@@ -434,8 +434,26 @@
     .float-card--teams{ left: -.75rem; top: -1.5rem; }
     .float-card--mail{ right: -.75rem; bottom: -1.75rem; width: 17rem; }
   }
+  /* abaixo de 640px o container ainda tem 24px de padding de cada lado,
+     então os cartões precisam de deslocamentos bem menores pra não vazar
+     pra fora da tela — testado em larguras de 320px a 640px. */
   @media (max-width: 640px){
-    .float-card{ display:none; }
+    .float-card{ width: 13.5rem; padding: .8rem .95rem; }
+    .float-card--teams{ left: -.4rem; top: -1rem; }
+    .float-card--mail{ right: -.4rem; bottom: -1.2rem; width: 14rem; }
+  }
+  @media (max-width: 400px){
+    .float-card{ width: 11.75rem; padding: .7rem .85rem; }
+    .float-card--teams{ left: -.25rem; top: -.85rem; }
+    .float-card--mail{ right: -.25rem; bottom: -1rem; width: 12.25rem; }
+    /* card bem menor precisa de texto interno mais compacto também */
+    .float-card__bar{ font-size: .6875rem; gap: .4rem; }
+    .float-card__icon{ width: 1.3rem; height: 1.3rem; }
+    .float-card__avatar{ width: 1.4rem; height: 1.4rem; font-size: .6rem; }
+    .float-card__msg-top, .float-card__mail-top{ font-size: .6875rem; }
+    .float-card__msg p{ font-size: .7rem; }
+    .float-card__mail-subject{ font-size: .7rem; }
+    .float-card__mail-preview{ font-size: .6875rem; }
   }
 
   /* ==========================================================================
