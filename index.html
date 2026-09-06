@@ -84,6 +84,7 @@
   html{ scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
 
+  html, body{ overflow-x: hidden; max-width: 100%; }
   body{
     margin: 0;
     background: var(--bg);
@@ -97,17 +98,6 @@
   a{ color: inherit; text-decoration: none; }
   img,svg{ display:block; max-width:100%; }
   ::selection{ background: var(--accent); color:#fff; }
-
-  /* textura de grão sutil — dá o acabamento "produto premium" sem pesar */
-  body::before{
-    content:"";
-    position: fixed; inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: .05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
 
   /* grade técnica de fundo, usada atrás do hero */
   .grid-bg{
@@ -129,10 +119,16 @@
   .section-head + .section-body{ margin-top: 3.25rem; }
 
   .eyebrow{
-    display:inline-flex; align-items:center; gap:.5rem;
+    display:inline-flex; align-items:flex-start; gap:.5rem;
     font-size: var(--fs-eyebrow); font-weight: 600;
     color: var(--accent-2);
     text-transform: uppercase; letter-spacing: .06em;
+  }
+  .eyebrow__dot{
+    width:6px; height:6px; border-radius:50%;
+    background: var(--success);
+    display:inline-block; flex-shrink:0;
+    margin-top: .45em;
   }
   .section-title{
     margin-top: .75rem;
@@ -426,12 +422,12 @@
     <div class="container hero__grid">
       <div>
         <span class="eyebrow">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;"></span>
+          <span class="eyebrow__dot"></span>
           TI sob medida para pequenas e médias empresas
         </span>
 
         <h1 class="hero__title">
-          Sua empresa não precisa<br/>entender de TI. Só precisa<br/>de TI que funciona.
+          Sua empresa não precisa entender de TI. Só precisa de TI que funciona.
         </h1>
 
         <p class="hero__lead">
