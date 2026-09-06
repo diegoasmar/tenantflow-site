@@ -99,8 +99,18 @@
   img,svg{ display:block; max-width:100%; }
   ::selection{ background: var(--accent); color:#fff; }
 
-  /* grade técnica de fundo, usada atrás do hero */
-  .grid-bg{
+  /* grade técnica de fundo, usada atrás do hero.
+     Importante: o mask-image fica num pseudo-elemento (::before) separado,
+     nunca direto na seção que tem texto — mask-image esconde TODO o
+     conteúdo renderizado do elemento (não só o background), então
+     aplicá-lo direto na seção apagaria também título, texto e botões. */
+  .grid-bg{ position: relative; }
+  .grid-bg::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
     background-image:
       linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
@@ -108,6 +118,7 @@
     -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 85%);
             mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 85%);
   }
+  .grid-bg > *{ position: relative; z-index: 1; }
 
   /* ==========================================================================
      3. LAYOUT
