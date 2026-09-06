@@ -341,41 +341,44 @@
   @media (prefers-reduced-motion: reduce){ .status-dot::after{ animation:none; } }
 
   /* mockups flutuantes do hero (Teams / caixa de entrada) — decorativos,
-     inspirados no efeito de janelas sobrepostas da Linear. Escondidos no
-     mobile (ver media query no fim do bloco) pra não brigar com o painel
-     principal em telas estreitas. */
+     inspirados no efeito de janelas sobrepostas da Linear. Ficam por cima
+     do canto do painel só o suficiente pra "espiar", com a maior parte da
+     janela flutuando fora dele — assim não tampam as métricas do painel.
+     Aparecem em todas as telas, inclusive no celular (tamanho menor). */
   .hero__visual{ position: relative; }
   .float-card{
     position: absolute;
     z-index: 2;
-    width: 18.5rem;
+    width: 20rem;
     background: linear-gradient(180deg, var(--surface-2), var(--bg-raised));
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-md);
-    box-shadow: 0 28px 60px -20px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.04);
+    box-shadow: 0 30px 70px -18px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06);
     padding: 1rem 1.15rem;
     transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg));
     overflow: hidden;
     will-change: transform;
   }
-  .float-card--teams{ top: -2.5rem; left: -3rem; --rot: -3deg; animation: floatTeams 5.5s ease-in-out infinite; }
-  .float-card--mail{ bottom: -2.75rem; right: -3rem; width: 19.5rem; --rot: 2.5deg; animation: floatMail 7.5s ease-in-out infinite; animation-delay: -2.4s; }
+  .float-card--teams{ top: -9.5rem; left: -1.25rem; --rot: -3deg; animation: floatTeams 4.8s ease-in-out infinite; }
+  .float-card--mail{ bottom: -10.5rem; right: -3.5rem; width: 21rem; --rot: 2.5deg; animation: floatMail 6.5s ease-in-out infinite; animation-delay: -2.4s; }
   /* trajeto de flutuação bem visível (drift amplo + leve giro), somado à
-     resposta ao mouse via --px/--py (atualizadas por JS) — dá o efeito de
-     janelas "flutuando" de verdade sobre a página, como na referência da
-     Linear. Cada janela tem um trajeto, amplitude e duração diferentes pra
-     nunca ficarem sincronizadas — sensação mais orgânica e viva. */
+     resposta ao mouse (desktop) e ao scroll da página (todos os
+     dispositivos, inclusive celular, onde não existe mouse) — atualizadas
+     por JS via --px/--py. Dá o efeito de janelas "flutuando" de verdade
+     sobre a página, como na referência da Linear. Cada janela tem um
+     trajeto, amplitude e duração diferentes pra nunca ficarem
+     sincronizadas — sensação mais orgânica e viva. */
   @keyframes floatTeams{
     0%, 100%{ transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg)); }
-    25%{      transform: translate(calc(var(--px, 0px) + 10px), calc(var(--py, 0px) - 16px)) rotate(calc(var(--rot, 0deg) + 1.6deg)); }
-    50%{      transform: translate(calc(var(--px, 0px) - 4px),  calc(var(--py, 0px) - 27px)) rotate(calc(var(--rot, 0deg) - .8deg)); }
-    75%{      transform: translate(calc(var(--px, 0px) - 12px), calc(var(--py, 0px) - 10px)) rotate(calc(var(--rot, 0deg) + .6deg)); }
+    25%{      transform: translate(calc(var(--px, 0px) + 13px), calc(var(--py, 0px) - 20px)) rotate(calc(var(--rot, 0deg) + 2deg)); }
+    50%{      transform: translate(calc(var(--px, 0px) - 5px),  calc(var(--py, 0px) - 33px)) rotate(calc(var(--rot, 0deg) - 1deg)); }
+    75%{      transform: translate(calc(var(--px, 0px) - 15px), calc(var(--py, 0px) - 12px)) rotate(calc(var(--rot, 0deg) + .8deg)); }
   }
   @keyframes floatMail{
     0%, 100%{ transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg)); }
-    30%{      transform: translate(calc(var(--px, 0px) - 12px), calc(var(--py, 0px) + 15px)) rotate(calc(var(--rot, 0deg) - 1.4deg)); }
-    60%{      transform: translate(calc(var(--px, 0px) + 6px),  calc(var(--py, 0px) + 25px)) rotate(calc(var(--rot, 0deg) + 1deg)); }
-    85%{      transform: translate(calc(var(--px, 0px) + 12px), calc(var(--py, 0px) + 8px))  rotate(calc(var(--rot, 0deg) - .6deg)); }
+    30%{      transform: translate(calc(var(--px, 0px) - 15px), calc(var(--py, 0px) + 19px)) rotate(calc(var(--rot, 0deg) - 1.8deg)); }
+    60%{      transform: translate(calc(var(--px, 0px) + 8px),  calc(var(--py, 0px) + 31px)) rotate(calc(var(--rot, 0deg) + 1.3deg)); }
+    85%{      transform: translate(calc(var(--px, 0px) + 15px), calc(var(--py, 0px) + 10px))  rotate(calc(var(--rot, 0deg) - .8deg)); }
   }
   @media (prefers-reduced-motion: reduce){ .float-card{ animation: none; } }
 
@@ -425,27 +428,34 @@
      telas bem largas — por isso aqui o deslocamento negativo das janelas
      precisa ficar mais contido, senão elas vazam pra fora da viewport. */
   @media (max-width: 1240px) and (min-width: 981px){
-    .float-card{ width: 16.5rem; }
-    .float-card--teams{ left: -1.25rem; top: -1.75rem; }
-    .float-card--mail{ right: -1.25rem; bottom: -2rem; width: 17.5rem; }
+    .float-card{ width: 17.5rem; }
+    .float-card--teams{ left: -1.5rem; top: -9rem; }
+    .float-card--mail{ right: -1.5rem; bottom: -13rem; width: 18.5rem; }
   }
+  /* abaixo de 980px o grid vira 1 coluna e o painel fica sozinho, ocupando
+     a largura toda — nesse formato empilhado as janelas flutuantes não têm
+     como sobrepor o painel sem tampar os dados dele. Por isso aqui elas
+     saem da posição absoluta e passam a ficar em pé, uma acima e outra
+     abaixo do painel, cada uma com seu próprio espaço reservado (sem
+     sobrepor nada). O leve giro e a flutuação continuam — só a estratégia
+     de posicionamento muda pro celular/tablet. */
   @media (max-width: 980px){
-    .float-card{ width: 16rem; }
-    .float-card--teams{ left: -.75rem; top: -1.5rem; }
-    .float-card--mail{ right: -.75rem; bottom: -1.75rem; width: 17rem; }
+    .hero__visual{ display:flex; flex-direction:column; align-items:center; gap: 1.35rem; }
+    .float-card{ position: static; width: 17rem; max-width: 100%; }
+    .float-card--teams{ order:-1; align-self:flex-start; margin-left: .25rem; }
+    .float-card--mail{ order:1; align-self:flex-end; margin-right: .25rem; width: 18rem; }
   }
-  /* abaixo de 640px o container ainda tem 24px de padding de cada lado,
-     então os cartões precisam de deslocamentos bem menores pra não vazar
-     pra fora da tela — testado em larguras de 320px a 640px. */
+  /* abaixo de 640px o card ainda encolhe mais um pouco pra caber com
+     folga em telas de celular — testado em larguras de 320px a 640px. */
   @media (max-width: 640px){
-    .float-card{ width: 13.5rem; padding: .8rem .95rem; }
-    .float-card--teams{ left: -.4rem; top: -1rem; }
-    .float-card--mail{ right: -.4rem; bottom: -1.2rem; width: 14rem; }
+    .hero__visual{ gap: 1rem; }
+    .float-card{ width: 15rem; padding: .8rem .95rem; }
+    .float-card--mail{ width: 15.75rem; }
   }
   @media (max-width: 400px){
-    .float-card{ width: 11.75rem; padding: .7rem .85rem; }
-    .float-card--teams{ left: -.25rem; top: -.85rem; }
-    .float-card--mail{ right: -.25rem; bottom: -1rem; width: 12.25rem; }
+    .hero__visual{ gap: .85rem; }
+    .float-card{ width: 13.25rem; padding: .7rem .85rem; }
+    .float-card--mail{ width: 13.75rem; }
     /* card bem menor precisa de texto interno mais compacto também */
     .float-card__bar{ font-size: .6875rem; gap: .4rem; }
     .float-card__icon{ width: 1.3rem; height: 1.3rem; }
@@ -682,7 +692,7 @@
         <div class="reveal panel">
           <div class="panel__bar">
             <div class="panel__dots"><span></span><span></span><span></span></div>
-            <span class="panel__label">painel · tenantflow.io</span>
+            <span class="panel__label">painel · tenantflow.com.br</span>
           </div>
 
           <div class="panel__grid">
@@ -1192,30 +1202,60 @@
     /* ----------------------------------------------------------------------
        Mockups flutuantes do hero (Teams / caixa de entrada) — decorativos.
        As mensagens e e-mails alternam sozinhos pra dar sensação de atividade
-       real, e as janelas reagem sutilmente ao mouse (efeito de profundidade
-       inspirado na Linear). Tudo desligado se o usuário pedir menos
-       movimento no sistema operacional. */
+       real. A janela já flutua sozinha via @keyframes CSS, e ganha um
+       empurrão extra ao mover o mouse (desktop) e ao rolar a página — isso
+       funciona em qualquer dispositivo, inclusive touch, onde não existe
+       mouse. Tudo desligado se o usuário pedir menos movimento no sistema
+       operacional. */
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var heroVisual = document.querySelector('.hero__visual');
 
     if (heroVisual && !reduceMotion) {
       var floatCards = heroVisual.querySelectorAll('.float-card');
-      heroVisual.addEventListener('mousemove', function(e){
-        var rect = heroVisual.getBoundingClientRect();
-        var relX = (e.clientX - rect.left) / rect.width - 0.5;
-        var relY = (e.clientY - rect.top) / rect.height - 0.5;
+      var mouseX = 0, mouseY = 0, scrollTilt = 0;
+
+      var applyFloatOffsets = function(){
         floatCards.forEach(function(card, i){
           var depth = (i + 1) * 7;
-          card.style.setProperty('--px', (relX * depth).toFixed(1) + 'px');
-          card.style.setProperty('--py', (relY * depth).toFixed(1) + 'px');
+          var dir = i === 0 ? 1 : -1;
+          var px = (mouseX * depth) + (dir * scrollTilt);
+          var py = (mouseY * depth) + (scrollTilt * .6);
+          card.style.setProperty('--px', px.toFixed(1) + 'px');
+          card.style.setProperty('--py', py.toFixed(1) + 'px');
         });
+      };
+
+      heroVisual.addEventListener('mousemove', function(e){
+        var rect = heroVisual.getBoundingClientRect();
+        mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+        mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+        applyFloatOffsets();
       });
       heroVisual.addEventListener('mouseleave', function(){
-        floatCards.forEach(function(card){
-          card.style.setProperty('--px', '0px');
-          card.style.setProperty('--py', '0px');
-        });
+        mouseX = 0; mouseY = 0;
+        applyFloatOffsets();
       });
+
+      /* ao rolar a página as janelas deslizam um pouco em direções opostas
+         conforme a seção passa pela tela — dá movimento visível mesmo no
+         celular, onde não existe mouse pra flutuar as janelas. */
+      var scrollTicking = false;
+      var updateScrollTilt = function(){
+        var rect = heroVisual.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var progress = (vh - rect.top) / (vh + rect.height);
+        var clamped = Math.max(0, Math.min(1, progress));
+        scrollTilt = (clamped - 0.5) * 15;
+        applyFloatOffsets();
+        scrollTicking = false;
+      };
+      window.addEventListener('scroll', function(){
+        if (!scrollTicking){
+          scrollTicking = true;
+          requestAnimationFrame(updateScrollTilt);
+        }
+      }, { passive: true });
+      updateScrollTilt();
     }
 
     /* Teams: mensagens alternando com indicador de "digitando" antes de cada troca */
