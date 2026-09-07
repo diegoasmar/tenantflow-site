@@ -271,7 +271,7 @@
   }
   .navbar__inner{ height: 4.25rem; display:flex; align-items:center; justify-content:space-between; }
   .brand{ display:flex; align-items:center; gap:.6rem; }
-  .brand__name{ font-weight: 600; font-size: .9375rem; letter-spacing: -0.01em; }
+  .brand__name{ font-weight: 600; font-size: 1.125rem; letter-spacing: -0.01em; }
   .nav-links{ display:flex; align-items:center; gap: 2rem; font-size: .9rem; color: var(--text-2); }
   .nav-links a{ transition: color .15s var(--ease); }
   .nav-links a:hover{ color: var(--text-1); }
@@ -624,7 +624,7 @@
 <header class="navbar">
   <div class="container navbar__inner">
     <a href="#top" class="brand">
-      <svg width="26" height="26" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+      <svg width="34" height="34" viewBox="0 0 44 44" fill="none" aria-hidden="true">
         <defs>
           <linearGradient id="logoGrad" x1="6" y1="4" x2="38" y2="40" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stop-color="#9d9ffb"/>
@@ -1058,6 +1058,13 @@
       </div>
 
       <form id="leadForm" class="reveal card" novalidate style="display:grid; gap:1.25rem;">
+        <!-- campos ocultos do FormSubmit.co: define assunto do e-mail, formata como
+             tabela legível, desativa o captcha (que quebraria o fluxo via AJAX) e
+             adiciona um campo-isca (_honey) que só bots preenchem, pra filtrar spam. -->
+        <input type="hidden" name="_subject" value="Novo pedido de diagnóstico — site Tenant Flow" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="grid-2">
           <div class="field">
             <label for="nome">Nome completo</label>
@@ -1129,7 +1136,7 @@
     <div class="footer__grid">
       <div>
         <a href="#top" class="brand">
-          <svg width="22" height="22" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 44 44" fill="none" aria-hidden="true">
             <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
             <path d="M22 22 L37.6 31" stroke="#9192f8" stroke-width="1.6" stroke-linecap="round"/>
             <circle cx="22" cy="22" r="1.8" fill="#9192f8"/>
@@ -1217,8 +1224,15 @@
       revealEls.forEach(function(el){ el.classList.add('is-visible'); });
     }
 
-    /* formulário de lead — aponte FORM_ENDPOINT para seu backend/CRM */
-    var FORM_ENDPOINT = null; // ex: '/api/lead' ou 'https://formspree.io/f/xxxxxx'
+    /* formulário de lead — envia via FormSubmit.co direto para o e-mail da
+       Tenant Flow (contato@tenantflow.com.br), sem servidor próprio. O link é
+       público (fica visível no código-fonte), mas isso não é um problema: ele
+       só permite ENVIAR para esse e-mail fixo, configurado no lado do
+       FormSubmit — ninguém consegue usá-lo pra ler ou desviar os envios.
+       IMPORTANTE: no primeiro envio, o FormSubmit manda um e-mail de
+       confirmação pra contato@tenantflow.com.br — é preciso clicar no link
+       daquele e-mail pra ativar o recebimento. */
+    var FORM_ENDPOINT = 'https://formsubmit.co/ajax/contato@tenantflow.com.br';
     var form = document.getElementById('leadForm');
     var note = document.getElementById('formNote');
 
@@ -1233,6 +1247,7 @@
 
       var send = FORM_ENDPOINT
         ? fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+            .then(function(res){ if (!res.ok) throw new Error('form submission failed'); return res; })
         : new Promise(function(resolve){ setTimeout(resolve, 500); });
 
       send
