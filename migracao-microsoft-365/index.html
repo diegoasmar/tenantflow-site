@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Migração para Microsoft 365 sem downtime | Tenant Flow</title>
+<meta name="description" content="Migramos e-mail, arquivos e usuários para o Microsoft 365 sem parar sua operação: corte fora do horário e suporte pós-migração. Diagnóstico gratuito." />
+<link rel="canonical" href="https://tenantflow.com.br/migracao-microsoft-365/" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<meta name="theme-color" content="#08090a" />
+<meta name="author" content="Tenant Flow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Tenant Flow" />
+<meta property="og:title" content="Migração para Microsoft 365 sem downtime | Tenant Flow" />
+<meta property="og:description" content="Migramos e-mail, arquivos e usuários para o Microsoft 365 sem parar sua operação: corte fora do horário e suporte pós-migração. Diagnóstico gratuito." />
+<meta property="og:url" content="https://tenantflow.com.br/migracao-microsoft-365/" />
+<meta property="og:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Migração para Microsoft 365 sem downtime | Tenant Flow" />
+<meta name="twitter:description" content="Migramos e-mail, arquivos e usuários para o Microsoft 365 sem parar sua operação: corte fora do horário e suporte pós-migração. Diagnóstico gratuito." />
+<meta name="twitter:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png" />
+
+<!-- Google Search Console: troque o valor pelo token da propriedade -->
+<meta name="google-site-verification" content="COLE_AQUI_O_TOKEN_DO_SEARCH_CONSOLE" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+
+<!-- Fontes sem bloquear a renderizacao: o CSS e carregado de forma assincrona
+     e so vira "all" depois de pronto; o <noscript> garante o fallback. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+<link rel="stylesheet" href="/assets/tf.css" />
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/favicon.svg"},"email":"contato@tenantflow.com.br","description":"Consultoria e suporte Microsoft 365 para pequenas e médias empresas.","areaServed":{"@type":"Country","name":"Brasil"},"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://tenantflow.com.br/"},{"@type":"ListItem","position":2,"name":"Serviços","item":"https://tenantflow.com.br/#servicos"},{"@type":"ListItem","position":3,"name":"Migração Microsoft 365","item":"https://tenantflow.com.br/migracao-microsoft-365/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","@id":"https://tenantflow.com.br/migracao-microsoft-365/#service","name":"Migração para Microsoft 365","serviceType":"Migração Microsoft 365","description":"Projeto completo de migração de e-mail, arquivos e usuários para o Microsoft 365, com corte planejado e sem interrupção da operação.","url":"https://tenantflow.com.br/migracao-microsoft-365/","provider":{"@id":"https://tenantflow.com.br/#organization"},"areaServed":{"@type":"Country","name":"Brasil"},"audience":{"@type":"BusinessAudience","name":"Pequenas e médias empresas"},"offers":{"@type":"Offer","url":"https://tenantflow.com.br/#contato","availability":"https://schema.org/InStock","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"BRL","description":"Diagnóstico técnico inicial gratuito; proposta sob medida após o levantamento."}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quanto tempo demora uma migração para o Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"Para empresas de 5 a 50 caixas, o projeto normalmente leva de 1 a 3 semanas: alguns dias de levantamento e preparação de domínio, a cópia dos dados em segundo plano e o corte final feito em uma janela fora do horário comercial. Ambientes com servidor Exchange local, muitos compartilhamentos de arquivos ou regras complexas de e-mail podem levar mais tempo — o diagnóstico gratuito define o prazo real antes de qualquer contrato."}},{"@type":"Question","name":"A empresa fica sem e-mail durante a migração?","acceptedAnswer":{"@type":"Answer","text":"Não. Copiamos as caixas para o Microsoft 365 com o e-mail antigo ainda ativo e só trocamos o registro MX do domínio no final, em uma janela combinada. Na prática, o usuário fecha o expediente em um ambiente e abre no outro, com histórico, contatos e agenda no lugar."}},{"@type":"Question","name":"Vocês migram do Google Workspace, do Zimbra ou de um servidor próprio?","acceptedAnswer":{"@type":"Answer","text":"Sim. Fazemos migração de Google Workspace, Zimbra, cPanel/Roundcube, Locaweb, HostGator, Exchange Server local e caixas IMAP genéricas para o Exchange Online, além de mover arquivos do Google Drive, Dropbox ou de servidor de arquivos para o SharePoint e o OneDrive."}},{"@type":"Question","name":"O histórico de e-mails, contatos e calendário é preservado?","acceptedAnswer":{"@type":"Answer","text":"Sim. Migramos as mensagens com data original, pastas, contatos, calendários e, quando existem, as regras de caixa e assinaturas. Também mantemos o ambiente antigo acessível por um período de segurança após o corte."}},{"@type":"Question","name":"Quanto custa migrar para o Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"O valor depende do número de caixas, do volume de dados e da origem. Trabalhamos com preço fechado por projeto, informado antes do início — sem cobrança por hora aberta. O diagnóstico técnico inicial é gratuito e já traz o escopo e o custo estimado."}}]}</script>
+
+<!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo ID de medicao real -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="brand" aria-label="Tenant Flow — página inicial">
+      <svg width="32" height="32" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="6" y1="4" x2="38" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#9d9ffb"/><stop offset="100%" stop-color="#5457e0"/></linearGradient></defs>
+        <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M22 22 L22 4" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
+        <path d="M22 22 L6.4 31" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
+        <path d="M22 22 L37.6 31" stroke="url(#lg)" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="22" cy="22" r="1.9" fill="url(#lg)"/><circle cx="37.6" cy="31" r="1.9" fill="url(#lg)"/>
+      </svg>
+      <span class="brand__name">Tenant Flow</span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="/migracao-microsoft-365/" aria-current="page">Microsoft 365</a>
+      <a href="/suporte-exchange-online/">Exchange Online</a>
+      <a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <div class="navbar__actions">
+      <a href="/#contato" class="btn btn--primary">Solicitar Diagnóstico M365</a>
+      <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobilePanel">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4.5h12M2 11.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobilePanel" class="mobile-panel">
+    <div class="mobile-panel__inner">
+      <a href="/migracao-microsoft-365/">Microsoft 365</a>
+      <a href="/suporte-exchange-online/">Exchange Online</a>
+      <a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a>
+      <a href="/blog/">Blog</a>
+      <a href="/seguranca-e-licenciamento-microsoft-365/">Segurança &amp; Licenciamento</a>
+      <a href="/#contato" class="btn btn--primary btn--block">Solicitar Diagnóstico M365</a>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Trilha de navegação"><ol><li><a href="/">Início</a></li><li><a href="/#servicos">Serviços</a></li><li aria-current="page">Migração Microsoft 365</li></ol></nav>
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Migração Microsoft 365</span>
+      <h1>Migração para o Microsoft 365 sem parar a sua empresa</h1>
+      <p class="page-hero__lead">Tiramos sua empresa do e-mail antigo, do servidor de arquivos ou do Google Workspace e colocamos tudo no Microsoft 365 — com histórico preservado, corte fora do horário comercial e acompanhamento nos primeiros dias.</p>
+      <div class="page-hero__actions">
+        <a href="/#contato" class="btn btn--primary btn--lg">Solicitar Diagnóstico M365</a>
+        <a href="#como-funciona" class="btn btn--ghost btn--lg">Ver como funciona</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="container">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Quando faz sentido</span>
+      <h2 class="section-title">Sinais de que sua empresa já passou da hora de migrar</h2>
+      <ul class="checklist">
+        <li><b>E-mail cai no spam do cliente</b> — domínio sem SPF, DKIM e DMARC configurados corretamente. Veja o guia sobre <a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">e-mail caindo no spam</a>.</li>
+        <li><b>Arquivo importante está no computador de uma pessoa só</b> — sem versionamento, sem backup e sem controle de acesso.</li>
+        <li><b>Cada colaborador usa uma ferramenta diferente</b> — WhatsApp para decisão, e-mail pessoal para contrato, pen drive para arquivo.</li>
+        <li><b>Servidor local envelhecendo</b> — custo de manutenção, risco de falha física e nenhuma redundância.</li>
+        <li><b>Ninguém sabe quantas licenças a empresa paga</b> — contas de ex-funcionários ativas e planos superdimensionados.</li>
+        <li><b>Não existe MFA</b> — uma senha vazada dá acesso total ao e-mail da diretoria.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="section section--bordered">
+    <div class="container">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Como funciona</span>
+      <h2 class="section-title">Quatro etapas, prazo fechado e nenhuma surpresa</h2>
+      <ol class="steps">
+        <li>
+          <h3>1. Diagnóstico e inventário</h3>
+          <p>Levantamos caixas de e-mail, volume de dados, domínios, registros DNS, compartilhamentos de arquivos e licenças em uso. Você recebe um relatório com escopo, prazo e custo fechado — sem compromisso.</p>
+        </li>
+        <li>
+          <h3>2. Preparação do tenant</h3>
+          <p>Criamos e configuramos o tenant do Microsoft 365: domínio verificado, usuários, grupos, políticas de senha, MFA, retenção e as regras de e-mail que já existiam no ambiente antigo.</p>
+        </li>
+        <li>
+          <h3>3. Cópia dos dados em paralelo</h3>
+          <p>E-mails, contatos, calendários e arquivos são copiados com o ambiente atual ainda funcionando. Nenhum usuário precisa parar de trabalhar durante essa fase.</p>
+        </li>
+        <li>
+          <h3>4. Corte, sincronização final e acompanhamento</h3>
+          <p>A troca de MX acontece em janela combinada, normalmente à noite ou no fim de semana. Fazemos a sincronização final, configuramos Outlook e celulares e ficamos em suporte reforçado nos primeiros dias.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="container">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Escopo</span>
+      <h2 class="section-title">O que está incluído no projeto de migração</h2>
+      <div class="grid grid--2" style="margin-top:2rem">
+        <div class="card">
+          <h3>Migração de e-mail</h3>
+          <p>Exchange Online com histórico completo, pastas, contatos, calendários, listas de distribuição, caixas compartilhadas e regras. Origem em Google Workspace, Zimbra, IMAP, cPanel ou Exchange local.</p>
+        </div>
+        <div class="card">
+          <h3>Migração de arquivos</h3>
+          <p>Google Drive, Dropbox ou servidor de arquivos para <a href="/sharepoint-e-teams/">SharePoint e OneDrive</a>, com estrutura de pastas revisada e permissões por departamento.</p>
+        </div>
+        <div class="card">
+          <h3>DNS e entregabilidade</h3>
+          <p>MX, SPF, DKIM, DMARC e autodiscover configurados do jeito certo para que o e-mail chegue à caixa de entrada, e não à pasta de lixo eletrônico.</p>
+        </div>
+        <div class="card">
+          <h3>Segurança desde o primeiro dia</h3>
+          <p>MFA obrigatório, políticas de acesso condicional, retenção e proteção antiphishing. Detalhes em <a href="/seguranca-e-licenciamento-microsoft-365/">segurança e licenciamento</a>.</p>
+        </div>
+        <div class="card">
+          <h3>Configuração dos usuários</h3>
+          <p>Outlook no computador, aplicativo no celular, assinatura padronizada e Teams pronto para uso — pessoa por pessoa, sem deixar ninguém para trás.</p>
+        </div>
+        <div class="card">
+          <h3>Suporte pós-migração</h3>
+          <p>Acompanhamento reforçado nas primeiras semanas e opção de <a href="/suporte-exchange-online/">suporte contínuo em Exchange Online</a> depois que o ambiente estabiliza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="container">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Dúvidas frequentes</span>
+      <h2 class="section-title">Perguntas frequentes sobre migração para o Microsoft 365</h2>
+      <div class="faq"><details><summary>Quanto tempo demora uma migração para o Microsoft 365?</summary><p>Para empresas de 5 a 50 caixas, o projeto normalmente leva de 1 a 3 semanas: alguns dias de levantamento e preparação de domínio, a cópia dos dados em segundo plano e o corte final feito em uma janela fora do horário comercial. Ambientes com servidor Exchange local, muitos compartilhamentos de arquivos ou regras complexas de e-mail podem levar mais tempo — o diagnóstico gratuito define o prazo real antes de qualquer contrato.</p></details><details><summary>A empresa fica sem e-mail durante a migração?</summary><p>Não. Copiamos as caixas para o Microsoft 365 com o e-mail antigo ainda ativo e só trocamos o registro MX do domínio no final, em uma janela combinada. Na prática, o usuário fecha o expediente em um ambiente e abre no outro, com histórico, contatos e agenda no lugar.</p></details><details><summary>Vocês migram do Google Workspace, do Zimbra ou de um servidor próprio?</summary><p>Sim. Fazemos migração de Google Workspace, Zimbra, cPanel/Roundcube, Locaweb, HostGator, Exchange Server local e caixas IMAP genéricas para o Exchange Online, além de mover arquivos do Google Drive, Dropbox ou de servidor de arquivos para o SharePoint e o OneDrive.</p></details><details><summary>O histórico de e-mails, contatos e calendário é preservado?</summary><p>Sim. Migramos as mensagens com data original, pastas, contatos, calendários e, quando existem, as regras de caixa e assinaturas. Também mantemos o ambiente antigo acessível por um período de segurança após o corte.</p></details><details><summary>Quanto custa migrar para o Microsoft 365?</summary><p>O valor depende do número de caixas, do volume de dados e da origem. Trabalhamos com preço fechado por projeto, informado antes do início — sem cobrança por hora aberta. O diagnóstico técnico inicial é gratuito e já traz o escopo e o custo estimado.</p></details></div>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="container">
+      <h2 class="section-title">Continue lendo</h2>
+      <div class="related">
+        <a href="/blog/migrar-google-workspace-para-microsoft-365/">Como migrar do Google Workspace para o Microsoft 365</a>
+        <a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365 para empresas em 2026</a>
+        <a href="/suporte-exchange-online/">Suporte e administração de Exchange Online</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>Descubra em 30 minutos o que sua migração vai custar</h2>
+        <p>O diagnóstico técnico é gratuito e sem compromisso. Você sai da conversa com escopo, prazo e valor fechado — mesmo que decida não seguir com a gente.</p>
+        <a href="/#contato" class="btn btn--primary btn--lg">Solicitar Diagnóstico M365</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="/" class="brand" aria-label="Tenant Flow — página inicial">
+          <svg width="28" height="28" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M22 22 L37.6 31" stroke="#9192f8" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="22" cy="22" r="1.8" fill="#9192f8"/>
+          </svg>
+          <span class="brand__name">Tenant Flow</span>
+        </a>
+        <p class="footer__blurb">Consultoria e suporte Microsoft 365 para pequenas e médias empresas: migração, Exchange Online, SharePoint, Teams, segurança e licenciamento.</p>
+      </div>
+      <div>
+        <p class="footer__heading">Serviços</p>
+        <ul class="footer__links">
+          <li><a href="/migracao-microsoft-365/">Migração Microsoft 365</a></li>
+          <li><a href="/suporte-exchange-online/">Suporte Exchange Online</a></li>
+          <li><a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a></li>
+          <li><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança &amp; Licenciamento</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Conteúdo</p>
+        <ul class="footer__links">
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/migrar-google-workspace-para-microsoft-365/">Migrar do Google Workspace</a></li>
+          <li><a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365</a></li>
+          <li><a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">E-mail caindo no spam</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Empresa</p>
+        <ul class="footer__links">
+          <li><a href="/#servicos">Soluções</a></li>
+          <li><a href="/#contato">Contato</a></li>
+          <li><a href="/seguranca-e-privacidade.html">Segurança e Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__disclaimer">
+      A Tenant Flow é uma empresa de TI independente, especializada em infraestrutura, e-mail corporativo e suporte técnico. Não somos a Microsoft, o Google ou a Meta, nem somos afiliados, patrocinados ou certificados por essas empresas — os nomes e as cores de marca citados aqui aparecem apenas para indicar compatibilidade com essas plataformas.
+    </p>
+    <div class="footer__bottom">
+      <span>© 2026 Tenant Flow. Todos os direitos reservados.</span>
+      <span>contato@tenantflow.com.br</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var t = document.getElementById('navToggle'), p = document.getElementById('mobilePanel');
+    if (!t || !p) return;
+    t.addEventListener('click', function(){
+      var open = p.classList.toggle('is-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      t.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    });
+  })();
+</script>
+</body>
+</html>
