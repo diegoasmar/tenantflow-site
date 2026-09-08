@@ -1,0 +1,30 @@
+# robots.txt — https://tenantflow.com.br
+# Site institucional da Tenant Flow (consultoria e suporte Microsoft 365).
+
+User-agent: *
+Allow: /
+
+# Rastreadores de IA/LLM liberados: aparecer nas respostas geradas
+# hoje vale tanto quanto aparecer na primeira página do Google.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Parâmetros de campanha não geram conteúdo novo — evitam URLs duplicadas.
+User-agent: *
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+
+Sitemap: https://tenantflow.com.br/sitemap.xml
