@@ -1060,11 +1060,13 @@
 
       <form id="leadForm" class="reveal card" novalidate style="display:grid; gap:1.25rem;">
         <!-- campos ocultos do FormSubmit.co: define assunto do e-mail, formata como
-             tabela legível, desativa o captcha (que quebraria o fluxo via AJAX) e
-             adiciona um campo-isca (_honey) que só bots preenchem, pra filtrar spam. -->
+             tabela legível, desativa o captcha (que quebraria o fluxo via AJAX),
+             envia uma cópia para diego.asmar@gmail.com (_cc) e adiciona um
+             campo-isca (_honey) que só bots preenchem, pra filtrar spam. -->
         <input type="hidden" name="_subject" value="Novo pedido de diagnóstico — site Tenant Flow" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_cc" value="diego.asmar@gmail.com" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="grid-2">
           <div class="field">
