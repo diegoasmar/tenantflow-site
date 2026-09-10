@@ -400,8 +400,10 @@
      6. HERO
      ========================================================================== */
   .hero{
-    padding-top: clamp(7rem, 5.4rem + 5vw, 9rem);
-    padding-bottom: clamp(3.5rem, 2rem + 5vw, 5.5rem);
+    padding-top: clamp(7rem, 5.4rem + 5vw, 9.5rem);
+    /* folga extra embaixo: a janela da caixa de entrada desce pra fora do
+       painel e o overflow:hidden do hero cortava ela pela metade. */
+    padding-bottom: clamp(3.5rem, 1.5rem + 7vw, 8.5rem);
     position: relative; overflow: hidden;
   }
   .hero__grid{ display:grid; grid-template-columns: 1.05fr .95fr; gap: 4rem; align-items:center; }
@@ -452,47 +454,117 @@
   @keyframes ping{ 0%{ transform:scale(.7); opacity:.9;} 100%{ transform:scale(1.9); opacity:0;} }
   @media (prefers-reduced-motion: reduce){ .status-dot::after{ animation:none; } }
 
-  /* mockups flutuantes do hero (Teams / caixa de entrada) — decorativos,
-     inspirados no efeito de janelas sobrepostas da Linear. Ficam por cima
-     do canto do painel só o suficiente pra "espiar", com a maior parte da
-     janela flutuando fora dele — assim não tampam as métricas do painel.
-     Aparecem em todas as telas, inclusive no celular (tamanho menor). */
-  .hero__visual{ position: relative; }
+  /* ------------------------------------------------------------------
+     JANELAS DE VIDRO DO HERO (Teams / caixa de entrada)
+     Duas mudancas em relacao a versao anterior:
+
+     1. VIDRO DE VERDADE. O corpo da janela agora e translucido e passa
+        por backdrop-filter, entao a grade e o brilho roxo do hero
+        aparecem desfocados por tras dela. Duas camadas de brilho por
+        cima (::before varre a superficie na diagonal, ::after ilumina a
+        quina de cima) dao a leitura de placa de vidro em vez de "caixa
+        escura com borda".
+
+     2. PERSPECTIVA 3D. O palco (.hero__visual) tem perspective, e cada
+        janela e girada em rotateY/rotateX e empurrada no eixo Z. E o
+        que faz parecer uma tela real vista de lado, e nao um retangulo
+        achatado com uma sombra embaixo.
+
+     E uma correcao: o movimento agora e SO no desktop e SO em resposta
+     ao mouse. A versao anterior reposicionava as janelas a cada evento
+     de scroll, em qualquer dispositivo — era isso que dava a sensacao
+     de que a pagina inteira tremia pra cima e pra baixo no celular.
+     ------------------------------------------------------------------ */
+  .hero__visual{
+    position: relative;
+    perspective: 1600px;
+    perspective-origin: 65% 35%;
+  }
+  /* halo colorido atras das janelas. O vidro precisa de alguma coisa pra
+     refratar: sobre um fundo chapado o backdrop-filter nao aparece. */
+  .hero__visual::before{
+    content: ""; position: absolute; z-index: 0; pointer-events: none;
+    inset: -18% -12% -18% -22%;
+    background:
+      radial-gradient(46% 40% at 24% 22%, rgba(110,111,246,.34), transparent 68%),
+      radial-gradient(40% 38% at 78% 76%, rgba(61,220,151,.16), transparent 70%),
+      radial-gradient(52% 46% at 62% 46%, rgba(145,146,248,.16), transparent 72%);
+    filter: blur(14px);
+  }
+  .hero__visual > *{ position: relative; }
+
+  /* o painel central ganha uma inclinacao leve pra ficar no mesmo plano
+     3D das janelas — sem isso a cena parece meio chapada e meio virada.
+     O angulo e pequeno de proposito: os numeros do painel precisam
+     continuar perfeitamente legiveis. */
+  .panel{ transform: rotateY(-5deg) rotateX(1.5deg); transform-origin: 62% 50%; }
+
   .float-card{
     position: absolute;
     z-index: 2;
     width: 20rem;
-    background: linear-gradient(180deg, var(--surface-2), var(--bg-raised));
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-md);
-    box-shadow: 0 30px 70px -18px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06);
     padding: 1rem 1.15rem;
-    transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg));
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.14);
+    background:
+      linear-gradient(140deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 42%, rgba(255,255,255,0) 62%),
+      linear-gradient(180deg, rgba(24,25,31,.72), rgba(12,13,17,.80));
+    backdrop-filter: blur(22px) saturate(170%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.18),
+      0 30px 70px -18px rgba(0,0,0,.9),
+      0 0 70px -34px rgba(110,111,246,.65);
+    transform:
+      translate3d(var(--px, 0px), var(--py, 0px), var(--pz, 0px))
+      rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotateZ(var(--rot, 0deg));
     overflow: hidden;
     will-change: transform;
   }
-  .float-card--teams{ top: -9.5rem; left: -1.25rem; --rot: -3deg; animation: floatTeams 4.8s ease-in-out infinite; }
-  .float-card--mail{ bottom: -10.5rem; right: -3.5rem; width: 21rem; --rot: 2.5deg; animation: floatMail 6.5s ease-in-out infinite; animation-delay: -2.4s; }
-  /* trajeto de flutuação bem visível (drift amplo + leve giro), somado à
-     resposta ao mouse (desktop) e ao scroll da página (todos os
-     dispositivos, inclusive celular, onde não existe mouse) — atualizadas
-     por JS via --px/--py. Dá o efeito de janelas "flutuando" de verdade
-     sobre a página, como na referência da Linear. Cada janela tem um
-     trajeto, amplitude e duração diferentes pra nunca ficarem
-     sincronizadas — sensação mais orgânica e viva. */
+  /* reflexo diagonal atravessando a superficie */
+  .float-card::before{
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    pointer-events: none; z-index: 0;
+    background: linear-gradient(118deg, transparent 24%, rgba(255,255,255,.14) 43%, rgba(255,255,255,.03) 52%, transparent 62%);
+  }
+  /* quina de cima iluminada, como a borda de uma placa de vidro */
+  .float-card::after{
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    pointer-events: none; z-index: 0;
+    background: radial-gradient(120% 90% at 12% -10%, rgba(255,255,255,.20), transparent 58%);
+  }
+  /* o conteudo tem que ficar acima das duas camadas de brilho */
+  .float-card > *{ position: relative; z-index: 1; }
+
+  .float-card--teams{
+    top: -7rem; left: -3.25rem;
+    --rot: -2deg; --ry: -17deg; --rx: 5deg; --pz: 45px;
+    animation: floatTeams 7.5s ease-in-out infinite;
+  }
+  .float-card--mail{
+    bottom: -6rem; right: -2.5rem; width: 20rem;
+    --rot: 1.5deg; --ry: -13deg; --rx: -4deg; --pz: 70px;
+    animation: floatMail 9s ease-in-out infinite; animation-delay: -3s;
+  }
+
+  /* a flutuacao ficou muito mais contida: a versao anterior deslocava a
+     janela em ate 33px, esta respira 10px e devolve. */
   @keyframes floatTeams{
-    0%, 100%{ transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg)); }
-    25%{      transform: translate(calc(var(--px, 0px) + 13px), calc(var(--py, 0px) - 20px)) rotate(calc(var(--rot, 0deg) + 2deg)); }
-    50%{      transform: translate(calc(var(--px, 0px) - 5px),  calc(var(--py, 0px) - 33px)) rotate(calc(var(--rot, 0deg) - 1deg)); }
-    75%{      transform: translate(calc(var(--px, 0px) - 15px), calc(var(--py, 0px) - 12px)) rotate(calc(var(--rot, 0deg) + .8deg)); }
+    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), var(--pz)) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rot)); }
+    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) - 10px), var(--pz)) rotateX(calc(var(--rx) + 1deg)) rotateY(calc(var(--ry) + 2deg)) rotateZ(calc(var(--rot) + 1deg)); }
   }
   @keyframes floatMail{
-    0%, 100%{ transform: translate(var(--px, 0px), var(--py, 0px)) rotate(var(--rot, 0deg)); }
-    30%{      transform: translate(calc(var(--px, 0px) - 15px), calc(var(--py, 0px) + 19px)) rotate(calc(var(--rot, 0deg) - 1.8deg)); }
-    60%{      transform: translate(calc(var(--px, 0px) + 8px),  calc(var(--py, 0px) + 31px)) rotate(calc(var(--rot, 0deg) + 1.3deg)); }
-    85%{      transform: translate(calc(var(--px, 0px) + 15px), calc(var(--py, 0px) + 10px))  rotate(calc(var(--rot, 0deg) - .8deg)); }
+    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), var(--pz)) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rot)); }
+    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) + 9px), var(--pz)) rotateX(calc(var(--rx) - 1deg)) rotateY(calc(var(--ry) - 2deg)) rotateZ(calc(var(--rot) - 1deg)); }
   }
   @media (prefers-reduced-motion: reduce){ .float-card{ animation: none; } }
+
+  /* telas sem mouse de precisao (celular e tablet): nada se mexe, ponto.
+     E a correcao do problema relatado — no toque, qualquer movimento
+     preso ao dedo ou ao scroll le como pagina instavel. */
+  @media (hover: none), (pointer: coarse){
+    .float-card{ animation: none !important; will-change: auto; }
+  }
 
   .float-card__bar{ display:flex; align-items:center; gap:.5rem; font-size:.8125rem; font-weight:600; color: var(--text-2); padding-bottom:.7rem; border-bottom:1px solid var(--border); }
   .float-card__icon{ display:inline-flex; align-items:center; justify-content:center; width:1.55rem; height:1.55rem; border-radius:.45rem; flex:none; }
@@ -541,8 +613,11 @@
      precisa ficar mais contido, senão elas vazam pra fora da viewport. */
   @media (max-width: 1240px) and (min-width: 981px){
     .float-card{ width: 17.5rem; }
-    .float-card--teams{ left: -1.5rem; top: -9rem; }
-    .float-card--mail{ right: -1.5rem; bottom: -13rem; width: 18.5rem; }
+    /* entre 981 e 1240px a coluna do visual e estreita e o container ainda
+       nao tem margem externa sobrando: aqui as janelas precisam ficar mais
+       recolhidas, senao a da caixa de entrada encosta na borda da tela. */
+    .float-card--teams{ left: -1.5rem; top: -4.75rem; --pz: 26px; }
+    .float-card--mail{ right: -0.25rem; bottom: -4.75rem; width: 17rem; --pz: 32px; }
   }
   /* abaixo de 980px o grid vira 1 coluna e o painel fica sozinho, ocupando
      a largura toda — nesse formato empilhado as janelas flutuantes não têm
@@ -552,10 +627,18 @@
      sobrepor nada). O leve giro e a flutuação continuam — só a estratégia
      de posicionamento muda pro celular/tablet. */
   @media (max-width: 980px){
-    .hero__visual{ display:flex; flex-direction:column; align-items:center; gap: 1.35rem; }
-    .float-card{ position: static; width: 17rem; max-width: 100%; }
-    .float-card--teams{ order:-1; align-self:flex-start; margin-left: .25rem; }
-    .float-card--mail{ order:1; align-self:flex-end; margin-right: .25rem; width: 18rem; }
+    .hero__visual{
+      display:flex; flex-direction:column; align-items:center; gap: 1.35rem;
+      perspective: 900px; perspective-origin: 50% 50%;
+    }
+    /* sem deslocamento no eixo Z aqui: empilhado, o translateZ so faria a
+       janela crescer e encostar nas bordas da tela. */
+    .float-card{ position: static; width: 17rem; max-width: 100%; --pz: 0px; }
+    /* as duas inclinam para lados opostos, como duas placas de vidro
+       viradas uma para a outra. E uma composicao parada — nao anima. */
+    .float-card--teams{ order:-1; align-self:flex-start; margin-left: .25rem; --ry: -11deg; --rx: 3deg; --rot: -1.5deg; }
+    .float-card--mail{ order:1; align-self:flex-end; margin-right: .25rem; width: 18rem; --ry: 11deg; --rx: -3deg; --rot: 1.5deg; }
+    .panel{ transform: none; }
   }
   /* abaixo de 640px o card ainda encolhe mais um pouco pra caber com
      folga em telas de celular — testado em larguras de 320px a 640px. */
@@ -1796,52 +1879,38 @@
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var heroVisual = document.querySelector('.hero__visual');
 
-    if (heroVisual && !reduceMotion) {
-      var floatCards = heroVisual.querySelectorAll('.float-card');
-      var mouseX = 0, mouseY = 0, scrollTilt = 0;
+    /* So mexe as janelas em aparelho com mouse de precisao. A versao
+       anterior tambem ouvia o evento de scroll e reposicionava as duas
+       janelas a cada quadro rolado, em qualquer aparelho — no celular
+       isso lia como a pagina inteira balancando. O listener de scroll
+       saiu por completo. */
+    var pontDePrecisao = window.matchMedia &&
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-      var applyFloatOffsets = function(){
+    if (heroVisual && !reduceMotion && pontDePrecisao) {
+      var floatCards = heroVisual.querySelectorAll('.float-card');
+      var raf = null;
+      var alvoX = 0, alvoY = 0;
+
+      var aplicar = function(){
+        raf = null;
         floatCards.forEach(function(card, i){
-          var depth = (i + 1) * 7;
-          var dir = i === 0 ? 1 : -1;
-          var px = (mouseX * depth) + (dir * scrollTilt);
-          var py = (mouseY * depth) + (scrollTilt * .6);
-          card.style.setProperty('--px', px.toFixed(1) + 'px');
-          card.style.setProperty('--py', py.toFixed(1) + 'px');
+          var prof = (i + 1) * 6;
+          card.style.setProperty('--px', (alvoX * prof).toFixed(1) + 'px');
+          card.style.setProperty('--py', (alvoY * prof).toFixed(1) + 'px');
         });
       };
+      var agendar = function(){ if (!raf) raf = requestAnimationFrame(aplicar); };
 
       heroVisual.addEventListener('mousemove', function(e){
-        var rect = heroVisual.getBoundingClientRect();
-        mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-        mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-        applyFloatOffsets();
+        var r = heroVisual.getBoundingClientRect();
+        alvoX = (e.clientX - r.left) / r.width - 0.5;
+        alvoY = (e.clientY - r.top) / r.height - 0.5;
+        agendar();
       });
       heroVisual.addEventListener('mouseleave', function(){
-        mouseX = 0; mouseY = 0;
-        applyFloatOffsets();
+        alvoX = 0; alvoY = 0; agendar();
       });
-
-      /* ao rolar a página as janelas deslizam um pouco em direções opostas
-         conforme a seção passa pela tela — dá movimento visível mesmo no
-         celular, onde não existe mouse pra flutuar as janelas. */
-      var scrollTicking = false;
-      var updateScrollTilt = function(){
-        var rect = heroVisual.getBoundingClientRect();
-        var vh = window.innerHeight || document.documentElement.clientHeight;
-        var progress = (vh - rect.top) / (vh + rect.height);
-        var clamped = Math.max(0, Math.min(1, progress));
-        scrollTilt = (clamped - 0.5) * 15;
-        applyFloatOffsets();
-        scrollTicking = false;
-      };
-      window.addEventListener('scroll', function(){
-        if (!scrollTicking){
-          scrollTicking = true;
-          requestAnimationFrame(updateScrollTilt);
-        }
-      }, { passive: true });
-      updateScrollTilt();
     }
 
     /* Teams: mensagens alternando com indicador de "digitando" antes de cada troca */
