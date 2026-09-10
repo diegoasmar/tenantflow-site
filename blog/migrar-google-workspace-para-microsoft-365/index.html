@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail</title>
+<meta name="description" content="Passo a passo real da migração de Google Workspace para Microsoft 365: preparação de domínio, cópia de caixas, corte de MX e o que costuma dar errado." />
+<link rel="canonical" href="https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<meta name="theme-color" content="#08090a" />
+<meta name="author" content="Tenant Flow" />
+
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Tenant Flow" />
+<meta property="og:title" content="Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail" />
+<meta property="og:description" content="Passo a passo real da migração de Google Workspace para Microsoft 365: preparação de domínio, cópia de caixas, corte de MX e o que costuma dar errado." />
+<meta property="og:url" content="https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/" />
+<meta property="og:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail" />
+<meta name="twitter:description" content="Passo a passo real da migração de Google Workspace para Microsoft 365: preparação de domínio, cópia de caixas, corte de MX e o que costuma dar errado." />
+<meta name="twitter:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png" />
+
+<!-- Google Search Console: troque o valor pelo token da propriedade -->
+<meta name="google-site-verification" content="COLE_AQUI_O_TOKEN_DO_SEARCH_CONSOLE" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+
+<!-- Fontes sem bloquear a renderizacao: o CSS e carregado de forma assincrona
+     e so vira "all" depois de pronto; o <noscript> garante o fallback. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+<link rel="stylesheet" href="/assets/tf.css" />
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/favicon.svg"},"email":"contato@tenantflow.com.br","description":"Consultoria e suporte Microsoft 365 para pequenas e médias empresas.","areaServed":{"@type":"Country","name":"Brasil"},"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://tenantflow.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tenantflow.com.br/blog/"},{"@type":"ListItem","position":3,"name":"Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail","item":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/#article","headline":"Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail","description":"Passo a passo real da migração de Google Workspace para Microsoft 365: preparação de domínio, cópia de caixas, corte de MX e o que costuma dar errado.","inLanguage":"pt-BR","url":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/","mainEntityOfPage":{"@type":"WebPage","@id":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/"},"datePublished":"2026-08-12","dateModified":"2026-09-08","author":{"@type":"Organization","name":"Tenant Flow","url":"https://tenantflow.com.br/"},"publisher":{"@id":"https://tenantflow.com.br/#organization"},"articleSection":"Migração","image":"https://tenantflow.com.br/assets/og-tenant-flow.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Perco os e-mails antigos ao sair do Google Workspace?","acceptedAnswer":{"@type":"Answer","text":"Não, desde que a migração copie o histórico antes do corte. As mensagens são transferidas com a data original, junto com pastas, marcadores convertidos em pastas, contatos e agendas. O erro que causa perda é cancelar a assinatura do Google antes de concluir a cópia e a validação."}},{"@type":"Question","name":"Quanto tempo a empresa fica sem receber e-mail?","acceptedAnswer":{"@type":"Answer","text":"Zero, se o projeto for feito na ordem certa. O corte é apenas a troca do registro MX, que leva alguns minutos para propagar; durante esse intervalo as mensagens ficam em fila nos servidores de origem e são entregues assim que o novo destino responde."}},{"@type":"Question","name":"Dá para manter o mesmo endereço de e-mail?","acceptedAnswer":{"@type":"Answer","text":"Sim. O domínio é seu, não do Google. Ele é verificado no Microsoft 365 e passa a apontar para o Exchange Online — os endereços continuam exatamente iguais."}}]}</script>
+
+<!-- Google Analytics 4 — substitua G-XXXXXXXXXX pelo ID de medicao real -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="brand" aria-label="Tenant Flow — página inicial">
+      <svg width="32" height="32" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="6" y1="4" x2="38" y2="40" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#9d9ffb"/><stop offset="100%" stop-color="#5457e0"/></linearGradient></defs>
+        <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M22 22 L22 4" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
+        <path d="M22 22 L6.4 31" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
+        <path d="M22 22 L37.6 31" stroke="url(#lg)" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="22" cy="22" r="1.9" fill="url(#lg)"/><circle cx="37.6" cy="31" r="1.9" fill="url(#lg)"/>
+      </svg>
+      <span class="brand__name">Tenant Flow</span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="/migracao-microsoft-365/">Microsoft 365</a>
+      <a href="/suporte-exchange-online/">Exchange Online</a>
+      <a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <div class="navbar__actions">
+      <a href="/#contato" class="btn btn--primary">Solicitar Diagnóstico M365</a>
+      <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobilePanel">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4.5h12M2 11.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobilePanel" class="mobile-panel">
+    <div class="mobile-panel__inner">
+      <a href="/migracao-microsoft-365/">Microsoft 365</a>
+      <a href="/suporte-exchange-online/">Exchange Online</a>
+      <a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a>
+      <a href="/blog/">Blog</a>
+      <a href="/seguranca-e-licenciamento-microsoft-365/">Segurança &amp; Licenciamento</a>
+      <a href="/#contato" class="btn btn--primary btn--block">Solicitar Diagnóstico M365</a>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <article>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Trilha de navegação"><ol><li><a href="/">Início</a></li><li><a href="/blog/">Blog</a></li><li aria-current="page">Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail</li></ol></nav>
+      <span class="tag">Migração</span>
+      <h1 style="margin-top:1rem">Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail</h1>
+      <p class="page-hero__lead">O que acontece em cada etapa, quanto tempo leva de verdade e os cinco erros que transformam uma migração tranquila em uma semana perdida.</p>
+      <div class="article-meta">
+        <span>Publicado em <time datetime="2026-08-12">12 de agosto de 2026</time></span>
+        <span>·</span><span>Atualizado em <time datetime="2026-09-08">8 de setembro de 2026</time></span>
+        <span>·</span><span>9 min de leitura</span>
+        <span>·</span><span>Por Tenant Flow</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="container">
+      <div class="prose">
+
+<p>Trocar o Google Workspace pelo Microsoft 365 é uma decisão que quase sempre chega pelo mesmo caminho: a empresa já usa Excel e Word de verdade, precisa do Teams, quer integrar com um ERP que fala com o ecossistema Microsoft — ou simplesmente comparou os planos e viu que consolidaria licenças. A parte técnica não é complicada, mas ela é <strong>sequencial</strong>: cada etapa depende da anterior, e é aí que os projetos improvisados quebram.</p>
+
+<p>Este guia descreve o que acontece em cada fase, quanto tempo cada uma leva e os erros que mais causam dor de cabeça.</p>
+
+<h2>Antes de qualquer coisa: o inventário</h2>
+
+<p>Migração ruim é migração que começou sem inventário. Antes de criar qualquer conta no Microsoft 365, é preciso saber:</p>
+
+<ul>
+  <li><strong>Quantas caixas existem de verdade</strong> — incluindo aliases, grupos e as contas que ninguém lembra que existem.</li>
+  <li><strong>Volume de dados por caixa</strong> — uma caixa de 60 GB não migra no mesmo tempo que uma de 2 GB.</li>
+  <li><strong>Quem hospeda o domínio</strong> — registro.br, Cloudflare, GoDaddy, provedor de hospedagem. É lá que o corte acontece.</li>
+  <li><strong>Sistemas que enviam e-mail em nome do domínio</strong> — ERP, sistema de nota fiscal, formulário do site, plataforma de disparo. Todos precisam ser reautorizados depois.</li>
+  <li><strong>Arquivos no Google Drive e nos drives compartilhados</strong> — volume, estrutura e quem tem acesso a quê.</li>
+</ul>
+
+<p>Esse levantamento é o que transforma "vai levar mais ou menos um mês" em prazo com data.</p>
+
+<h2>Etapa 1 — Preparar o tenant do Microsoft 365</h2>
+
+<p>Com o inventário em mãos, cria-se o tenant, verifica-se a propriedade do domínio (um registro TXT no DNS) e monta-se a estrutura: usuários, grupos, caixas compartilhadas, listas de distribuição e políticas.</p>
+
+<p>Duas coisas devem ser decididas aqui, e não depois: <strong>MFA obrigatório desde o primeiro login</strong> e <strong>quais caixas serão compartilhadas em vez de licenciadas</strong>. Ligar MFA depois, com o time já acostumado a entrar só com senha, custa muito mais resistência do que ligar no dia um.</p>
+
+<blockquote>Regra prática: endereços de função — contato@, financeiro@, comercial@, rh@ — devem virar caixas compartilhadas. Elas não consomem licença e mantêm o histórico quando a pessoa responsável sai.</blockquote>
+
+<h2>Etapa 2 — Copiar os dados com o Google ainda no ar</h2>
+
+<p>Esta é a fase mais longa e a mais tranquila. As caixas do Gmail são copiadas para o Exchange Online enquanto todo mundo continua trabalhando normalmente no Google. Ninguém percebe nada.</p>
+
+<p>O tempo depende do volume e dos limites de taxa da API do Google — para 20 a 30 caixas de porte médio, é comum levar de dois a cinco dias. Marcadores do Gmail viram pastas no Outlook, o que costuma exigir uma conversa prévia com o time: quem usava vários marcadores na mesma mensagem vai encontrar a mensagem em uma pasta só.</p>
+
+<p>Os arquivos seguem em paralelo. Google Drive e drives compartilhados vão para o <a href="/sharepoint-e-teams/">SharePoint e o OneDrive</a>, e este é o momento certo para redesenhar a estrutura de pastas por área de negócio em vez de copiar a bagunça atual.</p>
+
+<h2>Etapa 3 — O corte</h2>
+
+<p>O corte é a troca do registro MX do domínio: em vez de apontar para os servidores do Google, ele passa a apontar para o Exchange Online. Junto com o MX vão SPF, DKIM, DMARC e o autodiscover.</p>
+
+<p>Fazemos isso em janela combinada — normalmente sexta à noite ou sábado de manhã. Depois do corte, roda-se uma sincronização final ("delta") para capturar as mensagens que chegaram durante a fase de cópia, e as contas do Google ficam ativas por mais alguns dias como rede de segurança.</p>
+
+<h2>Etapa 4 — Os usuários</h2>
+
+<p>Tecnicamente a migração acabou; na prática, ela só termina quando cada pessoa abre o Outlook e encontra tudo no lugar. Isso significa configurar o Outlook no computador, o aplicativo no celular, as assinaturas padronizadas e o Teams — pessoa por pessoa.</p>
+
+<p>É também quando aparecem os chamados: "sumiu uma pasta", "o calendário compartilhado não abre", "não consigo enviar para esse cliente". Reservar suporte reforçado para a primeira semana é o que diferencia uma migração bem avaliada de uma migração que virou trauma.</p>
+
+<h2>Os cinco erros mais comuns</h2>
+
+<ol>
+  <li><strong>Cancelar o Google antes da hora.</strong> Mantenha a assinatura ativa por pelo menos duas semanas após o corte. É barato perto do risco.</li>
+  <li><strong>Esquecer os sistemas que enviam e-mail.</strong> Se o ERP mandava nota fiscal pelo SMTP do Google, ele para de funcionar no dia do corte — e ninguém percebe até o cliente reclamar.</li>
+  <li><strong>Copiar o SPF antigo sem revisar.</strong> Um SPF com o Google e a Microsoft mal combinados joga o e-mail direto no spam. Vale ler o <a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">guia de SPF, DKIM e DMARC</a>.</li>
+  <li><strong>Migrar o Drive replicando a estrutura antiga.</strong> A migração é a única janela realista para reorganizar. Depois, ninguém mexe mais.</li>
+  <li><strong>Deixar MFA para depois.</strong> "Depois" costuma virar nunca, e a primeira conta invadida é sempre a da diretoria.</li>
+</ol>
+
+<h2>Quanto tempo leva no total</h2>
+
+<div class="table-wrap"><table>
+  <thead><tr><th>Porte</th><th>Prazo típico</th><th>Janela de corte</th></tr></thead>
+  <tbody>
+    <tr><td>Até 10 caixas</td><td>5 a 8 dias</td><td>1 noite</td></tr>
+    <tr><td>10 a 50 caixas</td><td>2 a 3 semanas</td><td>1 fim de semana</td></tr>
+    <tr><td>50 a 150 caixas</td><td>3 a 6 semanas</td><td>1 fim de semana ou por lotes</td></tr>
+  </tbody>
+</table></div>
+
+<p>Ambientes com servidor de arquivos grande, integrações antigas ou exigência de retenção regulatória pedem mais tempo — e é exatamente isso que o inventário revela antes de qualquer promessa.</p>
+
+<h2>Resumo</h2>
+
+<p>Uma migração de Google Workspace para Microsoft 365 bem conduzida tem quatro fases claras (inventário, preparação, cópia paralela e corte), acontece sem a empresa ficar sem e-mail e preserva o histórico completo. O que separa o projeto tranquilo do caótico não é a ferramenta — é a ordem das etapas e o cuidado com os detalhes de DNS e de usuário final.</p>
+
+<p>Se quiser saber o prazo e o custo do seu caso específico, a <a href="/migracao-microsoft-365/">migração para o Microsoft 365</a> começa com um diagnóstico gratuito que já entrega o escopo fechado.</p>
+
+      </div>
+    </div>
+  </section>
+  </article>
+
+  <section class="section section--bordered">
+    <div class="container">
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <div class="faq"><details><summary>Perco os e-mails antigos ao sair do Google Workspace?</summary><p>Não, desde que a migração copie o histórico antes do corte. As mensagens são transferidas com a data original, junto com pastas, marcadores convertidos em pastas, contatos e agendas. O erro que causa perda é cancelar a assinatura do Google antes de concluir a cópia e a validação.</p></details><details><summary>Quanto tempo a empresa fica sem receber e-mail?</summary><p>Zero, se o projeto for feito na ordem certa. O corte é apenas a troca do registro MX, que leva alguns minutos para propagar; durante esse intervalo as mensagens ficam em fila nos servidores de origem e são entregues assim que o novo destino responde.</p></details><details><summary>Dá para manter o mesmo endereço de e-mail?</summary><p>Sim. O domínio é seu, não do Google. Ele é verificado no Microsoft 365 e passa a apontar para o Exchange Online — os endereços continuam exatamente iguais.</p></details></div>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="container">
+      <h2 class="section-title">Leia também</h2>
+      <div class="related"><a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365 para empresas (e onde o dinheiro escapa)</a><a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">Por que o e-mail da sua empresa cai no spam (SPF, DKIM e DMARC)</a></div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>Quer isso resolvido sem virar projeto interno?</h2>
+        <p>A Tenant Flow faz o diagnóstico técnico gratuito do seu ambiente Microsoft 365 e mostra exatamente o que precisa ser corrigido.</p>
+        <a href="/#contato" class="btn btn--primary btn--lg">Solicitar Diagnóstico M365</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="/" class="brand" aria-label="Tenant Flow — página inicial">
+          <svg width="28" height="28" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M22 22 L37.6 31" stroke="#9192f8" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="22" cy="22" r="1.8" fill="#9192f8"/>
+          </svg>
+          <span class="brand__name">Tenant Flow</span>
+        </a>
+        <p class="footer__blurb">Consultoria e suporte Microsoft 365 para pequenas e médias empresas: migração, Exchange Online, SharePoint, Teams, segurança e licenciamento.</p>
+      </div>
+      <div>
+        <p class="footer__heading">Serviços</p>
+        <ul class="footer__links">
+          <li><a href="/migracao-microsoft-365/">Migração Microsoft 365</a></li>
+          <li><a href="/suporte-exchange-online/">Suporte Exchange Online</a></li>
+          <li><a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a></li>
+          <li><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança &amp; Licenciamento</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Conteúdo</p>
+        <ul class="footer__links">
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/migrar-google-workspace-para-microsoft-365/">Migrar do Google Workspace</a></li>
+          <li><a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365</a></li>
+          <li><a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">E-mail caindo no spam</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Empresa</p>
+        <ul class="footer__links">
+          <li><a href="/#servicos">Soluções</a></li>
+          <li><a href="/#contato">Contato</a></li>
+          <li><a href="/seguranca-e-privacidade.html">Segurança e Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__disclaimer">
+      A Tenant Flow é uma empresa de TI independente, especializada em infraestrutura, e-mail corporativo e suporte técnico. Não somos a Microsoft, o Google ou a Meta, nem somos afiliados, patrocinados ou certificados por essas empresas — os nomes e as cores de marca citados aqui aparecem apenas para indicar compatibilidade com essas plataformas.
+    </p>
+    <div class="footer__bottom">
+      <span>© 2026 Tenant Flow. Todos os direitos reservados.</span>
+      <span>contato@tenantflow.com.br</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var t = document.getElementById('navToggle'), p = document.getElementById('mobilePanel');
+    if (!t || !p) return;
+    t.addEventListener('click', function(){
+      var open = p.classList.toggle('is-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      t.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    });
+  })();
+</script>
+</body>
+</html>
