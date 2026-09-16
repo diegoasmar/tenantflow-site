@@ -249,7 +249,7 @@
 
   .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .grid-2{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  @media (max-width: 900px){
+  @media (max-width: 920px){
     .grid-3{ grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px){
@@ -391,7 +391,17 @@
   .mobile-panel.is-open{ max-height: 28rem; border-top-color: var(--border); }
   .mobile-panel__inner{ padding: 1.25rem 24px; display:flex; flex-direction:column; gap: 1rem; font-size: .9375rem; color: var(--text-2); }
 
-  @media (max-width: 820px){
+  /* faixa apertada: entre 901px e 1120px os cinco links + o botao ainda
+     cabem, mas so com respiro menor. Sem isso os links quebravam em duas
+     linhas e o botao passava por cima de "Blog". */
+  @media (max-width: 1120px) and (min-width: 921px){
+    .nav-links{ gap: 1.05rem; font-size: .8125rem; }
+    .nav-links a{ white-space: nowrap; }
+    .brand__name{ font-size: 1rem; }
+    .navbar__actions .btn{ font-size: .8125rem; padding: .7rem 1rem; white-space: nowrap; }
+  }
+  /* abaixo de 900px nao adianta apertar mais: vira menu de hamburguer. */
+  @media (max-width: 920px){
     .nav-links, .navbar__actions .btn{ display:none; }
     .nav-toggle{ display:flex; }
   }
@@ -400,10 +410,11 @@
      6. HERO
      ========================================================================== */
   .hero{
-    padding-top: clamp(7rem, 5.4rem + 5vw, 9.5rem);
-    /* folga extra embaixo: a janela da caixa de entrada desce pra fora do
-       painel e o overflow:hidden do hero cortava ela pela metade. */
-    padding-bottom: clamp(3.5rem, 1.5rem + 7vw, 8.5rem);
+    padding-top: clamp(6.75rem, 5.2rem + 4.6vw, 9rem);
+    /* folga embaixo: a janela da caixa de entrada desce pra fora do painel
+       e o overflow:hidden do hero cortava ela pela metade. Sem o empurrao
+       no eixo Z da versao anterior, ela precisa de menos espaco. */
+    padding-bottom: clamp(3.25rem, 1.5rem + 6vw, 7.5rem);
     position: relative; overflow: hidden;
   }
   .hero__grid{ display:grid; grid-template-columns: 1.05fr .95fr; gap: 4rem; align-items:center; }
@@ -465,10 +476,12 @@
         quina de cima) dao a leitura de placa de vidro em vez de "caixa
         escura com borda".
 
-     2. PERSPECTIVA 3D. O palco (.hero__visual) tem perspective, e cada
-        janela e girada em rotateY/rotateX e empurrada no eixo Z. E o
-        que faz parecer uma tela real vista de lado, e nao um retangulo
-        achatado com uma sombra embaixo.
+     2. SEM GIRO 3D. As janelas ficam de frente, alinhadas ao eixo da
+        pagina — nada de rotateY/rotateX. A profundidade vem de camada:
+        a caixa de entrada e a janela da frente (mais clara, sombra mais
+        dura, borda mais viva) e a do Teams fica atras (mais apagada,
+        sombra mais difusa). E o mesmo truque que um app real usa pra
+        dizer o que esta por cima — so que sem torcer a tela.
 
      E uma correcao: o movimento agora e SO no desktop e SO em resposta
      ao mouse. A versao anterior reposicionava as janelas a cada evento
@@ -477,8 +490,12 @@
      ------------------------------------------------------------------ */
   .hero__visual{
     position: relative;
-    perspective: 1600px;
-    perspective-origin: 65% 35%;
+  }
+  /* no desktop o painel desce um pouco dentro da coluna: e o que abre a
+     faixa livre em cima onde a janela do Teams se apoia sem cortar o
+     primeiro indicador do painel. */
+  @media (min-width: 981px){
+    .hero__visual{ margin-top: 3.25rem; }
   }
   /* halo colorido atras das janelas. O vidro precisa de alguma coisa pra
      refratar: sobre um fundo chapado o backdrop-filter nao aparece. */
@@ -493,33 +510,33 @@
   }
   .hero__visual > *{ position: relative; }
 
-  /* o painel central ganha uma inclinacao leve pra ficar no mesmo plano
-     3D das janelas — sem isso a cena parece meio chapada e meio virada.
-     O angulo e pequeno de proposito: os numeros do painel precisam
-     continuar perfeitamente legiveis. */
-  .panel{ transform: rotateY(-5deg) rotateX(1.5deg); transform-origin: 62% 50%; }
-
   .float-card{
     position: absolute;
     z-index: 2;
     width: 20rem;
     padding: 1rem 1.15rem;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.12);
+    /* a borda de cima e a esquerda ficam mais claras que as de baixo: e
+       assim que uma placa de vidro pega a luz que vem de cima. */
+    border-top-color: rgba(255,255,255,.22);
+    border-left-color: rgba(255,255,255,.16);
     background:
       linear-gradient(140deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 42%, rgba(255,255,255,0) 62%),
-      linear-gradient(180deg, rgba(24,25,31,.72), rgba(12,13,17,.80));
-    backdrop-filter: blur(22px) saturate(170%);
-    -webkit-backdrop-filter: blur(22px) saturate(170%);
+      linear-gradient(180deg, rgba(24,25,31,.74), rgba(12,13,17,.82));
+    backdrop-filter: blur(24px) saturate(175%);
+    -webkit-backdrop-filter: blur(24px) saturate(175%);
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.18),
-      0 30px 70px -18px rgba(0,0,0,.9),
-      0 0 70px -34px rgba(110,111,246,.65);
-    transform:
-      translate3d(var(--px, 0px), var(--py, 0px), var(--pz, 0px))
-      rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotateZ(var(--rot, 0deg));
+      inset 0 1px 0 rgba(255,255,255,.20),
+      inset 0 0 0 1px rgba(255,255,255,.03),
+      0 24px 60px -20px rgba(0,0,0,.85),
+      0 0 60px -34px rgba(110,111,246,.55);
+    /* de frente, sem giro nenhum: so o deslize suave do parallax e a
+       respiracao vertical da animacao. */
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
     overflow: hidden;
     will-change: transform;
+    transition: box-shadow .35s ease, border-color .35s ease;
   }
   /* reflexo diagonal atravessando a superficie */
   .float-card::before{
@@ -531,31 +548,61 @@
   .float-card::after{
     content: ""; position: absolute; inset: 0; border-radius: inherit;
     pointer-events: none; z-index: 0;
-    background: radial-gradient(120% 90% at 12% -10%, rgba(255,255,255,.20), transparent 58%);
+    background:
+      radial-gradient(120% 90% at 12% -10%, rgba(255,255,255,.18), transparent 56%),
+      radial-gradient(90% 70% at 90% 108%, rgba(110,111,246,.14), transparent 62%);
   }
   /* o conteudo tem que ficar acima das duas camadas de brilho */
   .float-card > *{ position: relative; z-index: 1; }
 
+  /* JANELA DE TRAS: um pouco menor, mais apagada e com sombra mais
+     difusa. Sem inclinar nada, e isso que faz o olho entender que ela
+     esta atras da caixa de entrada. */
   .float-card--teams{
-    top: -7rem; left: -3.25rem;
-    --rot: -2deg; --ry: -17deg; --rx: 5deg; --pz: 45px;
-    animation: floatTeams 7.5s ease-in-out infinite;
+    top: -7.7rem; left: -3rem;
+    z-index: 2; width: 18.75rem;
+    opacity: .96;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.16),
+      0 22px 56px -22px rgba(0,0,0,.8),
+      0 0 54px -36px rgba(110,111,246,.5);
+    animation: floatTeams 8s ease-in-out infinite;
   }
+  /* JANELA DA FRENTE: maior, borda mais viva, sombra mais fechada e um
+     halo roxo mais forte — le como a camada de cima da pilha. */
   .float-card--mail{
-    bottom: -6rem; right: -2.5rem; width: 20rem;
-    --rot: 1.5deg; --ry: -13deg; --rx: -4deg; --pz: 70px;
-    animation: floatMail 9s ease-in-out infinite; animation-delay: -3s;
+    bottom: -5.25rem; right: -2.25rem;
+    z-index: 3; width: 20.5rem;
+    border-top-color: rgba(255,255,255,.26);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.24),
+      inset 0 0 0 1px rgba(255,255,255,.04),
+      0 30px 74px -20px rgba(0,0,0,.92),
+      0 0 76px -30px rgba(110,111,246,.62);
+    animation: floatMail 9.5s ease-in-out infinite; animation-delay: -3.4s;
+  }
+  /* mouse em cima: a janela acende de leve. Detalhe pequeno, mas e o que
+     faz a cena parecer viva em vez de uma imagem colada. */
+  @media (hover: hover) and (pointer: fine){
+    .float-card:hover{
+      border-color: rgba(255,255,255,.24);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.28),
+        0 34px 80px -20px rgba(0,0,0,.92),
+        0 0 90px -26px rgba(110,111,246,.7);
+    }
   }
 
-  /* a flutuacao ficou muito mais contida: a versao anterior deslocava a
-     janela em ate 33px, esta respira 10px e devolve. */
+  /* a flutuacao e so vertical e bem curta: 8px de sobe-e-desce, sem giro
+     nenhum. As duas andam em sentidos opostos, o que da a leitura de
+     duas camadas soltas sem precisar torcer a tela. */
   @keyframes floatTeams{
-    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), var(--pz)) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rot)); }
-    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) - 10px), var(--pz)) rotateX(calc(var(--rx) + 1deg)) rotateY(calc(var(--ry) + 2deg)) rotateZ(calc(var(--rot) + 1deg)); }
+    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), 0); }
+    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) - 8px), 0); }
   }
   @keyframes floatMail{
-    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), var(--pz)) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rot)); }
-    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) + 9px), var(--pz)) rotateX(calc(var(--rx) - 1deg)) rotateY(calc(var(--ry) - 2deg)) rotateZ(calc(var(--rot) - 1deg)); }
+    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), 0); }
+    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) + 7px), 0); }
   }
   @media (prefers-reduced-motion: reduce){ .float-card{ animation: none; } }
 
@@ -616,8 +663,12 @@
     /* entre 981 e 1240px a coluna do visual e estreita e o container ainda
        nao tem margem externa sobrando: aqui as janelas precisam ficar mais
        recolhidas, senao a da caixa de entrada encosta na borda da tela. */
-    .float-card--teams{ left: -1.5rem; top: -4.75rem; --pz: 26px; }
-    .float-card--mail{ right: -0.25rem; bottom: -4.75rem; width: 17rem; --pz: 32px; }
+    /* nessa faixa a coluna do painel e mais estreita e os textos dele
+       quebram em mais linhas: as janelas precisam de mais folga vertical
+       pra nao cortar nenhum rotulo do painel no meio. */
+    .hero__visual{ margin-top: 4.75rem; }
+    .float-card--teams{ left: -1.5rem; top: -8rem; width: 16.5rem; }
+    .float-card--mail{ right: -0.25rem; bottom: -3.4rem; width: 17.75rem; }
   }
   /* abaixo de 980px o grid vira 1 coluna e o painel fica sozinho, ocupando
      a largura toda — nesse formato empilhado as janelas flutuantes não têm
@@ -629,16 +680,13 @@
   @media (max-width: 980px){
     .hero__visual{
       display:flex; flex-direction:column; align-items:center; gap: 1.35rem;
-      perspective: 900px; perspective-origin: 50% 50%;
     }
-    /* sem deslocamento no eixo Z aqui: empilhado, o translateZ so faria a
-       janela crescer e encostar nas bordas da tela. */
-    .float-card{ position: static; width: 17rem; max-width: 100%; --pz: 0px; }
-    /* as duas inclinam para lados opostos, como duas placas de vidro
-       viradas uma para a outra. E uma composicao parada — nao anima. */
-    .float-card--teams{ order:-1; align-self:flex-start; margin-left: .25rem; --ry: -11deg; --rx: 3deg; --rot: -1.5deg; }
-    .float-card--mail{ order:1; align-self:flex-end; margin-right: .25rem; width: 18rem; --ry: 11deg; --rx: -3deg; --rot: 1.5deg; }
-    .panel{ transform: none; }
+    .float-card{ position: static; width: 17rem; max-width: 100%; transform: none; }
+    /* empilhado, uma encosta pra esquerda e a outra pra direita: da o
+       mesmo ar de composicao solta sem tirar nada do prumo. E uma cena
+       completamente parada — no toque nada se mexe. */
+    .float-card--teams{ order:-1; align-self:flex-start; margin-left: .25rem; }
+    .float-card--mail{ order:1; align-self:flex-end; margin-right: .25rem; width: 18rem; }
   }
   /* abaixo de 640px o card ainda encolhe mais um pouco pra caber com
      folga em telas de celular — testado em larguras de 320px a 640px. */
@@ -775,7 +823,7 @@
      10. CONTATO
      ========================================================================== */
   .contact{ display:grid; grid-template-columns: .85fr 1.15fr; gap: 3.5rem; }
-  @media (max-width: 900px){ .contact{ grid-template-columns: 1fr; } }
+  @media (max-width: 920px){ .contact{ grid-template-columns: 1fr; } }
   .contact-info{ display:flex; flex-direction:column; gap: 1rem; margin-top: 2rem; }
   .contact-info__row{ display:flex; align-items:center; gap:.75rem; color: var(--text-2); font-size:.9375rem; }
   .contact-info__icon{ width: 2rem; height:2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); display:grid; place-items:center; flex-shrink:0; }
