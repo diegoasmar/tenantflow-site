@@ -4,9 +4,12 @@
   Configuração:
   - GA_MEASUREMENT_ID: cole o ID do Google Analytics 4 (ex.: G-ABC123XYZ).
     Enquanto ele não for preenchido, nenhum script de análise é carregado.
-  - FORM_ENDPOINT: destino do formulário de contato (FormSubmit).
-    No primeiro envio o FormSubmit manda um e-mail de ativação para
-    contato@tenantflow.com.br; é preciso clicar no link dele uma vez.
+  - WEB3FORMS_KEY: chave de acesso do Web3Forms (web3forms.com). Com ela
+    preenchida, os pedidos do formulário chegam por ali. É uma chave pública,
+    feita para ficar no código do site.
+  - FORMSUBMIT_ENDPOINT: segundo caminho de envio, usado se o primeiro falhar.
+  - Se nenhum serviço responder, o visitante recebe um botão que abre o
+    e-mail dele com o pedido já escrito. Nenhum pedido se perde em silêncio.
 
   Movimento: tudo que anima respeita a opção "reduzir movimento" do sistema
   e fica parado quando a parte da página não está visível.
@@ -15,7 +18,9 @@
   'use strict';
 
   const GA_MEASUREMENT_ID = '';
-  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/contato@tenantflow.com.br';
+  const WEB3FORMS_KEY = '';
+  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/contato@tenantflow.com.br';
+  const CONTACT_EMAIL = 'contato@tenantflow.com.br';
 
   const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -143,26 +148,115 @@
       }
 
       setStatus('', false);
+      clearFallback();
       button.disabled = true;
       button.textContent = 'Enviando…';
 
+      const lead = readLead(form);
       try {
-        const response = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        await sendLead(lead);
         form.reset();
         setStatus('Pedido recebido. Respondemos em até 1 dia útil para marcar a conversa.', false);
         track('generate_lead', { form: 'diagnostico' });
       } catch {
-        setStatus('Não foi possível enviar agora. Tente de novo em instantes ou escreva para contato@tenantflow.com.br.', true);
+        setStatus('Não conseguimos enviar pelo site agora. Seus dados não se perderam: use o botão abaixo para mandar o mesmo pedido pelo seu e-mail.', true);
+        showFallback(lead);
+        track('lead_fallback', { form: 'diagnostico' });
       } finally {
         button.disabled = false;
         button.textContent = buttonLabel;
       }
     });
+
+    function clearFallback() {
+      form.querySelector('.form__fallback')?.remove();
+    }
+
+    function showFallback(lead) {
+      const link = document.createElement('a');
+      link.className = 'button button--outline button--block form__fallback';
+      link.href = mailtoFor(lead);
+      link.textContent = 'Enviar o pedido pelo meu e-mail';
+      status.after(link);
+    }
+  }
+
+  /* Dados do formulário, já com rótulos legíveis para quem recebe. */
+  function readLead(form) {
+    const data = new FormData(form);
+    const value = (name) => String(data.get(name) || '').trim();
+    return {
+      trap: value('_honey'),
+      fields: {
+        Nome: value('nome'),
+        Empresa: value('empresa'),
+        'E-mail': value('email'),
+        Telefone: value('telefone') || 'não informado',
+        Assunto: value('assunto'),
+        Mensagem: value('mensagem') || 'sem mensagem'
+      }
+    };
+  }
+
+  const withTimeout = (url, options, ms = 12000) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), ms);
+    return fetch(url, { ...options, signal: controller.signal }).finally(() => clearTimeout(timer));
+  };
+
+  async function viaWeb3Forms(lead) {
+    const response = await withTimeout('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: `Novo pedido de diagnóstico: ${lead.fields.Empresa}`,
+        from_name: 'Site Tenant Flow',
+        replyto: lead.fields['E-mail'],
+        ...lead.fields
+      })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.success) throw new Error(result.message || `HTTP ${response.status}`);
+  }
+
+  async function viaFormSubmit(lead) {
+    const response = await withTimeout(FORMSUBMIT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `Novo pedido de diagnóstico: ${lead.fields.Empresa}`,
+        _template: 'table',
+        _captcha: 'false',
+        _replyto: lead.fields['E-mail'],
+        _cc: 'diego.asmar@gmail.com',
+        ...lead.fields
+      })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || String(result.success) === 'false') throw new Error(result.message || `HTTP ${response.status}`);
+  }
+
+  /* Tenta os serviços em ordem; só falha se todos falharem. */
+  async function sendLead(lead) {
+    if (lead.trap) return;
+    const senders = WEB3FORMS_KEY ? [viaWeb3Forms, viaFormSubmit] : [viaFormSubmit];
+    let lastError;
+    for (const send of senders) {
+      try {
+        await send(lead);
+        return;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    throw lastError;
+  }
+
+  function mailtoFor(lead) {
+    const body = Object.entries(lead.fields).map(([label, text]) => `${label}: ${text}`).join('\n');
+    const subject = `Pedido de diagnóstico: ${lead.fields.Empresa}`;
+    return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   /* Links como /?assunto=migracao#contato já abrem o formulário no assunto certo. */
