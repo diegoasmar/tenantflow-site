@@ -21,11 +21,12 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="/assets/newsreader-display.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.css?v=20260927b">
-  <script src="/assets/site.js?v=20260927b" defer></script>
+  <link rel="stylesheet" href="/assets/site.css?v=20260927c">
+  <script src="/assets/site.js?v=20260927c" defer></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","email":"contato@tenantflow.com.br","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/favicon.svg"},"description":"Consultoria e suporte Microsoft 365 para pequenas e médias empresas: migração, Exchange Online, SharePoint, Teams, segurança e licenciamento.","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft","Google Ads","Meta Ads"],"contactPoint":[{"@type":"ContactPoint","contactType":"vendas","email":"contato@tenantflow.com.br","availableLanguage":["Portuguese"],"areaServed":["BR","PT"]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","email":"contato@tenantflow.com.br","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/assets/logo-tenant-flow.png","width":512,"height":512},"description":"Empresa de TI para pequenas e médias empresas: Microsoft 365, e-mail corporativo, segurança, sites, lojas virtuais, administração de domínios e gestão de anúncios.","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft","Criação de sites","Lojas virtuais","Registro e administração de domínios","DNS","Google Ads","Meta Ads"],"contactPoint":[{"@type":"ContactPoint","contactType":"vendas","email":"contato@tenantflow.com.br","availableLanguage":["Portuguese"],"areaServed":["BR","PT"]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://tenantflow.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://tenantflow.com.br/blog/"},{"@type":"ListItem","position":3,"name":"Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail","item":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/#article","headline":"Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail","description":"Passo a passo real da migração de Google Workspace para Microsoft 365: preparação de domínio, cópia de caixas, corte de MX e o que costuma dar errado.","inLanguage":"pt-BR","url":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/","mainEntityOfPage":{"@type":"WebPage","@id":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/"},"datePublished":"2026-08-12","dateModified":"2026-09-08","author":{"@type":"Organization","name":"Tenant Flow","url":"https://tenantflow.com.br/"},"publisher":{"@id":"https://tenantflow.com.br/#organization"},"articleSection":"Migração","image":"https://tenantflow.com.br/assets/og-tenant-flow.png"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://tenantflow.com.br/blog/migrar-google-workspace-para-microsoft-365/#faq","inLanguage":"pt-BR","mainEntity":[{"@type":"Question","name":"Perco os e-mails antigos ao sair do Google Workspace?","acceptedAnswer":{"@type":"Answer","text":"Não, desde que a migração copie o histórico antes do corte. As mensagens são transferidas com a data original, junto com pastas, marcadores convertidos em pastas, contatos e agendas. O erro que causa perda é cancelar a assinatura do Google antes de concluir a cópia e a validação."}},{"@type":"Question","name":"Quanto tempo a empresa fica sem receber e-mail?","acceptedAnswer":{"@type":"Answer","text":"Zero, se o projeto for feito na ordem certa. O corte é apenas a troca do registro MX, que leva alguns minutos para propagar; durante esse intervalo as mensagens ficam em fila nos servidores de origem e são entregues assim que o novo destino responde."}},{"@type":"Question","name":"Dá para manter o mesmo endereço de e-mail?","acceptedAnswer":{"@type":"Answer","text":"Sim. O domínio é seu, não do Google. Ele é verificado no Microsoft 365 e passa a apontar para o Exchange Online. Os endereços continuam exatamente iguais."}}]}</script>
@@ -43,7 +44,7 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="/" aria-label="Tenant Flow, página inicial">
-      <svg class="brand__mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 4 37.6 13v18L22 40 6.4 31V13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M22 22V4M22 22 6.4 31" stroke="currentColor" stroke-width="1.4" stroke-opacity=".45"/><path d="M22 22 37.6 31" stroke="#2f8a9e" stroke-width="2.4" stroke-linecap="round"/><circle cx="22" cy="22" r="2.4" fill="#2f8a9e"/></svg>
+      <svg class="brand__mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M22.0 3.9 36.9 12.5 22.0 21.1 7.2 12.5Z" fill="#5fb0c2"/><path d="M6.3 13.9 21.2 22.5 21.2 39.6 6.3 31.0Z" fill="#0f4c5c"/><path d="M23.3 22.0 37.6 13.8 37.6 21.4 23.3 29.6Z" fill="currentColor"/><path d="M23.3 31.9 37.6 23.7 37.6 31.3 23.3 39.5Z" fill="currentColor"/></svg>
       <span class="brand__name">Tenant Flow</span>
     </a>
 
@@ -56,6 +57,7 @@
               <a href="/suporte-exchange-online/"><strong>Suporte Exchange Online</strong><span>E-mail corporativo e entregabilidade</span></a>
               <a href="/sharepoint-e-teams/"><strong>SharePoint e Teams</strong><span>Arquivos, permissões e colaboração</span></a>
               <a href="/seguranca-e-licenciamento-microsoft-365/"><strong>Segurança e licenças</strong><span>MFA, acesso condicional e custos</span></a>
+              <a href="/sites-e-lojas-virtuais/"><strong>Sites, lojas e domínios</strong><span>Site institucional, e-commerce e DNS</span></a>
           </div>
         </li>
         <li><a class="nav__link" href="/#processo">Como trabalhamos</a></li>
@@ -80,6 +82,7 @@
       <a href="/suporte-exchange-online/">Suporte Exchange Online</a>
       <a href="/sharepoint-e-teams/">SharePoint e Teams</a>
       <a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a>
+      <a href="/sites-e-lojas-virtuais/">Sites, lojas e domínios</a>
       <a href="/#processo">Como trabalhamos</a>
       <a href="/#precos">Preços</a>
       <a href="/blog/">Blog</a>
@@ -225,7 +228,7 @@
     <div class="site-footer__grid">
       <div class="site-footer__about">
         <a class="brand" href="/">
-          <svg class="brand__mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 4 37.6 13v18L22 40 6.4 31V13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M22 22V4M22 22 6.4 31" stroke="currentColor" stroke-width="1.4" stroke-opacity=".45"/><path d="M22 22 37.6 31" stroke="#2f8a9e" stroke-width="2.4" stroke-linecap="round"/><circle cx="22" cy="22" r="2.4" fill="#2f8a9e"/></svg>
+          <svg class="brand__mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M22.0 3.9 36.9 12.5 22.0 21.1 7.2 12.5Z" fill="#5fb0c2"/><path d="M6.3 13.9 21.2 22.5 21.2 39.6 6.3 31.0Z" fill="#0f4c5c"/><path d="M23.3 22.0 37.6 13.8 37.6 21.4 23.3 29.6Z" fill="currentColor"/><path d="M23.3 31.9 37.6 23.7 37.6 31.3 23.3 39.5Z" fill="currentColor"/></svg>
           <span class="brand__name">Tenant Flow</span>
         </a>
         <p>Microsoft 365, e-mail corporativo e infraestrutura de TI para empresas que não podem parar. Também fazemos sites, lojas virtuais e gestão de anúncios.</p>
@@ -239,6 +242,7 @@
           <li><a href="/suporte-exchange-online/">Suporte Exchange Online</a></li>
           <li><a href="/sharepoint-e-teams/">SharePoint e Teams</a></li>
           <li><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a></li>
+          <li><a href="/sites-e-lojas-virtuais/">Sites, lojas e domínios</a></li>
         </ul>
       </div>
 
