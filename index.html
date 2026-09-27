@@ -24,8 +24,8 @@
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/newsreader-display.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.css?v=20260927">
-  <script src="/assets/site.js?v=20260927" defer></script>
+  <link rel="stylesheet" href="/assets/site.css?v=20260927b">
+  <script src="/assets/site.js?v=20260927b" defer></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","email":"contato@tenantflow.com.br","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/favicon.svg"},"description":"Consultoria e suporte Microsoft 365 para pequenas e médias empresas: migração, Exchange Online, SharePoint, Teams, segurança e licenciamento.","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft","Google Ads","Meta Ads"],"contactPoint":[{"@type":"ContactPoint","contactType":"vendas","email":"contato@tenantflow.com.br","availableLanguage":["Portuguese"],"areaServed":["BR","PT"]}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://tenantflow.com.br/#website","url":"https://tenantflow.com.br/","name":"Tenant Flow","inLanguage":"pt-BR","publisher":{"@id":"https://tenantflow.com.br/#organization"}}</script>
@@ -104,49 +104,151 @@
         <p class="hero__meta"><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Diagnóstico de 30 minutos, sem compromisso. Atendemos todo o Brasil e empresas em Portugal.</p>
       </div>
 
-      <figure class="report" aria-label="Exemplo de relatório entregue no diagnóstico">
-        <div class="report__head">
-          <div>
-            <p class="report__kicker">Relatório de diagnóstico</p>
-            <p class="report__title">Microsoft 365</p>
-            <p class="report__domain">escritorio-exemplo.com.br</p>
+      <figure class="scene" aria-label="Ilustração: Outlook e Teams em uso numa empresa atendida pela Tenant Flow">
+        <div class="scene__canvas" aria-hidden="true">
+
+          <div class="win win--outlook">
+            <div class="ol-top">
+              <span class="ol-top__app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g fill="currentColor" stroke="none"><rect x="3" y="3" width="3" height="3" rx=".6"/><rect x="8.5" y="3" width="3" height="3" rx=".6"/><rect x="14" y="3" width="3" height="3" rx=".6"/><rect x="3" y="8.5" width="3" height="3" rx=".6"/><rect x="8.5" y="8.5" width="3" height="3" rx=".6"/><rect x="14" y="8.5" width="3" height="3" rx=".6"/><rect x="3" y="14" width="3" height="3" rx=".6"/><rect x="8.5" y="14" width="3" height="3" rx=".6"/><rect x="14" y="14" width="3" height="3" rx=".6"/></g></svg><b>Outlook</b></span>
+              <span class="ol-search"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5"/><path d="m12.3 12.3 4.2 4.2"/></svg>Pesquisar</span>
+              <span class="ol-top__me">EC</span>
+              <span class="winctl"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="9" height="9" rx="1"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5.5 5.5 9 9M14.5 5.5l-9 9"/></svg></span>
+            </div>
+            <div class="ol-bar">
+              <span class="ol-new"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16h3.2L16 7.2 12.8 4 4 12.8z"/><path d="m11.2 5.6 3.2 3.2"/></svg>Novo e-mail</span>
+              <span class="ol-bar__sep"></span>
+              <span class="ol-tool"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 6h11M8 6V4.5h4V6M6 6l.7 10h6.6L14 6"/></svg>Excluir</span>
+              <span class="ol-tool"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="13" height="3.5" rx=".8"/><path d="M4.5 7.5V16h11V7.5M8.5 10.5h3"/></svg>Arquivar</span>
+              <span class="ol-tool"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17V3.5M5 4h9l-2 3.5 2 3.5H5"/></svg></span>
+            </div>
+            <div class="ol-body">
+              <nav class="ol-folders">
+                <p class="ol-folders__title">Favoritos</p>
+                <span class="ol-folder is-active"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 5.5 4.5h9l2 6.5V15.5h-13z"/><path d="M3.5 11h4l1 2h3l1-2h4"/></svg><span class="ol-folder__name">Caixa de Entrada</span><b class="ol-count">2</b></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10 16.5 4l-4.5 12-2.5-5z"/><path d="m9.5 11 7-7"/></svg><span class="ol-folder__name">Itens Enviados</span></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h6l3 3v10H6z"/><path d="M12 3.5v3h3"/></svg><span class="ol-folder__name">Rascunhos</span><em>1</em></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="13" height="3.5" rx=".8"/><path d="M4.5 7.5V16h11V7.5M8.5 10.5h3"/></svg><span class="ol-folder__name">Arquivo Morto</span></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m5.5 14.5 9-9"/></svg><span class="ol-folder__name">Lixo Eletrônico</span></span>
+              </nav>
+              <div class="ol-list">
+                <div class="ol-tabs"><span class="is-active">Destaques</span><span>Outros</span><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h12M6.5 10h7M9 14h2"/></svg></div>
+                <div class="ol-mails">
+              <div class="ol-mail is-unread">
+                <div class="ol-mail__top"><b>Recursos Humanos</b><time>09:12</time></div>
+                <p class="ol-mail__subject">Férias de outubro aprovadas</p>
+                <p class="ol-mail__preview">A escala da equipe já está no calendário.</p>
+              </div>
+              <div class="ol-mail is-unread">
+                <div class="ol-mail__top"><b>Comercial</b><time>08:47</time></div>
+                <p class="ol-mail__subject">Proposta enviada ao cliente</p>
+                <p class="ol-mail__preview">Mandei a versão final com os ajustes de prazo.</p>
+              </div>
+              <div class="ol-mail is-selected">
+                <div class="ol-mail__top"><b>Tenant Flow Suporte</b><time>08:05</time></div>
+                <p class="ol-mail__subject">Migração concluída: 23 caixas</p>
+                <p class="ol-mail__preview">Corte feito às 22h, sem parada. Tudo conferido.</p>
+              </div>
+              <div class="ol-mail">
+                <div class="ol-mail__top"><b>Recepção</b><time>Ontem</time></div>
+                <p class="ol-mail__subject">Visita do cliente às 15h</p>
+                <p class="ol-mail__preview">A sala de reunião do 2º andar já está reservada.</p>
+              </div>
+                </div>
+              </div>
+              <article class="ol-read">
+                <p class="ol-read__subject">Migração concluída: 23 caixas</p>
+                <div class="ol-read__from">
+                  <span class="av av--teal">TF</span>
+                  <p><b>Tenant Flow Suporte</b><span>Para: Equipe do escritório</span></p>
+                  <time>08:05</time>
+                </div>
+                <div class="ol-read__body">
+                  <p>Bom dia! A migração terminou ontem às 22h. As 23 caixas estão no Microsoft 365 e ninguém perdeu e-mail.</p>
+                  <p>No celular, basta abrir o Outlook e entrar com a mesma senha.</p>
+                </div>
+                <span class="ol-attach"><i class="ol-attach__tile ol-attach__tile--pdf"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h5.5L15 7v9.5H6z"/><path d="M11.5 3.5V7H15"/></svg></i>relatorio-migracao.pdf</span>
+                <div class="ol-read__actions"><span><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 5 4 9.5 8.5 14"/><path d="M4 9.5h7a5 5 0 0 1 5 5v1"/></svg>Responder</span><span><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 5 16 9.5 11.5 14"/><path d="M16 9.5H9a5 5 0 0 0-5 5v1"/></svg>Encaminhar</span></div>
+              </article>
+            </div>
           </div>
-          <span class="report__tag">Exemplo</span>
+
+          <div class="win win--teams">
+            <div class="tm-top">
+              <span class="tm-nav"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 5-5 5 5 5"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg></span>
+              <span class="tm-search"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5"/><path d="m12.3 12.3 4.2 4.2"/></svg>Pesquisar</span>
+              <span class="av av--sm av--teal">EC<i class="pres pres--on"></i></span>
+              <span class="winctl"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="9" height="9" rx="1"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5.5 5.5 9 9M14.5 5.5l-9 9"/></svg></span>
+            </div>
+            <div class="tm-body">
+              <nav class="tm-rail">
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13.5h10l-1.3-2V8.3a3.7 3.7 0 0 0-7.4 0v3.2z"/><path d="M8.5 15.5a1.6 1.6 0 0 0 3 0"/></svg>Atividade<b class="tm-badge">3</b></span>
+                <span class="tm-app is-active"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5v6a1.5 1.5 0 0 1-1.5 1.5H9l-3.5 3v-3h0A1.5 1.5 0 0 1 4 11.5z"/></svg>Chat</span>
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="2.5"/><path d="M3 16a4.5 4.5 0 0 1 9 0"/><circle cx="13.5" cy="8.5" r="2"/><path d="M12.5 12.3A3.8 3.8 0 0 1 17 16"/></svg>Equipes</span>
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="13" height="12" rx="1.5"/><path d="M3.5 8h13M7 3v3M13 3v3"/></svg>Calendário</span>
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h2.5l1.3 3.2-1.6 1a8 8 0 0 0 5.1 5.1l1-1.6 3.2 1.3V15a1.5 1.5 0 0 1-1.6 1.5A12 12 0 0 1 3.5 5.1 1.5 1.5 0 0 1 5 3.5z"/></svg>Chamadas</span>
+              </nav>
+              <div class="tm-main">
+                <div class="tm-head">
+                  <span class="tm-group">ES</span>
+                  <p class="tm-head__name">Escritório · Geral</p>
+                  <span class="tm-tab is-active">Chat</span>
+                  <span class="tm-tab">Arquivos</span>
+                  <span class="tm-meet"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="10" height="8" rx="1.5"/><path d="m13 9 4-2.3v6.6L13 11"/></svg>Reunir</span>
+                </div>
+                <div class="tm-feed">
+              <div class="tm-msg is-in">
+                <div class="tm-msg__in"><div class="tm-msg__row">
+                  <span class="av av--berry">AR<i class="pres pres--on"></i></span>
+                  <div class="tm-bubble"><p class="tm-bubble__meta"><b>Ana Ribeiro</b><time>09:14</time></p><p class="tm-bubble__text">Bom dia! O e-mail novo já está no celular de vocês?</p></div>
+                </div></div>
+              </div>
+              <div class="tm-msg tm-msg--me is-in">
+                <div class="tm-msg__in"><div class="tm-msg__row">
+                  <div class="tm-bubble"><p class="tm-bubble__meta"><time>09:15</time></p><p class="tm-bubble__text">Aqui sim, entrou tudo certinho</p></div>
+                </div></div>
+              </div>
+              <div class="tm-msg is-in">
+                <div class="tm-msg__in"><div class="tm-msg__row">
+                  <span class="av av--blue">CL<i class="pres pres--away"></i></span>
+                  <div class="tm-bubble"><p class="tm-bubble__meta"><b>Carlos Lima</b><time>09:16</time></p><p class="tm-bubble__text">Aqui também. Nem percebi a troca, foi à noite.</p><span class="tm-react">👍 2</span></div>
+                </div></div>
+              </div>
+                </div>
+                <p class="tm-typing"><span class="tm-typing__dots"><i></i><i></i><i></i></span><span class="tm-typing__who">Bianca está digitando</span></p>
+                <div class="tm-compose">
+                  <span class="tm-compose__text"><span class="tm-compose__ph">Digite uma mensagem</span></span>
+                  <span class="tm-compose__tools"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M7.3 11.8a3.4 3.4 0 0 0 5.4 0"/><circle cx="7.8" cy="8.5" r=".5" fill="currentColor"/><circle cx="12.2" cy="8.5" r=".5" fill="currentColor"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 7.5 8 13a2 2 0 0 1-2.8-2.8l6.4-6.4a3.2 3.2 0 0 1 4.5 4.5l-6.6 6.6"/></svg><i class="tm-send"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10 16.5 4.5 13 16l-3-4.5z"/><path d="M10 11.5 16.5 4.5"/></svg></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="job is-done">
+            <p class="job__kicker"><svg class="ic job__spin" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 8A5.8 5.8 0 0 0 5 6.5M4.5 12A5.8 5.8 0 0 0 15 13.5"/><path d="M5 3.5v3h3M15 16.5v-3h-3"/></svg><svg class="ic job__ok" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5"/></svg><span class="job__state">Migração concluída</span></p>
+            <p class="job__count"><b class="job__n">23</b> de 23 caixas</p>
+            <span class="job__bar"><i class="job__fill"></i></span>
+            <p class="job__note">escritorio-exemplo.com.br · sem parada</p>
+          </div>
+
+          <div class="toast">
+            <p class="toast__app"><i class="toast__tile"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 5.5 4.5h9l2 6.5V15.5h-13z"/><path d="M3.5 11h4l1 2h3l1-2h4"/></svg></i>Outlook<time>agora</time></p>
+            <div class="toast__body">
+              <span class="av av--amber toast__av">CT</span>
+              <p><b class="toast__from">Contabilidade</b><span class="toast__subject">Balancete de agosto pronto</span></p>
+            </div>
+          </div>
+
+          <span class="cursor">
+            <svg viewBox="0 0 16 22" aria-hidden="true"><path d="M1 1v17.5l4.6-4.4 3 6.6 3-1.4-3-6.4H15z" fill="#fff" stroke="#16181d" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          </span>
         </div>
-        <dl class="report__rows">
-          <div class="report__row">
-            <dt>Registro SPF</dt>
-            <dd>include:spf.protection.outlook.com</dd>
-            <span class="status status--ok">Correto</span>
-          </div>
-          <div class="report__row">
-            <dt>Assinatura DKIM</dt>
-            <dd>não habilitada no domínio</dd>
-            <span class="status status--bad">Corrigir</span>
-          </div>
-          <div class="report__row">
-            <dt>Política DMARC</dt>
-            <dd>p=none, só monitora</dd>
-            <span class="status status--warn">Ajustar</span>
-          </div>
-          <div class="report__row">
-            <dt>Autenticação em duas etapas</dt>
-            <dd>ativa para 7 de 23 usuários</dd>
-            <span class="status status--warn">Ajustar</span>
-          </div>
-          <div class="report__row">
-            <dt>Licenças</dt>
-            <dd>23 contratadas, 18 em uso</dd>
-            <span class="status status--warn">Revisar</span>
-          </div>
-        </dl>
-        <figcaption class="report__foot">
-          <span><strong>3 correções prioritárias</strong></span>
-          <span>Resumo com prioridade e custo de cada ajuste</span>
-        </figcaption>
       </figure>
     </div>
   </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track"><ul><li>Exchange Online</li><li>Outlook</li><li>Teams</li><li>SharePoint</li><li>OneDrive</li><li>Entra ID</li><li>Intune</li><li>Defender</li><li>Power BI</li><li>SPF, DKIM e DMARC</li><li>Acesso condicional</li><li>Licenciamento</li></ul><ul><li>Exchange Online</li><li>Outlook</li><li>Teams</li><li>SharePoint</li><li>OneDrive</li><li>Entra ID</li><li>Intune</li><li>Defender</li><li>Power BI</li><li>SPF, DKIM e DMARC</li><li>Acesso condicional</li><li>Licenciamento</li></ul></div>
+  </div>
 
   <div class="audience">
     <div class="container audience__inner">
@@ -259,9 +361,58 @@
         </li>
       </ol>
 
+      <div class="dx">
+        <div class="dx__copy">
+          <h3 class="dx__title">O que você recebe no diagnóstico</h3>
+          <p>Um relatório curto, em linguagem direta, com o estado do seu Microsoft 365 e as correções em ordem de prioridade. Cada item diz o que está errado, o risco que traz e quanto custa arrumar.</p>
+          <p>Ele é seu, mesmo que você decida não contratar nada depois.</p>
+        </div>
+        <figure class="report" aria-label="Exemplo de relatório entregue no diagnóstico">
+          <div class="report__head">
+            <div>
+              <p class="report__kicker">Relatório de diagnóstico</p>
+              <p class="report__title">Microsoft 365</p>
+              <p class="report__domain">escritorio-exemplo.com.br</p>
+            </div>
+            <span class="report__tag">Exemplo</span>
+          </div>
+          <dl class="report__rows">
+            <div class="report__row">
+              <dt>Registro SPF</dt>
+              <dd>include:spf.protection.outlook.com</dd>
+              <span class="status status--ok">Correto</span>
+            </div>
+            <div class="report__row">
+              <dt>Assinatura DKIM</dt>
+              <dd>não habilitada no domínio</dd>
+              <span class="status status--bad">Corrigir</span>
+            </div>
+            <div class="report__row">
+              <dt>Política DMARC</dt>
+              <dd>p=none, só monitora</dd>
+              <span class="status status--warn">Ajustar</span>
+            </div>
+            <div class="report__row">
+              <dt>Autenticação em duas etapas</dt>
+              <dd>ativa para 7 de 23 usuários</dd>
+              <span class="status status--warn">Ajustar</span>
+            </div>
+            <div class="report__row">
+              <dt>Licenças</dt>
+              <dd>23 contratadas, 18 em uso</dd>
+              <span class="status status--warn">Revisar</span>
+            </div>
+          </dl>
+          <figcaption class="report__foot">
+            <span><strong>3 correções prioritárias</strong></span>
+            <span>Resumo com prioridade e custo de cada ajuste</span>
+          </figcaption>
+        </figure>
+      </div>
+
       <dl class="promises">
         <div class="promise">
-          <dt>30 minutos</dt>
+          <dt><span data-count="30">30</span> minutos</dt>
           <dd>de diagnóstico inicial, gratuito e sem compromisso</dd>
         </div>
         <div class="promise">
