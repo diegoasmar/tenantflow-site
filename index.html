@@ -1,1789 +1,537 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Consultoria e Suporte Microsoft 365 para Empresas | Tenant Flow</title>
-<meta name="description" content="Migração, suporte e segurança em Microsoft 365, Exchange Online, SharePoint e Teams para pequenas e médias empresas. Diagnóstico técnico gratuito." />
-<link rel="canonical" href="https://tenantflow.com.br/" />
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
-<meta name="theme-color" content="#08090a" />
-<meta name="author" content="Tenant Flow" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consultoria e Suporte Microsoft 365 para Empresas | Tenant Flow</title>
+  <meta name="description" content="Migração, suporte e segurança em Microsoft 365, Exchange Online, SharePoint e Teams para empresas no Brasil e em Portugal. Diagnóstico gratuito.">
+  <link rel="canonical" href="https://tenantflow.com.br/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#f6f4ef">
+  <!-- Google Search Console: troque o valor abaixo pelo token da sua propriedade -->
+  <meta name="google-site-verification" content="COLE_AQUI_O_TOKEN_DO_SEARCH_CONSOLE">
 
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="pt_BR" />
-<meta property="og:site_name" content="Tenant Flow" />
-<meta property="og:title" content="Consultoria e Suporte Microsoft 365 para Empresas | Tenant Flow" />
-<meta property="og:description" content="Migração, suporte e segurança em Microsoft 365, Exchange Online, SharePoint e Teams para pequenas e médias empresas. Diagnóstico técnico gratuito." />
-<meta property="og:url" content="https://tenantflow.com.br/" />
-<meta property="og:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Consultoria e Suporte Microsoft 365 para Empresas | Tenant Flow" />
-<meta name="twitter:description" content="Migração, suporte e segurança em Microsoft 365, Exchange Online, SharePoint e Teams para pequenas e médias empresas. Diagnóstico técnico gratuito." />
-<meta name="twitter:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png" />
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Tenant Flow">
+  <meta property="og:title" content="Consultoria e Suporte Microsoft 365 para Empresas | Tenant Flow">
+  <meta property="og:description" content="Migração, suporte e segurança em Microsoft 365, Exchange Online, SharePoint e Teams para empresas no Brasil e em Portugal. Diagnóstico gratuito.">
+  <meta property="og:url" content="https://tenantflow.com.br/">
+  <meta property="og:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
-<!-- Google Search Console: troque o valor pelo token da sua propriedade -->
-<meta name="google-site-verification" content="COLE_AQUI_O_TOKEN_DO_SEARCH_CONSOLE" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- A folha de fontes deixa de bloquear a renderizacao: entra como "print"
-     e vira "all" assim que carrega. O <noscript> garante o fallback. -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/newsreader-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css?v=20260927">
+  <script src="/assets/site.js?v=20260927" defer></script>
 
-<!-- Favicon: marca Tenant Flow (hexágono/cubo wireframe, igual ao logotipo do cabeçalho) — SVG como principal, PNG como fallback -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgdmlld0JveD0iMCAwIDQ0IDQ0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsb2dvR3JhZCIgeDE9IjYiIHkxPSI0IiB4Mj0iMzgiIHkyPSI0MCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOWQ5ZmZiIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzU0NTdlMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjQ0IiBoZWlnaHQ9IjQ0IiByeD0iOS42IiBmaWxsPSIjMGIwYzEwIi8+CiAgPHBhdGggZD0iTTIyIDQgTDM3LjYgMTMgTDM3LjYgMzEgTDIyIDQwIEw2LjQgMzEgTDYuNCAxMyBaIiBzdHJva2U9IiNlY2VlZjIiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTTIyIDIyIEwyMiA0IiBzdHJva2U9IiNlY2VlZjIiIHN0cm9rZS13aWR0aD0iMS4xIiBzdHJva2Utb3BhY2l0eT0iLjUiLz4KICA8cGF0aCBkPSJNMjIgMjIgTDYuNCAzMSIgc3Ryb2tlPSIjZWNlZWYyIiBzdHJva2Utd2lkdGg9IjEuMSIgc3Ryb2tlLW9wYWNpdHk9Ii41Ii8+CiAgPHBhdGggZD0iTTIyIDIyIEwzNy42IDMxIiBzdHJva2U9InVybCgjbG9nb0dyYWQpIiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMS45IiBmaWxsPSJ1cmwoI2xvZ29HcmFkKSIvPgogIDxjaXJjbGUgY3g9IjM3LjYiIGN5PSIzMSIgcj0iMS45IiBmaWxsPSJ1cmwoI2xvZ29HcmFkKSIvPgo8L3N2Zz4K">
-<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAACFklEQVR4nHxST0/TYBzu/wlrNsncWlFnIpAo21C6mQiSbM4DaKITD0p0evZkuOlJwTN6EOIHwG8gCaszQitw0C0ZCR48oKHrcAVXlq2mjnXtfGfnsoyFJ03zPr/ned739/5BFUXRdUj9s6+q+xhuIYgjB7+ODqvPdz4afcCyMRTFiNezc7K8V61WoX9wOp3jt8cHfAPZbFZVVVABUi6XSySSOEGgu7/2isWiacUwLBwOe7z9yeSX7Z+ZkcsjFH1cTKcNwzANgpBGdQPSQU8Q5A8EIjdvJBOf2dgimPK3oqx84i0W4u7EBAiA1YCnVCrBVvIojuORWxFh6we3vGTORNE0+O9IkkmvhK+ePHV64d2CpmkI4Ha7HWyt4T6I5aWPpNVqs9lqbZslEIUORblcNgdIW9nvf+TxPmwrtQZQFHW73ZqmdHb29nvuYJilxYA1E4qinC7XdibzIf6yRunBS0NPBYEX01zrCiRJerxeGIa/bmzk83mzuCOlVlemEYQIXHyCokEMI+uBQqGg6Xp39wnp/zk2Q9iKd3V9K5UZo3oM0No9mALDMMPDQ+/ZxfX1VMN9YZAZHbu+trqWStWL8NlzPlEU6/0hSCgUomhXnI0BOjp2LSvt8hzXeBp9fb3wzMyr51MvmntwOBzBUBAMeI6XZblZmp56BoP07Nyb+fm3m5vfK5UK1A7gUfb0nInevzc5+fgvAAAA//+81G62AAAABklEQVQDANlp1Vw0qkFXAAAAAElFTkSuQmCC">
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAED0lEQVR4nORWa0xbZRj+elm7CLNAKcEV3QXpLF3pOqCtbANEV3TO6YgamTES9283ms0qou2yoYxI29AN+hP5IbQaV7dCTEBkXCs9hSktFmmHYWzMXmCusLTQlNYPuiwVespp3Pzjk5yTc973eZ8n5/J970sMBoNgBffuuesbVAhiNJvMrpkZEDtoycnsLDaPl3vi+LGEBEooiAsZdHT8eOz4KbvdDh4FUlNTVQ0XhcL9Dww6O3964/CbWCpLSkrgWavVYiFrL38LPXB37/6VkytwOBzR2Vwu99z5c577HnhN3kiWSKWjZjNY7zkQg57Y3KKOrk5LSfm0spKzi1PxkXh2dvnbUKnJKlXD8ND16gvVLqcTrRC+8Ba1Bm9EjGgMMpksEona29vHxn7bm8fv6uoMxeFFniB3fNwCU+Xl5ZCGpgDF8YhxKGLu0KHXr3V3p6dvLyrcp5DX+ny+8Ozi4qJc9iVMMRgZkAbJEUWgOC4uPmFVdCebXVVV9eSmTWLx6b7envAUh7MLnkdGfg0P7ssvqK1VzM3PSySStR8GH34DX7dcodCo1Ve+v7x3D3+VOhogDZJbdVe+0WhkcjkUQTVoamoCwSUBP1vVcMnv9wPMgORLF+v4/Gw8HjQ2NqIaxMU9oVDI1v1l0eCw2xWy2vj4+PAgETxm/K8MCATSM1tehXvX6Khlacn36A3Snuaxs87Azddk6p262Y+xCo+Rt2EDiZXJhOqBQGC/UEZP42MsxPQE7CwOi7UTMXRZLIcJRPJmOv+tt7U26w89PWfvz9/5VwZbtm7l8QQ2q1Wjbl4JTCwfNzpGfvkqv+D8+2WDw8OqIUTp93tjNkhMSoLSXq8H7gELCwursnNzt9taP3hqM6+gsGbHc6WD+s/Hf/8OgCAmAwKBwOMLqFQqYjA4ndFW9Z93EE3Li8zMI4Lnz2ayjg70VQLgWcfg2YyMnBweggz+rB8AmBAcszTfsF3l7hYdeE3r8UzqWik0Wo7L9aALEEikjQ+575SWMhg76uuVt6amQCwIBHzT071er2l7+lG3m0AmJ9+aagul/vGblpWVzczMGpDrJ06WE4kxLBFIPnlK1N7xNZ0+4fU4bNamh6nYGk5ERG84uG3bMpwu19oy2AUrPqkYHjJKPqucnr4dUZpOT/uiuoa7O7vmQo1Od3UtIYVGw8NZLGIxLHihsHBi4o+u7r7TZ8QkEik8Cxv9h+KPr/X0W602SIuoDpZXKBufhWIAVjp7XV1dcXExk8nq1xuKil4KxYtffgXeMhhMoVCoVCohDU0BiuMmJ2/m7cl3u90gKkKDl8vlwuFwiYlJUqnUbDJFL6FQKPqB3uXRUadrO/LuewADQuMJ2gtZBbi7HDx44D8ZfkPRxzS+/w0AAP//eOAq/QAAAAZJREFUAwD2gNvjr5WWgwAAAABJRU5ErkJggg==">
-<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
-
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","email":"contato@tenantflow.com.br","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/favicon.svg"},"description":"Consultoria e suporte Microsoft 365 para pequenas e médias empresas: migração, Exchange Online, SharePoint, Teams, segurança e licenciamento.","areaServed":{"@type":"Country","name":"Brasil"},"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft","Google Ads","Meta Ads"],"contactPoint":[{"@type":"ContactPoint","contactType":"vendas","email":"contato@tenantflow.com.br","availableLanguage":["Portuguese"],"areaServed":"BR"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://tenantflow.com.br/#business","name":"Tenant Flow","url":"https://tenantflow.com.br/","image":"https://tenantflow.com.br/favicon.svg","parentOrganization":{"@id":"https://tenantflow.com.br/#organization"},"description":"Empresa de TI especializada em Microsoft 365: migração, e-mail corporativo em Exchange Online, SharePoint, Teams, segurança e licenciamento para pequenas e médias empresas.","priceRange":"$$","email":"contato@tenantflow.com.br","areaServed":{"@type":"Country","name":"Brasil"},"address":{"@type":"PostalAddress","addressCountry":"BR"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Serviços Microsoft 365","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Migração para Microsoft 365","url":"https://tenantflow.com.br/migracao-microsoft-365/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Suporte Exchange Online","url":"https://tenantflow.com.br/suporte-exchange-online/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Gestão de SharePoint e Teams","url":"https://tenantflow.com.br/sharepoint-e-teams/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Segurança e licenciamento Microsoft 365","url":"https://tenantflow.com.br/seguranca-e-licenciamento-microsoft-365/"}}]}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://tenantflow.com.br/#faq","inLanguage":"pt-BR","isPartOf":{"@id":"https://tenantflow.com.br/#website"},"mainEntity":[{"@type":"Question","name":"Quanto tempo leva a migração para o Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"Depende do volume de caixas de e-mail e de arquivos. Na prática o trabalho tem três etapas: inventário e preparação do tenant, cópia dos dados em paralelo ao ambiente atual, e o corte final. Só a última etapa tem hora marcada, e ela é agendada fora do horário comercial. O prazo exato da sua empresa sai por escrito no diagnóstico, antes de qualquer mudança começar."}},{"@type":"Question","name":"Minha empresa precisa parar durante a migração?","acceptedAnswer":{"@type":"Answer","text":"Não. A cópia de e-mails, arquivos e acessos roda em paralelo ao ambiente que a empresa está usando, e a troca definitiva acontece fora do horário comercial. É por isso que o compromisso é de zero paradas: a equipe continua trabalhando normalmente enquanto a mudança acontece por baixo."}},{"@type":"Question","name":"Por que os e-mails da minha empresa caem no spam?","acceptedAnswer":{"@type":"Answer","text":"Na maioria dos casos o problema é SPF, DKIM ou DMARC ausente ou mal configurado no domínio. São os três registros que provam aos provedores que a mensagem saiu mesmo de você — sem eles, o Gmail e o Outlook tratam o seu e-mail como suspeito. Reputação do domínio e listas de bloqueio também pesam, e as duas coisas se corrigem."}},{"@type":"Question","name":"Dá para reduzir o que eu pago de licença Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"Quase sempre dá. Os desperdícios mais comuns são licença de gente que já saiu da empresa continuando a ser cobrada, plano acima do que a pessoa realmente usa, e recurso pago em duplicidade com outra ferramenta. A revisão de licenciamento compara linha a linha o que está contratado com o uso real de cada usuário."}},{"@type":"Question","name":"O que está incluído no Diagnóstico M365 gratuito?","acceptedAnswer":{"@type":"Answer","text":"Uma chamada de trinta minutos e o levantamento do seu ambiente: entregabilidade de e-mail (SPF, DKIM e DMARC), licenças contratadas contra uso real, configuração de segurança como autenticação em duas etapas e acesso condicional, e como os arquivos estão organizados. Você sai com um resumo do que está errado e do que custa arrumar. Sem compromisso de contratar nada depois."}},{"@type":"Question","name":"Vocês atendem empresas de outras cidades?","acceptedAnswer":{"@type":"Answer","text":"Sim. Administração de Microsoft 365, Exchange Online, SharePoint e Teams é remota por natureza — o ambiente já está na nuvem. Atendemos empresas em todo o Brasil, e o atendimento acontece por chamada, e-mail e acesso remoto quando necessário."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://tenantflow.com.br/#website","url":"https://tenantflow.com.br/","name":"Tenant Flow","inLanguage":"pt-BR","publisher":{"@id":"https://tenantflow.com.br/#organization"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","@id":"https://tenantflow.com.br/#service-m365","name":"Consultoria e suporte Microsoft 365","serviceType":"Consultoria Microsoft 365","description":"Diagnóstico, migração, administração e segurança de ambientes Microsoft 365 para pequenas e médias empresas.","provider":{"@id":"https://tenantflow.com.br/#organization"},"url":"https://tenantflow.com.br/","areaServed":{"@type":"Country","name":"Brasil"},"audience":{"@type":"BusinessAudience","name":"Pequenas e médias empresas"},"offers":{"@type":"Offer","url":"https://tenantflow.com.br/#contato","availability":"https://schema.org/InStock","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"BRL","description":"Diagnóstico técnico inicial gratuito; proposta sob medida após o levantamento."}}}</script>
-
-<!-- Google Analytics 4 — troque G-XXXXXXXXXX pelo ID de medicao real da propriedade -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-
-<!--
-  ============================================================================
-  TENANT FLOW — Landing Page
-  ============================================================================
-  Arquivo único (HTML + CSS + JS) sem dependência de build ou framework —
-  basta abrir no navegador ou subir em qualquer host estático.
-
-  ÍNDICE (use Ctrl+F para pular direto na seção):
-    1. TOKENS ..... variáveis de design (cor, tipografia, espaçamento)
-    2. BASE ....... reset e estilos globais
-    3. LAYOUT ..... container, grid helpers
-    4. COMPONENTES  botão, badge, card, input, etc. (reutilizáveis)
-    5. NAVBAR
-    6. HERO
-    7. TECH STRIP . barra "trabalhamos com"
-    8. SERVIÇOS ... grid de soluções
-    9. COMO FUNCIONA
-   10. CONTATO .... formulário de lead
-   11. FOOTER
-   12. JS ......... menu mobile, scroll reveal, envio do formulário
-
-  PARA PERSONALIZAR:
-  - Cores/identidade → edite apenas a seção 1 (TOKENS). Todo o resto herda
-    dessas variáveis, então trocar a cor de destaque é uma linha só.
-  - Textos → estão diretamente no HTML, em português, um bloco por seção.
-  - Formulário → aponte a constante `FORM_ENDPOINT` no JS (seção 12) para o
-    seu backend, CRM ou serviço de formulário (Formspree, HubSpot, etc.).
-  ============================================================================
--->
-
-<style>
-  /* ==========================================================================
-     1. TOKENS — design system
-     ========================================================================== */
-  :root{
-    /* cor */
-    --bg:            #08090a;
-    --bg-raised:     #0c0d10;
-    --surface:       #111216;
-    --surface-2:     #16171c;
-    --border:        rgba(255,255,255,0.09);
-    --border-strong: rgba(255,255,255,0.18);
-    --text-1:        #f5f6f7;
-    --text-2:        #9b9ca4;
-    --text-3:        #80818a; /* ajustado para ~5:1 de contraste sobre --bg (era #6c6d75, ficava abaixo do mínimo de acessibilidade) */
-    --accent:        #6e6ff6;
-    --accent-2:      #9192f8;
-    --accent-ink:    #0a0a0c;
-    --success:       #3ddc97;
-
-    /* tipografia */
-    --font: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-    --fs-eyebrow: 0.8125rem;
-    --fs-body:    1rem;
-    /* o piso do clamp comanda o celular: a 2.375rem o H1 quebrava em 5
-       linhas a 390px. 1.9rem de piso traz para 3 linhas sem perder
-       presenca, e o teto de 3.5rem no desktop fica igual. */
-    --fs-h1: clamp(1.9rem, 1.35rem + 2.7vw, 3.5rem);
-    --fs-h2: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
-    --fs-h3: 1.0625rem;
-
-    /* forma */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --container: 1180px;
-
-    /* movimento */
-    --ease: cubic-bezier(.16,.8,.24,1);
-  }
-
-  /* ==========================================================================
-     2. BASE
-     ========================================================================== */
-  *, *::before, *::after{ box-sizing: border-box; }
-  /* color-scheme: dark faz o navegador desenhar os controles nativos (o painel
-     de opções do <select>, scrollbar, etc.) já no tema escuro — sem isso, o
-     <select> ficava com fundo branco padrão do SO ao abrir a lista, quebrando
-     o visual em telas escuras. */
-  /* scroll-padding-top compensa a navbar fixa: sem isso, todo link
-     ancorado (#contato, #servicos, #faq) parava com o titulo escondido
-     atras da barra. Era o bug de navegacao mais visivel da pagina. */
-  html{ scroll-behavior: smooth; color-scheme: dark; scroll-padding-top: 5.5rem; }
-  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
-
-  html, body{ overflow-x: hidden; max-width: 100%; }
-  body{
-    margin: 0;
-    background: var(--bg);
-    color: var(--text-1);
-    font-family: var(--font);
-    font-size: var(--fs-body);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1,h2,h3,p,figure{ margin: 0; }
-  a{ color: inherit; text-decoration: none; }
-  img,svg{ display:block; max-width:100%; }
-  ::selection{ background: var(--accent); color:#fff; }
-
-  /* Foco visivel global. Antes, so os campos do formulario tinham
-     indicacao de foco — quem navega por teclado ficava perdido em
-     todos os links e botoes. :focus-visible so aparece para teclado,
-     entao o clique de mouse continua limpo. */
-  :focus-visible{
-    outline: 2px solid var(--accent-2);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-  .skip-link{
-    position: absolute; left: -9999px; top: 0; z-index: 100;
-    background: var(--text-1); color: var(--accent-ink);
-    padding: .8rem 1.2rem; border-radius: 0 0 var(--radius-sm) 0;
-    font-weight: 600; font-size: .875rem;
-  }
-  .skip-link:focus{ left: 0; }
-
-  /* grade técnica de fundo, usada atrás do hero.
-     Importante: o mask-image fica num pseudo-elemento (::before) separado,
-     nunca direto na seção que tem texto — mask-image esconde TODO o
-     conteúdo renderizado do elemento (não só o background), então
-     aplicá-lo direto na seção apagaria também título, texto e botões. */
-  .grid-bg{ position: relative; }
-  .grid-bg::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 85%);
-            mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, black 35%, transparent 85%);
-  }
-  .grid-bg > *{ position: relative; z-index: 1; }
-
-  /* ==========================================================================
-     3. LAYOUT
-     ========================================================================== */
-  .container{ max-width: var(--container); margin-inline: auto; padding-inline: 24px; }
-  /* Espacamento fluido. Antes era 6.5rem fixo em qualquer tela: no
-     desktop deixava buracos enormes entre secoes, no celular gastava
-     meia tela em vazio. clamp() escala com a viewport. */
-  .section{ padding-block: clamp(3.75rem, 2.2rem + 5vw, 6rem); }
-  .section--bordered{ border-top: 1px solid var(--border); }
-  .section-head{ max-width: 40rem; }
-  .section-head + .section-body{ margin-top: clamp(2.25rem, 1.6rem + 2vw, 3.25rem); }
-
-  /* Cabecalho de secao em duas colunas: titulo a esquerda, apoio a
-     direita. Resolve a metade direita vazia que sobrava em toda secao
-     no desktop, sem espremer nada no mobile (vira 1 coluna). */
-  .section-head--split{
-    max-width: none;
-    display: grid; grid-template-columns: 1.05fr .95fr;
-    gap: 3rem; align-items: end;
-  }
-  .section-head--split .section-title{ max-width: 20ch; }
-  .section-head--split .section-lead{ margin-top: 0; padding-bottom: .3rem; }
-  @media (max-width: 880px){
-    .section-head--split{ grid-template-columns: 1fr; gap: 1rem; align-items: start; }
-    .section-head--split .section-lead{ padding-bottom: 0; }
-  }
-
-  .eyebrow{
-    display:inline-flex; align-items:flex-start; gap:.5rem;
-    font-size: var(--fs-eyebrow); font-weight: 600;
-    color: var(--accent-2);
-    text-transform: uppercase; letter-spacing: .06em;
-  }
-  .eyebrow__dot{
-    width:6px; height:6px; border-radius:50%;
-    background: var(--success);
-    display:inline-block; flex-shrink:0;
-    margin-top: .45em;
-  }
-  .section-title{
-    margin-top: .75rem;
-    font-size: var(--fs-h2);
-    font-weight: 600;
-    letter-spacing: -0.022em;
-    line-height: 1.12;
-    /* text-wrap:balance distribui as linhas do titulo em blocos parecidos
-       em vez de deixar uma palavra orfa na ultima linha. */
-    text-wrap: balance;
-  }
-  .section-lead{
-    margin-top: 1rem;
-    color: var(--text-2);
-    font-size: 1.0625rem;
-    line-height: 1.6;
-  }
-
-  .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .grid-2{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  @media (max-width: 920px){
-    .grid-3{ grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px){
-    .grid-3, .grid-2{ grid-template-columns: 1fr; }
-  }
-  /* protege contra rolagem lateral: por padrão uma coluna de grid não
-     encolhe além do conteúdo interno (ex: um <input>), então toda coluna
-     de grid do site fica com min-width:0 para poder encolher no mobile. */
-  .grid-3 > *, .grid-2 > *, .contact > *, .hero__grid > *, .footer__grid > *{
-    min-width: 0;
-  }
-
-  /* ==========================================================================
-     4. COMPONENTES
-     ========================================================================== */
-
-  /* botões */
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
-    padding: .8rem 1.35rem;
-    border-radius: var(--radius-sm);
-    font-size: .9375rem; font-weight: 600;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: transform .15s var(--ease), box-shadow .15s var(--ease), border-color .15s var(--ease), background-color .15s var(--ease);
-    white-space: nowrap;
-  }
-  .btn:active{ transform: translateY(1px); }
-  .btn--primary{ background: var(--text-1); color: var(--accent-ink); }
-  .btn--primary:hover{ box-shadow: 0 10px 30px -10px rgba(255,255,255,.3); transform: translateY(-1px); }
-  .btn--ghost{ background: rgba(255,255,255,.02); border-color: var(--border-strong); color: var(--text-1); }
-  .btn--ghost:hover{ background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.35); transform: translateY(-1px); }
-  .btn--block{ width: 100%; }
-
-  /* cartão */
-  .card{
-    background: linear-gradient(180deg, var(--surface), var(--bg-raised));
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 1.75rem;
-    transition: border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
-  }
-  .card:hover{
-    border-color: rgba(110,111,246,.4);
-    box-shadow: 0 0 0 1px rgba(110,111,246,.12), 0 20px 40px -28px rgba(0,0,0,.7);
-    transform: translateY(-2px);
-  }
-  .card__icon{
-    width: 2.375rem; height: 2.375rem;
-    display:grid; place-items:center;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-strong);
-    color: var(--accent-2);
-    margin-bottom: 1.25rem;
-  }
-  .card__title{ font-size: var(--fs-h3); font-weight: 600; }
-  .card__text{ margin-top: .5rem; color: var(--text-2); font-size: .9375rem; line-height: 1.6; }
-  .card__link{ display:inline-flex; align-items:center; gap:.35rem; margin-top: .9rem;
-    font-size: .875rem; font-weight: 600; color: var(--accent-2); }
-  .card__link:hover{ color: var(--text-1); }
-  .card__link::after{ content:"→"; }
-
-  /* inputs */
-  /* min-width:0 é necessário porque .field vive dentro de grids (.grid-2,
-     .contact) — sem isso, o tamanho padrão do <input>/<select> do navegador
-     impede a coluna de encolher no mobile e a página ganha rolagem lateral. */
-  .field{ display:flex; flex-direction:column; gap:.4rem; min-width: 0; }
-  .field label{ font-size: .8125rem; color: var(--text-2); }
-  .field input, .field select, .field textarea{
-    width: 100%;
-    min-width: 0;
-    font: inherit;
-    background: rgba(255,255,255,.02);
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-sm);
-    padding: .7rem .9rem;
-    color: var(--text-1);
-  }
-  /* O <select> herda "color: var(--text-1)" (clara) da regra acima, pensada
-     pro campo fechado sobre fundo escuro. Mas o painel de opções (popup) é
-     desenhado pelo navegador/SO e nem sempre respeita color-scheme — em
-     alguns navegadores ele cai pra fundo branco padrão, e aí o texto claro
-     ficava quase invisível. Por isso fixamos fundo e cor de cada option/
-     optgroup explicitamente, garantindo contraste em qualquer navegador. */
-  .field select option, .field select optgroup{
-    background-color: #14151a;
-    color: var(--text-1);
-  }
-  .field select optgroup{ font-weight: 700; font-style: normal; color: var(--text-2); }
-  .field input::placeholder, .field textarea::placeholder{ color: var(--text-3); }
-  .field input:focus, .field select:focus, .field textarea:focus{
-    outline:none; border-color: rgba(110,111,246,.65);
-    box-shadow: 0 0 0 3px rgba(110,111,246,.16);
-  }
-  .field textarea{ resize: vertical; min-height: 5.5rem; }
-
-  /* ==========================================================================
-     5. NAVBAR
-     ========================================================================== */
-  /* A navbar comeca quase transparente sobre o hero e so ganha fundo,
-     borda e sombra depois que a pagina rola (classe .is-scrolled,
-     aplicada por JS). Antes ela era sempre igual, e a borda inferior
-     cortava o hero no topo mesmo sem nada rolado. */
-  .navbar{
-    position: fixed; inset-inline: 0; top: 0; z-index: 50;
-    border-bottom: 1px solid transparent;
-    background: rgba(8,9,10,.55);
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    transition: background-color .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
-  }
-  .navbar.is-scrolled{
-    background: rgba(8,9,10,.86);
-    border-bottom-color: var(--border);
-    box-shadow: 0 14px 34px -30px rgba(0,0,0,.95);
-  }
-  .navbar.is-scrolled .navbar__inner{ height: 3.85rem; }
-  .navbar__inner{ height: 4.25rem; display:flex; align-items:center; justify-content:space-between; transition: height .25s var(--ease); }
-  .brand{ display:flex; align-items:center; gap:.6rem; }
-  .brand__name{ font-weight: 600; font-size: 1.125rem; letter-spacing: -0.01em; }
-  .nav-links{ display:flex; align-items:center; gap: 1.6rem; font-size: .9rem; color: var(--text-2); }
-  .nav-links a{ transition: color .15s var(--ease); }
-  .nav-links a:hover{ color: var(--text-1); }
-  .navbar__actions{ display:flex; align-items:center; gap: .75rem; }
-  .nav-toggle{
-    display:none; width: 2.25rem; height: 2.25rem;
-    align-items:center; justify-content:center;
-    border-radius: var(--radius-sm); border: 1px solid var(--border-strong);
-    color: var(--text-2); background: transparent; cursor:pointer;
-  }
-  .mobile-panel{
-    max-height: 0; overflow: hidden;
-    /* fundo sólido (não só o blur translúcido do .navbar) — sem isso o
-       conteúdo do hero "vaza" por trás dos links do menu aberto no celular */
-    background: var(--bg-raised);
-    border-top: 1px solid transparent;
-    transition: max-height .25s var(--ease);
-  }
-  .mobile-panel.is-open{ max-height: 28rem; border-top-color: var(--border); }
-  .mobile-panel__inner{ padding: 1.25rem 24px; display:flex; flex-direction:column; gap: 1rem; font-size: .9375rem; color: var(--text-2); }
-
-  /* faixa apertada: entre 901px e 1120px os cinco links + o botao ainda
-     cabem, mas so com respiro menor. Sem isso os links quebravam em duas
-     linhas e o botao passava por cima de "Blog". */
-  @media (max-width: 1120px) and (min-width: 921px){
-    .nav-links{ gap: 1.05rem; font-size: .8125rem; }
-    .nav-links a{ white-space: nowrap; }
-    .brand__name{ font-size: 1rem; }
-    .navbar__actions .btn{ font-size: .8125rem; padding: .7rem 1rem; white-space: nowrap; }
-  }
-  /* abaixo de 900px nao adianta apertar mais: vira menu de hamburguer. */
-  @media (max-width: 920px){
-    .nav-links, .navbar__actions .btn{ display:none; }
-    .nav-toggle{ display:flex; }
-  }
-
-  /* ==========================================================================
-     6. HERO
-     ========================================================================== */
-  .hero{
-    padding-top: clamp(6.75rem, 5.2rem + 4.6vw, 9rem);
-    /* folga embaixo: a janela da caixa de entrada desce pra fora do painel
-       e o overflow:hidden do hero cortava ela pela metade. Sem o empurrao
-       no eixo Z da versao anterior, ela precisa de menos espaco. */
-    padding-bottom: clamp(3.25rem, 1.5rem + 6vw, 7.5rem);
-    position: relative; overflow: hidden;
-  }
-  .hero__grid{ display:grid; grid-template-columns: 1.05fr .95fr; gap: 4rem; align-items:center; }
-  @media (max-width: 980px){ .hero__grid{ grid-template-columns: 1fr; } }
-
-  /* max-width em ch limita a medida do titulo pela contagem de
-     caracteres, nao por pixel — segura o H1 em 2-3 linhas em qualquer
-     largura. Antes ele quebrava em 5 linhas no desktop e 6 no celular. */
-  .hero__title{
-    font-size: var(--fs-h1); font-weight: 700;
-    letter-spacing: -0.035em; line-height: 1.05;
-    max-width: 15ch; text-wrap: balance;
-  }
-  .hero__lead{ margin-top: 1.35rem; max-width: 33rem; font-size: 1.125rem; color: var(--text-2); line-height: 1.6; }
-  .hero__actions{ margin-top: 2rem; display:flex; flex-wrap:wrap; gap: .75rem; }
-  /* no celular os dois botoes empilham; larguras diferentes deixavam o
-     bloco torto, entao aqui eles esticam para a mesma largura */
-  @media (max-width: 480px){
-    .hero__actions{ display:grid; grid-template-columns: 1fr; gap: .65rem; }
-    .hero__actions .btn{ width: 100%; }
-  }
-
-  /* mockup de painel no hero */
-  .panel{
-    position: relative;
-    background: linear-gradient(180deg, var(--surface-2), var(--bg-raised));
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 0 0 1px rgba(255,255,255,.04), 0 40px 80px -40px rgba(0,0,0,.8), 0 0 60px -25px rgba(110,111,246,.35);
-    padding: 1.5rem;
-  }
-  .panel__bar{ display:flex; align-items:center; justify-content:space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
-  .panel__dots{ display:flex; gap: .4rem; }
-  .panel__dots span{ width:.5rem; height:.5rem; border-radius:50%; background: var(--border-strong); }
-  .panel__label{ font-size: .75rem; color: var(--text-3); }
-  .panel__grid{ margin-top: 1.25rem; display:grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
-  .panel__card{ grid-column: span 2; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
-  .panel__card--half{ grid-column: span 1; }
-  .panel__metric-top{ display:flex; align-items:center; justify-content:space-between; font-size: .8125rem; color: var(--text-2); }
-  .panel__metric-value{ margin-top: .4rem; display:flex; align-items:baseline; gap: .5rem; }
-  .panel__metric-value b{ font-size: 1.75rem; font-weight: 700; }
-  .panel__metric-value em{ font-style:normal; font-size: .8125rem; color: var(--success); }
-  .status-dot{ width: .5rem; height: .5rem; border-radius:50%; background: var(--success); position:relative; }
-  .status-dot::after{
-    content:''; position:absolute; inset:-3px; border-radius:50%;
-    border:1px solid rgba(61,220,151,.5); animation: ping 2.4s ease-out infinite;
-  }
-  @keyframes ping{ 0%{ transform:scale(.7); opacity:.9;} 100%{ transform:scale(1.9); opacity:0;} }
-  @media (prefers-reduced-motion: reduce){ .status-dot::after{ animation:none; } }
-
-  /* ------------------------------------------------------------------
-     JANELAS DE VIDRO DO HERO (Teams / caixa de entrada)
-     Duas mudancas em relacao a versao anterior:
-
-     1. VIDRO DE VERDADE. O corpo da janela agora e translucido e passa
-        por backdrop-filter, entao a grade e o brilho roxo do hero
-        aparecem desfocados por tras dela. Duas camadas de brilho por
-        cima (::before varre a superficie na diagonal, ::after ilumina a
-        quina de cima) dao a leitura de placa de vidro em vez de "caixa
-        escura com borda".
-
-     2. SEM GIRO 3D. As janelas ficam de frente, alinhadas ao eixo da
-        pagina — nada de rotateY/rotateX. A profundidade vem de camada:
-        a caixa de entrada e a janela da frente (mais clara, sombra mais
-        dura, borda mais viva) e a do Teams fica atras (mais apagada,
-        sombra mais difusa). E o mesmo truque que um app real usa pra
-        dizer o que esta por cima — so que sem torcer a tela.
-
-     E uma correcao: o movimento agora e SO no desktop e SO em resposta
-     ao mouse. A versao anterior reposicionava as janelas a cada evento
-     de scroll, em qualquer dispositivo — era isso que dava a sensacao
-     de que a pagina inteira tremia pra cima e pra baixo no celular.
-     ------------------------------------------------------------------ */
-  .hero__visual{
-    position: relative;
-  }
-  /* no desktop o painel desce um pouco dentro da coluna: e o que abre a
-     faixa livre em cima onde a janela do Teams se apoia sem cortar o
-     primeiro indicador do painel. */
-  @media (min-width: 981px){
-    .hero__visual{ margin-top: 3.25rem; }
-  }
-  /* halo colorido atras das janelas. O vidro precisa de alguma coisa pra
-     refratar: sobre um fundo chapado o backdrop-filter nao aparece. */
-  .hero__visual::before{
-    content: ""; position: absolute; z-index: 0; pointer-events: none;
-    inset: -18% -12% -18% -22%;
-    background:
-      radial-gradient(46% 40% at 24% 22%, rgba(110,111,246,.34), transparent 68%),
-      radial-gradient(40% 38% at 78% 76%, rgba(61,220,151,.16), transparent 70%),
-      radial-gradient(52% 46% at 62% 46%, rgba(145,146,248,.16), transparent 72%);
-    filter: blur(14px);
-  }
-  .hero__visual > *{ position: relative; }
-
-  .float-card{
-    position: absolute;
-    z-index: 2;
-    width: 20rem;
-    padding: 1rem 1.15rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.12);
-    /* a borda de cima e a esquerda ficam mais claras que as de baixo: e
-       assim que uma placa de vidro pega a luz que vem de cima. */
-    border-top-color: rgba(255,255,255,.22);
-    border-left-color: rgba(255,255,255,.16);
-    background:
-      linear-gradient(140deg, rgba(255,255,255,.10), rgba(255,255,255,.02) 42%, rgba(255,255,255,0) 62%),
-      linear-gradient(180deg, rgba(24,25,31,.74), rgba(12,13,17,.82));
-    backdrop-filter: blur(24px) saturate(175%);
-    -webkit-backdrop-filter: blur(24px) saturate(175%);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.20),
-      inset 0 0 0 1px rgba(255,255,255,.03),
-      0 24px 60px -20px rgba(0,0,0,.85),
-      0 0 60px -34px rgba(110,111,246,.55);
-    /* de frente, sem giro nenhum: so o deslize suave do parallax e a
-       respiracao vertical da animacao. */
-    transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
-    overflow: hidden;
-    will-change: transform;
-    transition: box-shadow .35s ease, border-color .35s ease;
-  }
-  /* reflexo diagonal atravessando a superficie */
-  .float-card::before{
-    content: ""; position: absolute; inset: 0; border-radius: inherit;
-    pointer-events: none; z-index: 0;
-    background: linear-gradient(118deg, transparent 24%, rgba(255,255,255,.14) 43%, rgba(255,255,255,.03) 52%, transparent 62%);
-  }
-  /* quina de cima iluminada, como a borda de uma placa de vidro */
-  .float-card::after{
-    content: ""; position: absolute; inset: 0; border-radius: inherit;
-    pointer-events: none; z-index: 0;
-    background:
-      radial-gradient(120% 90% at 12% -10%, rgba(255,255,255,.18), transparent 56%),
-      radial-gradient(90% 70% at 90% 108%, rgba(110,111,246,.14), transparent 62%);
-  }
-  /* o conteudo tem que ficar acima das duas camadas de brilho */
-  .float-card > *{ position: relative; z-index: 1; }
-
-  /* JANELA DE TRAS: um pouco menor, mais apagada e com sombra mais
-     difusa. Sem inclinar nada, e isso que faz o olho entender que ela
-     esta atras da caixa de entrada. */
-  .float-card--teams{
-    top: -7.7rem; left: -3rem;
-    z-index: 2; width: 18.75rem;
-    opacity: .96;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.16),
-      0 22px 56px -22px rgba(0,0,0,.8),
-      0 0 54px -36px rgba(110,111,246,.5);
-    animation: floatTeams 8s ease-in-out infinite;
-  }
-  /* JANELA DA FRENTE: maior, borda mais viva, sombra mais fechada e um
-     halo roxo mais forte — le como a camada de cima da pilha. */
-  .float-card--mail{
-    bottom: -5.25rem; right: -2.25rem;
-    z-index: 3; width: 20.5rem;
-    border-top-color: rgba(255,255,255,.26);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.24),
-      inset 0 0 0 1px rgba(255,255,255,.04),
-      0 30px 74px -20px rgba(0,0,0,.92),
-      0 0 76px -30px rgba(110,111,246,.62);
-    animation: floatMail 9.5s ease-in-out infinite; animation-delay: -3.4s;
-  }
-  /* mouse em cima: a janela acende de leve. Detalhe pequeno, mas e o que
-     faz a cena parecer viva em vez de uma imagem colada. */
-  @media (hover: hover) and (pointer: fine){
-    .float-card:hover{
-      border-color: rgba(255,255,255,.24);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.28),
-        0 34px 80px -20px rgba(0,0,0,.92),
-        0 0 90px -26px rgba(110,111,246,.7);
-    }
-  }
-
-  /* a flutuacao e so vertical e bem curta: 8px de sobe-e-desce, sem giro
-     nenhum. As duas andam em sentidos opostos, o que da a leitura de
-     duas camadas soltas sem precisar torcer a tela. */
-  @keyframes floatTeams{
-    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), 0); }
-    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) - 8px), 0); }
-  }
-  @keyframes floatMail{
-    0%, 100%{ transform: translate3d(var(--px,0px), var(--py,0px), 0); }
-    50%     { transform: translate3d(var(--px,0px), calc(var(--py,0px) + 7px), 0); }
-  }
-  @media (prefers-reduced-motion: reduce){ .float-card{ animation: none; } }
-
-  /* telas sem mouse de precisao (celular e tablet): nada se mexe, ponto.
-     E a correcao do problema relatado — no toque, qualquer movimento
-     preso ao dedo ou ao scroll le como pagina instavel. */
-  @media (hover: none), (pointer: coarse){
-    .float-card{ animation: none !important; will-change: auto; }
-  }
-
-  .float-card__bar{ display:flex; align-items:center; gap:.5rem; font-size:.8125rem; font-weight:600; color: var(--text-2); padding-bottom:.7rem; border-bottom:1px solid var(--border); }
-  .float-card__icon{ display:inline-flex; align-items:center; justify-content:center; width:1.55rem; height:1.55rem; border-radius:.45rem; flex:none; }
-  .float-card__icon--teams{ background: rgba(123,131,235,.18); color:#9aa0f5; }
-  .float-card__icon--mail{ background: rgba(0,120,212,.16); color:#3aa0ff; }
-
-  /* indicador "digitando..." — some por padrão, JS ativa antes de trocar a mensagem */
-  .float-card__typing{ margin-left:auto; display:none; align-items:center; gap:.35rem; font-size:.6875rem; font-weight:500; color: var(--accent-2); white-space:nowrap; }
-  .float-card__typing.is-active{ display:inline-flex; }
-  .float-card__typing-dots{ display:inline-flex; gap:.15rem; }
-  .float-card__typing-dots i{ width:.25rem; height:.25rem; border-radius:50%; background: var(--accent-2); display:inline-block; animation: typingBounce 1s ease-in-out infinite; }
-  .float-card__typing-dots i:nth-child(2){ animation-delay:.15s; }
-  .float-card__typing-dots i:nth-child(3){ animation-delay:.3s; }
-  @keyframes typingBounce{ 0%,60%,100%{ transform: translateY(0); opacity:.5; } 30%{ transform: translateY(-3px); opacity:1; } }
-
-  .float-card__chat{ margin-top:.85rem; display:flex; flex-direction:column; gap:.75rem; min-width:0; }
-  .float-card__msg{ display:flex; gap:.6rem; align-items:flex-start; min-width:0; transition: opacity .32s ease, transform .32s ease; }
-  .float-card__msg > div{ min-width:0; flex:1; }
-  .float-card__avatar{ flex:none; width:1.65rem; height:1.65rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.6875rem; font-weight:700; transition: background-color .32s ease, color .32s ease; }
-  .float-card__msg-top{ display:flex; justify-content:space-between; gap:.5rem; font-size:.75rem; min-width:0; }
-  .float-card__msg-top b{ color: var(--text-1); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .float-card__msg-top span{ color: var(--text-3); flex:none; }
-  .float-card__msg p{ margin-top:.2rem; font-size:.8125rem; color: var(--text-2); line-height:1.4; }
-
-  .float-card__mail-list{ margin-top:.85rem; }
-  .float-card__mail-item{ display:flex; gap:.6rem; align-items:flex-start; min-width:0; transition: opacity .32s ease, transform .32s ease; }
-  .float-card__mail-item > div{ min-width:0; flex:1; }
-  .float-card__mail-item + .float-card__mail-item{ margin-top:.7rem; padding-top:.7rem; border-top:1px solid var(--border); }
-  .float-card__dot{ flex:none; margin-top:.35rem; width:.45rem; height:.45rem; border-radius:50%; background: var(--accent-2); animation: dotPulse 2.2s ease-in-out infinite; }
-  .float-card__dot--muted{ background: var(--border-strong); animation: none; }
-  @keyframes dotPulse{ 0%,100%{ box-shadow: 0 0 0 0 rgba(145,146,248,.55); } 50%{ box-shadow: 0 0 0 4px rgba(145,146,248,0); } }
-  .float-card__mail-top{ display:flex; justify-content:space-between; gap:.5rem; font-size:.75rem; min-width:0; }
-  .float-card__mail-top b{ color: var(--text-1); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .float-card__mail-top span{ color: var(--text-3); flex:none; }
-  .float-card__mail-subject{ margin-top:.15rem; font-size:.8125rem; color: var(--text-1); font-weight:500; }
-  .float-card__mail-preview{ margin-top:.2rem; font-size:.75rem; color: var(--text-3); line-height:1.4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .float-card__msg.is-fading, .float-card__mail-item.is-fading{ opacity:0; transform: translateY(4px); }
-  @media (prefers-reduced-motion: reduce){
-    .float-card__dot{ animation:none; }
-    .float-card__typing-dots i{ animation:none; }
-  }
-
-  /* entre 981px e 1240px a coluna do visual ainda é estreita (grid de 2
-     colunas) e o container ainda não atingiu a margem externa que sobra em
-     telas bem largas — por isso aqui o deslocamento negativo das janelas
-     precisa ficar mais contido, senão elas vazam pra fora da viewport. */
-  @media (max-width: 1240px) and (min-width: 981px){
-    .float-card{ width: 17.5rem; }
-    /* entre 981 e 1240px a coluna do visual e estreita e o container ainda
-       nao tem margem externa sobrando: aqui as janelas precisam ficar mais
-       recolhidas, senao a da caixa de entrada encosta na borda da tela. */
-    /* nessa faixa a coluna do painel e mais estreita e os textos dele
-       quebram em mais linhas: as janelas precisam de mais folga vertical
-       pra nao cortar nenhum rotulo do painel no meio. */
-    .hero__visual{ margin-top: 4.75rem; }
-    .float-card--teams{ left: -1.5rem; top: -8rem; width: 16.5rem; }
-    .float-card--mail{ right: -0.25rem; bottom: -3.4rem; width: 17.75rem; }
-  }
-  /* abaixo de 980px o grid vira 1 coluna e o painel fica sozinho, ocupando
-     a largura toda — nesse formato empilhado as janelas flutuantes não têm
-     como sobrepor o painel sem tampar os dados dele. Por isso aqui elas
-     saem da posição absoluta e passam a ficar em pé, uma acima e outra
-     abaixo do painel, cada uma com seu próprio espaço reservado (sem
-     sobrepor nada). O leve giro e a flutuação continuam — só a estratégia
-     de posicionamento muda pro celular/tablet. */
-  @media (max-width: 980px){
-    .hero__visual{
-      display:flex; flex-direction:column; align-items:center; gap: 1.35rem;
-    }
-    .float-card{ position: static; width: 17rem; max-width: 100%; transform: none; }
-    /* empilhado, uma encosta pra esquerda e a outra pra direita: da o
-       mesmo ar de composicao solta sem tirar nada do prumo. E uma cena
-       completamente parada — no toque nada se mexe. */
-    .float-card--teams{ order:-1; align-self:flex-start; margin-left: .25rem; }
-    .float-card--mail{ order:1; align-self:flex-end; margin-right: .25rem; width: 18rem; }
-  }
-  /* abaixo de 640px o card ainda encolhe mais um pouco pra caber com
-     folga em telas de celular — testado em larguras de 320px a 640px. */
-  @media (max-width: 640px){
-    .hero__visual{ gap: 1rem; }
-    .float-card{ width: 15rem; padding: .8rem .95rem; }
-    .float-card--mail{ width: 15.75rem; }
-  }
-  @media (max-width: 400px){
-    .hero__visual{ gap: .85rem; }
-    .float-card{ width: 13.25rem; padding: .7rem .85rem; }
-    .float-card--mail{ width: 13.75rem; }
-    /* card bem menor precisa de texto interno mais compacto também */
-    .float-card__bar{ font-size: .6875rem; gap: .4rem; }
-    .float-card__icon{ width: 1.3rem; height: 1.3rem; }
-    .float-card__avatar{ width: 1.4rem; height: 1.4rem; font-size: .6rem; }
-    .float-card__msg-top, .float-card__mail-top{ font-size: .6875rem; }
-    .float-card__msg p{ font-size: .7rem; }
-    .float-card__mail-subject{ font-size: .7rem; }
-    .float-card__mail-preview{ font-size: .6875rem; }
-  }
-
-  /* ==========================================================================
-     7. TECH STRIP
-     ========================================================================== */
-  /* variante de section-head centralizada, usada só na tech-strip */
-  .section-head--center{ margin-inline: auto; text-align: center; max-width: 46rem; }
-
-  .tech-strip{
-    padding-block: clamp(3.5rem, 2.2rem + 4vw, 5rem);
-    background: linear-gradient(180deg, var(--bg-raised), var(--bg) 65%);
-  }
-
-  /* grupos: organiza as integrações por categoria (Microsoft 365, Marketing
-     digital, E-commerce) em vez de uma lista única sem hierarquia. */
-  .tech-groups{ margin-top: 2.5rem; display:flex; flex-direction:column; gap: 1.85rem; }
-  .tech-group__label{
-    text-align:center;
-    font-size: .75rem; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; color: var(--text-3);
-    margin-bottom: 1rem;
-  }
-  .tech-row{
-    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-    gap: 1rem;
-  }
-  .tech-group__note{
-    margin-top: 1rem; text-align:center;
-    font-size: .875rem; color: var(--text-3);
-    max-width: 34rem; margin-inline:auto;
-  }
-  .tech-item{
-    display:flex; align-items:center; gap:.75rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--border-strong);
-    border-radius: var(--radius-md);
-    padding: .85rem 1.25rem .85rem 1rem;
-    color: var(--text-1);
-    font-weight: 600; font-size: .95rem;
-    transition: transform .2s var(--ease), border-color .2s var(--ease), box-shadow .2s var(--ease);
-  }
-  .tech-item:hover{
-    transform: translateY(-2px);
-    border-color: var(--border-strong);
-    box-shadow: 0 16px 30px -22px rgba(0,0,0,.6);
-  }
-  .tech-item__icon{
-    width: 2.25rem; height: 2.25rem; flex-shrink:0;
-    display:grid; place-items:center;
-    border-radius: 8px;
-  }
-  /* cor de destaque de cada integração — usamos a cor de marca principal
-     de cada empresa (ou, para os serviços que são nossos, a cor de
-     destaque do próprio site) no ícone e na borda esquerda do card.
-     Não reproduzimos o logotipo completo de terceiros, que é marca
-     registrada — só a cor de identidade, que não é passível de proteção
-     da mesma forma. */
-  .tech-item--ms{ border-left-color: rgba(0,120,212,.55); }
-  .tech-item--ms .tech-item__icon{ background: rgba(0,120,212,.16); color: #3aa0ff; }
-  .tech-item--sharepoint{ border-left-color: rgba(3,131,135,.55); }
-  .tech-item--sharepoint .tech-item__icon{ background: rgba(3,131,135,.18); color: #2bc3c8; }
-  .tech-item--onedrive{ border-left-color: rgba(20,144,223,.55); }
-  .tech-item--onedrive .tech-item__icon{ background: rgba(20,144,223,.16); color: #4fb4f5; }
-  .tech-item--teams{ border-left-color: rgba(123,131,235,.6); }
-  .tech-item--teams .tech-item__icon{ background: rgba(123,131,235,.18); color: #9aa0f5; }
-  .tech-item--google{ border-left-color: rgba(66,133,244,.55); }
-  .tech-item--google .tech-item__icon{ background: var(--surface-2); }
-  .tech-item--drive{ border-left-color: rgba(15,157,88,.55); }
-  .tech-item--drive .tech-item__icon{ background: rgba(15,157,88,.16); color: #34d399; }
-  .tech-item--dropbox{ border-left-color: rgba(0,97,255,.55); }
-  .tech-item--dropbox .tech-item__icon{ background: rgba(0,97,255,.16); color: #5b93ff; }
-  .tech-item--meta{ border-left-color: rgba(8,102,255,.55); }
-  .tech-item--meta .tech-item__icon{ background: rgba(8,102,255,.16); color: #5b93ff; }
-  .tech-item--brand{ border-left-color: rgba(145,146,248,.6); }
-  .tech-item--brand .tech-item__icon{ background: rgba(110,111,246,.16); color: var(--accent-2); }
-  .tech-item--outlook{ border-left-color: rgba(0,120,212,.55); }
-  .tech-item--outlook .tech-item__icon{ background: rgba(0,120,212,.18); color: #4fc3f7; }
-  .tech-item--word{ border-left-color: rgba(43,87,154,.55); }
-  .tech-item--word .tech-item__icon{ background: rgba(43,87,154,.18); color: #6fa8f0; }
-  .tech-item--excel{ border-left-color: rgba(33,115,70,.55); }
-  .tech-item--excel .tech-item__icon{ background: rgba(33,115,70,.18); color: #4ade80; }
-  .tech-item--powerpoint{ border-left-color: rgba(196,62,28,.55); }
-  .tech-item--powerpoint .tech-item__icon{ background: rgba(196,62,28,.18); color: #ff8a65; }
-  .tech-item--powerbi{ border-left-color: rgba(240,171,0,.55); }
-  .tech-item--powerbi .tech-item__icon{ background: rgba(240,171,0,.18); color: #f5c542; }
-  .tech-item svg{ color: inherit; }
-
-  @media (max-width: 560px){
-    /* em telas estreitas, cards de largura variável ficam com visual
-       "escadinha"; em coluna única e largura igual fica mais organizado */
-    .tech-row{ flex-direction: column; align-items: stretch; }
-  }
-
-  /* ==========================================================================
-     9. COMO FUNCIONA
-     ========================================================================== */
-  .steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; counter-reset: step; }
-  @media (max-width: 780px){ .steps{ grid-template-columns: 1fr; } }
-  .step{ position:relative; padding-left: 3rem; }
-  .step::before{
-    counter-increment: step; content: counter(step);
-    position:absolute; left:0; top:0;
-    width: 2.25rem; height: 2.25rem;
-    border-radius:50%; border: 1px solid var(--border-strong);
-    display:grid; place-items:center;
-    font-size:.875rem; font-weight:700; color: var(--accent-2);
-    font-variant-numeric: tabular-nums;
-  }
-  .step h3{ font-size: 1rem; font-weight:600; }
-  .step p{ margin-top:.5rem; color: var(--text-2); font-size:.9375rem; line-height:1.6; }
-
-  /* ==========================================================================
-     10. CONTATO
-     ========================================================================== */
-  .contact{ display:grid; grid-template-columns: .85fr 1.15fr; gap: 3.5rem; }
-  @media (max-width: 920px){ .contact{ grid-template-columns: 1fr; } }
-  .contact-info{ display:flex; flex-direction:column; gap: 1rem; margin-top: 2rem; }
-  .contact-info__row{ display:flex; align-items:center; gap:.75rem; color: var(--text-2); font-size:.9375rem; }
-  .contact-info__icon{ width: 2rem; height:2rem; border-radius: var(--radius-sm); border: 1px solid var(--border); display:grid; place-items:center; flex-shrink:0; }
-  .form-note{ margin-top: 1rem; text-align:center; font-size: .8125rem; color: var(--text-3); }
-
-  /* ==========================================================================
-     11. FOOTER
-     ========================================================================== */
-  .footer{ padding-block: 4rem 2.5rem; }
-  .footer__grid{ display:grid; grid-template-columns: 1.4fr .8fr .8fr .8fr; gap: 2.5rem; }
-  @media (max-width: 780px){ .footer__grid{ grid-template-columns: 1fr 1fr; } }
-  .footer__blurb{ margin-top: 1rem; max-width: 20rem; color: var(--text-3); font-size: .875rem; line-height: 1.6; }
-  .footer__heading{ font-size: .75rem; text-transform: uppercase; letter-spacing:.06em; color: var(--text-2); margin-bottom: 1rem; }
-  .footer__links{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap: .65rem; }
-  .footer__links a{ color: var(--text-3); font-size: .875rem; transition: color .15s var(--ease); }
-  .footer__links a:hover{ color: var(--text-1); }
-  /* aviso legal de independência de marca — texto pequeno e discreto,
-     mas sempre visível, sem precisar abrir nenhum link */
-  .footer__disclaimer{
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    max-width: 52rem;
-    color: var(--text-3);
-    font-size: .8125rem;
-    line-height: 1.6;
-  }
-  .footer__bottom{ margin-top: 1.5rem; display:flex; flex-wrap:wrap; gap: 1rem; justify-content:space-between; color: var(--text-3); font-size: .8125rem; }
-
-
-  /* ==========================================================================
-     12. FAIXA DE PROVA — compromissos verificaveis, logo abaixo do hero
-     ==========================================================================
-     Sites B2B que convertem colocam prova imediatamente depois do hero.
-     Nao temos logo de cliente nem depoimento autorizado ainda, entao a
-     faixa carrega compromissos operacionais concretos (coisas que a
-     Tenant Flow controla e pode cumprir) em vez de numero inventado.
-     O mural de logos ja esta preparado no HTML, comentado. */
-  .proof{
-    padding-block: clamp(2.5rem, 1.8rem + 2.5vw, 3.5rem);
-    background: var(--bg-raised);
-  }
-  .proof__grid{
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1.75rem 2rem;
-  }
-  @media (max-width: 880px){ .proof__grid{ grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 420px){ .proof__grid{ grid-template-columns: 1fr; gap: 1.35rem; } }
-  .proof__item b{
-    display: block;
-    font-size: clamp(1.375rem, 1.15rem + .9vw, 1.75rem);
-    font-weight: 700; letter-spacing: -0.025em; line-height: 1.15;
-    font-variant-numeric: tabular-nums;
-  }
-  .proof__item span{
-    display: block; margin-top: .4rem;
-    font-size: .875rem; color: var(--text-3); line-height: 1.5;
-  }
-  .proof__note{
-    margin-top: 2.25rem; padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    font-size: .875rem; color: var(--text-3); line-height: 1.6;
-    max-width: 52rem;
-  }
-  .proof__note a{ color: var(--accent-2); }
-
-  /* ==========================================================================
-     13. PRECO
-     ========================================================================== */
-  .pricing{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  @media (max-width: 940px){ .pricing{ grid-template-columns: 1fr; } }
-  .price-card{ display: flex; flex-direction: column; }
-  .price-card--featured{
-    border-color: rgba(110,111,246,.45);
-    box-shadow: 0 0 0 1px rgba(110,111,246,.14), 0 30px 60px -42px rgba(110,111,246,.6);
-  }
-  .badge{
-    display: inline-block; align-self: flex-start;
-    font-size: .6875rem; font-weight: 700;
-    letter-spacing: .07em; text-transform: uppercase;
-    color: var(--accent-2);
-    background: rgba(110,111,246,.14);
-    border: 1px solid rgba(110,111,246,.32);
-    border-radius: 999px; padding: .25rem .65rem; margin-bottom: .9rem;
-  }
-  .price{ margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
-  .price__from{
-    display: block; font-size: .75rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: .07em; color: var(--text-3);
-  }
-  .price__value{
-    display: block; margin-top: .3rem;
-    font-size: 1.625rem; font-weight: 700; letter-spacing: -0.025em;
-  }
-  .price__hint{ margin-top: .5rem; font-size: .8125rem; color: var(--text-3); line-height: 1.55; }
-  .checklist{ list-style: none; margin: 1.35rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .65rem; }
-  .checklist li{ position: relative; padding-left: 1.5rem; font-size: .9375rem; color: var(--text-2); line-height: 1.5; }
-  .checklist li::before{
-    content: "\2713"; position: absolute; left: 0; top: 0;
-    color: var(--success); font-weight: 700; font-size: .8125rem; line-height: 1.75;
-  }
-  .price-card__spacer{ flex: 1 1 auto; min-height: 1.5rem; }
-  .price-card .btn{ width: 100%; }
-
-  /* ==========================================================================
-     14. FAQ — perguntas reais + FAQPage no schema
-     ========================================================================== */
-  .faq-layout{
-    display: grid; grid-template-columns: 1.55fr .82fr;
-    gap: 2rem; align-items: start;
-  }
-  @media (max-width: 960px){ .faq-layout{ grid-template-columns: 1fr; } }
-  .faq-aside{
-    /* acompanha a rolagem enquanto a lista de perguntas passa; o top
-       de 6rem limpa a navbar fixa */
-    position: sticky; top: 6rem;
-  }
-  @media (max-width: 960px){ .faq-aside{ position: static; } }
-  .faq-aside .btn{ margin-top: 1.35rem; }
-  .faq-aside__note{ margin-top: .85rem; text-align: center; font-size: .8125rem; color: var(--text-3); }
-  .faq{ display: grid; gap: .75rem; align-content: start; }
-  .faq details{
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    transition: border-color .2s var(--ease);
-  }
-  .faq details[open]{ border-color: var(--border-strong); }
-  .faq details:hover{ border-color: var(--border-strong); }
-  .faq summary{
-    list-style: none; cursor: pointer;
-    padding: 1.15rem 1.35rem;
-    font-weight: 600; font-size: 1rem; color: var(--text-1);
-    display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
-  }
-  .faq summary::-webkit-details-marker{ display: none; }
-  .faq summary::after{
-    content: ""; flex: none; width: .55rem; height: .55rem;
-    border-right: 1.6px solid var(--text-3); border-bottom: 1.6px solid var(--text-3);
-    transform: rotate(45deg) translate(-2px, -2px);
-    transition: transform .2s var(--ease);
-  }
-  .faq details[open] summary::after{ transform: rotate(-135deg) translate(-2px, -2px); }
-  .faq__body{
-    padding: 0 1.35rem 1.35rem;
-    color: var(--text-2); font-size: .9375rem; line-height: 1.65;
-  }
-  .faq__body a{ color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; }
-  .faq__body p + p{ margin-top: .75rem; }
-
-  /* ==========================================================================
-     15. FECHAMENTO DO CONTATO
-     ========================================================================== */
-  /* o formulario agora encerra a pagina: ganha um respiro extra em cima
-     para separar visualmente do bloco de FAQ que vem antes */
-  #contato{ scroll-margin-top: 5.5rem; }
-
-  /* titulo visivel apenas para leitores de tela: a faixa de prova
-     precisa de um <h2> para nao quebrar a hierarquia de cabecalhos,
-     mas visualmente ela nao tem titulo. */
-  .sr-only{
-    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
-    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
-  }
-  .proof__logos{
-    margin-top: 2rem; display:flex; flex-wrap:wrap; gap:1rem 2.5rem;
-    align-items:center; color: var(--text-3);
-    font-weight:600; font-size:.9375rem;
-  }
-
-  /* reveal-on-scroll */
-  .reveal{ opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-  .reveal.is-visible{ opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
-</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","email":"contato@tenantflow.com.br","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/favicon.svg"},"description":"Consultoria e suporte Microsoft 365 para pequenas e médias empresas: migração, Exchange Online, SharePoint, Teams, segurança e licenciamento.","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft","Google Ads","Meta Ads"],"contactPoint":[{"@type":"ContactPoint","contactType":"vendas","email":"contato@tenantflow.com.br","availableLanguage":["Portuguese"],"areaServed":["BR","PT"]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://tenantflow.com.br/#website","url":"https://tenantflow.com.br/","name":"Tenant Flow","inLanguage":"pt-BR","publisher":{"@id":"https://tenantflow.com.br/#organization"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://tenantflow.com.br/#business","name":"Tenant Flow","url":"https://tenantflow.com.br/","image":"https://tenantflow.com.br/assets/og-tenant-flow.png","parentOrganization":{"@id":"https://tenantflow.com.br/#organization"},"description":"Empresa de TI especializada em Microsoft 365: migração, e-mail corporativo em Exchange Online, SharePoint, Teams, segurança e licenciamento para pequenas e médias empresas.","email":"contato@tenantflow.com.br","priceRange":"$$","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"address":{"@type":"PostalAddress","addressCountry":"BR"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Serviços Microsoft 365","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Migração para Microsoft 365","url":"https://tenantflow.com.br/migracao-microsoft-365/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Suporte Exchange Online","url":"https://tenantflow.com.br/suporte-exchange-online/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"SharePoint e Teams","url":"https://tenantflow.com.br/sharepoint-e-teams/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Segurança e licenças","url":"https://tenantflow.com.br/seguranca-e-licenciamento-microsoft-365/"}}]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://tenantflow.com.br/#faq","inLanguage":"pt-BR","mainEntity":[{"@type":"Question","name":"Quanto tempo leva a migração para o Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"Depende do volume de caixas de e-mail e de arquivos. O trabalho tem três etapas: inventário e preparação do tenant, cópia dos dados em paralelo ao ambiente atual e o corte final. Só a última etapa tem hora marcada, e ela acontece fora do horário comercial. O prazo exato da sua empresa sai por escrito no diagnóstico, antes de qualquer mudança começar."}},{"@type":"Question","name":"Minha empresa precisa parar durante a migração?","acceptedAnswer":{"@type":"Answer","text":"Não. A cópia de e-mails, arquivos e acessos roda em paralelo ao ambiente que a empresa está usando, e a troca definitiva acontece fora do horário comercial. A equipe continua trabalhando normalmente enquanto a mudança acontece."}},{"@type":"Question","name":"Por que os e-mails da minha empresa caem no spam?","acceptedAnswer":{"@type":"Answer","text":"Na maioria dos casos o problema é SPF, DKIM ou DMARC ausente ou mal configurado no domínio. São os três registros que provam aos provedores que a mensagem saiu mesmo de você. Sem eles, o Gmail e o Outlook tratam o seu e-mail como suspeito. Reputação do domínio e listas de bloqueio também pesam, e as duas coisas se corrigem."}},{"@type":"Question","name":"Dá para reduzir o que eu pago de licença Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"Quase sempre dá. Os desperdícios mais comuns são licenças de pessoas que já saíram da empresa, planos acima do que cada usuário realmente usa e recursos pagos em duplicidade com outra ferramenta. A revisão compara, linha a linha, o que está contratado com o uso real de cada pessoa."}},{"@type":"Question","name":"O que está incluído no diagnóstico gratuito?","acceptedAnswer":{"@type":"Answer","text":"Uma chamada de trinta minutos e o levantamento do seu ambiente: entregabilidade de e-mail (SPF, DKIM e DMARC), licenças contratadas contra uso real, configuração de segurança, como autenticação em duas etapas e acesso condicional, e a organização dos arquivos. Você recebe um resumo do que está errado e do que custa arrumar, sem compromisso de contratar nada depois."}},{"@type":"Question","name":"Vocês atendem empresas de outras cidades e de Portugal?","acceptedAnswer":{"@type":"Answer","text":"Sim. Administração de Microsoft 365, Exchange Online, SharePoint e Teams é remota por natureza, porque o ambiente já está na nuvem. Atendemos empresas em todo o Brasil e também em Portugal, por chamada de vídeo, e-mail e acesso remoto de alta qualidade, sempre com a sua autorização."}}]}</script>
 </head>
 <body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<!-- Link de pulo: primeiro item focavel da pagina, invisivel ate
-     receber foco por teclado. Requisito de acessibilidade que faltava. -->
-<a class="skip-link" href="#top">Pular para o conteudo</a>
+<div class="notice">
+  <div class="container notice__inner">
+    <svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg>
+    <p>Atendimento remoto em todo o Brasil e também para empresas em Portugal. <a href="/#atendimento">Como funciona</a></p>
+  </div>
+</div>
 
-<!-- ==========================================================================
-     5. NAVBAR
-     ========================================================================== -->
-<header class="navbar">
-  <div class="container navbar__inner">
-    <a href="#top" class="brand">
-      <svg width="34" height="34" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="logoGrad" x1="6" y1="4" x2="38" y2="40" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#9d9ffb"/>
-            <stop offset="100%" stop-color="#5457e0"/>
-          </linearGradient>
-        </defs>
-        <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
-        <path d="M22 22 L22 4" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
-        <path d="M22 22 L6.4 31" stroke="#eceef2" stroke-width="1.1" stroke-opacity=".5"/>
-        <path d="M22 22 L37.6 31" stroke="url(#logoGrad)" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="22" cy="22" r="1.9" fill="url(#logoGrad)"/>
-        <circle cx="37.6" cy="31" r="1.9" fill="url(#logoGrad)"/>
-      </svg>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Tenant Flow, página inicial">
+      <svg class="brand__mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 4 37.6 13v18L22 40 6.4 31V13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M22 22V4M22 22 6.4 31" stroke="currentColor" stroke-width="1.4" stroke-opacity=".45"/><path d="M22 22 37.6 31" stroke="#2f8a9e" stroke-width="2.4" stroke-linecap="round"/><circle cx="22" cy="22" r="2.4" fill="#2f8a9e"/></svg>
       <span class="brand__name">Tenant Flow</span>
     </a>
 
-    <nav class="nav-links" aria-label="Principal">
-      <a href="/migracao-microsoft-365/">Microsoft 365</a>
-      <a href="/suporte-exchange-online/">Exchange Online</a>
-      <a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a>
-      <a href="#precos">Preços</a>
-      <a href="/blog/">Blog</a>
+    <nav class="nav" aria-label="Principal">
+      <ul class="nav__list">
+        <li class="nav__item--menu">
+          <a class="nav__link" href="/#servicos">Serviços</a>
+          <div class="nav__panel">
+              <a href="/migracao-microsoft-365/"><strong>Migração para Microsoft 365</strong><span>Google Workspace, Zimbra ou servidor próprio</span></a>
+              <a href="/suporte-exchange-online/"><strong>Suporte Exchange Online</strong><span>E-mail corporativo e entregabilidade</span></a>
+              <a href="/sharepoint-e-teams/"><strong>SharePoint e Teams</strong><span>Arquivos, permissões e colaboração</span></a>
+              <a href="/seguranca-e-licenciamento-microsoft-365/"><strong>Segurança e licenças</strong><span>MFA, acesso condicional e custos</span></a>
+          </div>
+        </li>
+        <li><a class="nav__link" href="/#processo">Como trabalhamos</a></li>
+        <li><a class="nav__link" href="/#precos">Preços</a></li>
+        <li><a class="nav__link" href="/blog/">Blog</a></li>
+      </ul>
     </nav>
 
-    <div class="navbar__actions">
-      <a href="#contato" class="btn btn--primary">Solicitar Diagnóstico M365</a>
-      <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4.5h12M2 11.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
+    <div class="site-header__cta">
+      <a class="button" href="/#contato">Agendar diagnóstico</a>
     </div>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-toggle__icon" aria-hidden="true"></span>
+      <span class="menu-toggle__label">Menu</span>
+    </button>
   </div>
 
-  <div id="mobilePanel" class="mobile-panel">
-    <div class="mobile-panel__inner">
-      <a href="/migracao-microsoft-365/">Migração Microsoft 365</a>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menu" hidden>
+    <div class="container mobile-menu__inner">
+      <a href="/migracao-microsoft-365/">Migração para Microsoft 365</a>
       <a href="/suporte-exchange-online/">Suporte Exchange Online</a>
-      <a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a>
-      <a href="/seguranca-e-licenciamento-microsoft-365/">Segurança &amp; Licenciamento</a>
-      <a href="#precos">Preços</a>
-      <a href="#faq">Dúvidas frequentes</a>
+      <a href="/sharepoint-e-teams/">SharePoint e Teams</a>
+      <a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a>
+      <a href="/#processo">Como trabalhamos</a>
+      <a href="/#precos">Preços</a>
       <a href="/blog/">Blog</a>
-      <a href="#contato">Contato</a>
-      <a href="#contato" class="btn btn--primary btn--block">Solicitar Diagnóstico M365</a>
+      <a class="button button--block" href="/#contato">Agendar diagnóstico</a>
     </div>
-  </div>
+  </nav>
 </header>
 
-<main id="top" tabindex="-1">
+<main id="conteudo">
 
-  <!-- ======================================================================
-       6. HERO
-       ====================================================================== -->
-  <section class="hero grid-bg">
+  <section class="hero">
     <div class="container hero__grid">
-      <div>
-        <span class="eyebrow">
-          <span class="eyebrow__dot"></span>
-          TI sob medida para pequenas e médias empresas
-        </span>
-
-        <h1 class="hero__title">
-          Microsoft 365 que funciona. Sem você precisar entender de TI.
-        </h1>
-
-        <p class="hero__lead">
-          Cuidamos do seu e-mail corporativo, dos arquivos da sua empresa na nuvem, do seu site e dos seus anúncios no Google e no Meta — para você parar de perder tempo, clientes e dinheiro com problema de tecnologia.
-        </p>
-
+      <div class="hero__copy">
+        <h1 class="display">Microsoft 365 bem administrado, para empresas que não podem parar.</h1>
+        <p class="lead">Cuidamos do e-mail, dos arquivos e das licenças da sua empresa. Migração, segurança e suporte com escopo, prazo e preço combinados por escrito antes de começar.</p>
         <div class="hero__actions">
-          <a href="#contato" class="btn btn--primary">
-            Solicitar Diagnóstico M365
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#servicos" class="btn btn--ghost">Ver o que fazemos</a>
+          <a class="button" href="#contato">Agendar diagnóstico gratuito</a>
+          <a class="link-arrow" href="#servicos">Ver serviços</a>
         </div>
-
+        <p class="hero__meta"><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Diagnóstico de 30 minutos, sem compromisso. Atendemos todo o Brasil e empresas em Portugal.</p>
       </div>
 
-      <div class="hero__visual">
-        <div class="reveal panel">
-          <div class="panel__bar">
-            <div class="panel__dots"><span></span><span></span><span></span></div>
-            <span class="panel__label">painel · tenantflow.com.br</span>
+      <figure class="report" aria-label="Exemplo de relatório entregue no diagnóstico">
+        <div class="report__head">
+          <div>
+            <p class="report__kicker">Relatório de diagnóstico</p>
+            <p class="report__title">Microsoft 365</p>
+            <p class="report__domain">escritorio-exemplo.com.br</p>
           </div>
-
-          <div class="panel__grid">
-            <div class="panel__card">
-              <div class="panel__metric-top">
-                <span>Entregabilidade de e-mail</span>
-                <span class="status-dot"></span>
-              </div>
-              <div class="panel__metric-value">
-                <b>98,4%</b>
-                <em>▲ 12,1%</em>
-              </div>
-            </div>
-
-            <div class="panel__card panel__card--half">
-              <div class="panel__metric-top"><span>SPF</span></div>
-              <div class="panel__metric-value" style="color:var(--success); font-size:.9375rem; font-weight:600;">Válido</div>
-            </div>
-            <div class="panel__card panel__card--half">
-              <div class="panel__metric-top"><span>DKIM</span></div>
-              <div class="panel__metric-value" style="color:var(--success); font-size:.9375rem; font-weight:600;">Válido</div>
-            </div>
-            <div class="panel__card panel__card--half">
-              <div class="panel__metric-top"><span>DMARC</span></div>
-              <div class="panel__metric-value" style="color:var(--success); font-size:.9375rem; font-weight:600;">Reject</div>
-            </div>
-            <div class="panel__card panel__card--half">
-              <div class="panel__metric-top"><span>Licenças M365</span></div>
-              <div class="panel__metric-value" style="font-size:.9375rem; font-weight:600;">128 / 130</div>
-            </div>
-          </div>
+          <span class="report__tag">Exemplo</span>
         </div>
-
-        <div class="float-card float-card--teams" aria-hidden="true">
-          <div class="float-card__bar">
-            <span class="float-card__icon float-card__icon--teams">
-              <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 4.5h12v7H8l-3 2.5v-2.5H3z" stroke-linejoin="round"/><circle cx="6.7" cy="8" r=".55" fill="currentColor" stroke="none"/><circle cx="9" cy="8" r=".55" fill="currentColor" stroke="none"/><circle cx="11.3" cy="8" r=".55" fill="currentColor" stroke="none"/></svg>
-            </span>
-            Microsoft Teams
-            <span class="float-card__typing" id="teamsTyping">digitando <span class="float-card__typing-dots"><i></i><i></i><i></i></span></span>
+        <dl class="report__rows">
+          <div class="report__row">
+            <dt>Registro SPF</dt>
+            <dd>include:spf.protection.outlook.com</dd>
+            <span class="status status--ok">Correto</span>
           </div>
-          <div class="float-card__chat" id="teamsChat">
-            <div class="float-card__msg">
-              <span class="float-card__avatar" style="background:rgba(123,131,235,.22); color:#9aa0f5;">AR</span>
-              <div>
-                <div class="float-card__msg-top"><b>Ana Ribeiro</b><span>09:41</span></div>
-                <p>Pessoal, o backup de ontem rodou 100% ✅</p>
-              </div>
-            </div>
-            <div class="float-card__msg">
-              <span class="float-card__avatar" style="background:rgba(58,160,255,.2); color:#3aa0ff;">CL</span>
-              <div>
-                <div class="float-card__msg-top"><b>Carlos Lima</b><span>09:42</span></div>
-                <p>Show! Já libero a migração do financeiro então.</p>
-              </div>
-            </div>
+          <div class="report__row">
+            <dt>Assinatura DKIM</dt>
+            <dd>não habilitada no domínio</dd>
+            <span class="status status--bad">Corrigir</span>
           </div>
-        </div>
-
-        <div class="float-card float-card--mail" aria-hidden="true">
-          <div class="float-card__bar">
-            <span class="float-card__icon float-card__icon--mail">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1.5 3.5h11v7h-11z" stroke-linejoin="round"/><path d="M1.5 3.5 7 7.8l5.5-4.3"/></svg>
-            </span>
-            Caixa de entrada
+          <div class="report__row">
+            <dt>Política DMARC</dt>
+            <dd>p=none, só monitora</dd>
+            <span class="status status--warn">Ajustar</span>
           </div>
-          <div class="float-card__mail-list" id="mailList">
-            <div class="float-card__mail-item">
-              <span class="float-card__dot"></span>
-              <div>
-                <div class="float-card__mail-top"><b>Financeiro</b><span>há 2 min</span></div>
-                <p class="float-card__mail-subject">Conciliação bancária de agosto concluída</p>
-                <p class="float-card__mail-preview">Todas as contas foram conferidas e fechadas sem...</p>
-              </div>
-            </div>
-            <div class="float-card__mail-item">
-              <span class="float-card__dot float-card__dot--muted"></span>
-              <div>
-                <div class="float-card__mail-top"><b>Contabilidade</b><span>há 40 min</span></div>
-                <p class="float-card__mail-subject">Balancete mensal pronto para revisão</p>
-                <p class="float-card__mail-preview">Relatório consolidado disponível no SharePoint...</p>
-              </div>
-            </div>
+          <div class="report__row">
+            <dt>Autenticação em duas etapas</dt>
+            <dd>ativa para 7 de 23 usuários</dd>
+            <span class="status status--warn">Ajustar</span>
           </div>
-        </div>
-      </div>
+          <div class="report__row">
+            <dt>Licenças</dt>
+            <dd>23 contratadas, 18 em uso</dd>
+            <span class="status status--warn">Revisar</span>
+          </div>
+        </dl>
+        <figcaption class="report__foot">
+          <span><strong>3 correções prioritárias</strong></span>
+          <span>Resumo com prioridade e custo de cada ajuste</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- ======================================================================
-       6b. FAIXA DE PROVA
-            Compromissos operacionais concretos, no lugar onde os sites B2B
-            de referencia colocam prova social. Quando houver logo de
-            cliente autorizado ou depoimento real, o mural comentado abaixo
-            entra aqui e esta faixa desce um nivel.
-       ====================================================================== -->
-  <section class="proof section--bordered" aria-labelledby="proof-title">
-    <div class="container">
-      <h2 id="proof-title" class="sr-only">Nossos compromissos</h2>
-      <div class="proof__grid reveal">
-        <div class="proof__item">
-          <b>30 minutos</b>
-          <span>é o que leva o diagnóstico inicial — gratuito e sem compromisso</span>
-        </div>
-        <div class="proof__item">
-          <b>0 paradas</b>
-          <span>a migração roda em paralelo e o corte é fora do horário comercial</span>
-        </div>
-        <div class="proof__item">
-          <b>&lt; 1 dia útil</b>
-          <span>para o primeiro retorno depois que você fala com a gente</span>
-        </div>
-        <div class="proof__item">
-          <b>Por escrito</b>
-          <span>escopo, prazo e custo definidos antes de qualquer mudança começar</span>
-        </div>
-      </div>
-
-      <!-- ================================================================
-           MURAL DE LOGOS DE CLIENTES — pronto para usar.
-           Descomente e troque os nomes assim que tiver autorizacao de uso
-           de marca dos clientes. Nao publique logo de cliente sem
-           autorizacao por escrito.
-           ================================================================
-      <div class="proof__logos reveal" aria-label="Empresas atendidas">
-        <span>Cliente A</span><span>Cliente B</span><span>Cliente C</span>
-      </div>
-      -->
-
-      <p class="proof__note">
-        A Tenant Flow é uma empresa de TI independente. Não somos revenda oficial
-        da Microsoft: trabalhamos do lado do cliente, o que significa que revisar
-        licença para baixo é do nosso interesse tanto quanto do seu. Veja
-        <a href="/seguranca-e-privacidade.html">como tratamos os seus dados</a>.
-      </p>
+  <div class="audience">
+    <div class="container audience__inner">
+      <p class="audience__title">Com quem trabalhamos</p>
+      <p class="audience__list"><span>Escritórios de contabilidade</span> <span>Escritórios de advocacia</span> <span>Empresas do setor financeiro</span></p>
     </div>
-  </section>
+  </div>
 
-  <!-- ======================================================================
-       7. TECH STRIP
-       ====================================================================== -->
-  <section class="section--bordered tech-strip">
+  <section class="section" id="servicos">
     <div class="container">
-      <div class="section-head section-head--center reveal">
-        <span class="eyebrow">
-          <span class="eyebrow__dot"></span>
-          Integrações
-        </span>
-        <h2 class="section-title">Já compatível com as ferramentas que sua empresa usa.</h2>
-      </div>
-
-      <div class="tech-groups">
-        <div class="tech-group reveal">
-          <p class="tech-group__label">Microsoft 365</p>
-          <div class="tech-row">
-            <span class="tech-item tech-item--sharepoint">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5.5 13.5h6.6a2.6 2.6 0 0 0 .5-5.15A3.9 3.9 0 0 0 5.2 6.8 2.9 2.9 0 0 0 5.5 13.5Z" stroke-linejoin="round"/></svg>
-              </span>
-              SharePoint
-            </span>
-            <span class="tech-item tech-item--teams">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 4.5h12v7H8l-3 2.5v-2.5H3z" stroke-linejoin="round"/><circle cx="6.7" cy="8" r=".55" fill="currentColor" stroke="none"/><circle cx="9" cy="8" r=".55" fill="currentColor" stroke="none"/><circle cx="11.3" cy="8" r=".55" fill="currentColor" stroke="none"/></svg>
-              </span>
-              Teams
-            </span>
-            <span class="tech-item tech-item--ms">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 4.5h14v9H2z" stroke-linejoin="round"/><path d="M2 4.5 9 10l7-5.5"/></svg>
-              </span>
-              Exchange Online
-            </span>
-            <span class="tech-item tech-item--ms">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7.6" cy="9" r="2.6"/><path d="M10.2 9v1.15a1.65 1.65 0 0 0 3.3 0V9a5.5 5.5 0 1 0-2.1 4.35" stroke-linecap="round"/></svg>
-              </span>
-              E-mails com próprio domínio
-            </span>
-          </div>
-        </div>
-
-        <div class="tech-group reveal">
-          <p class="tech-group__label">Aplicativos Microsoft 365</p>
-          <div class="tech-row">
-            <span class="tech-item tech-item--outlook">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="12" height="9.5" rx="1"/><path d="M2 4.5 8 9l6-4.5"/><circle cx="13.5" cy="13" r="3" fill="var(--surface)" stroke="currentColor"/></svg>
-              </span>
-              Outlook
-            </span>
-            <span class="tech-item tech-item--word">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="2.5" width="12" height="13" rx="1"/><path d="M5.5 8.5l1.3 4 1.7-3 1.7 3 1.3-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              Word
-            </span>
-            <span class="tech-item tech-item--excel">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="2.5" width="12" height="13" rx="1"/><path d="M3 6.5h12M3 10.5h12M7.5 2.5v13M11.5 2.5v13" stroke-linecap="round"/></svg>
-              </span>
-              Excel
-            </span>
-            <span class="tech-item tech-item--powerpoint">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="3.5" width="13" height="9" rx="1"/><path d="M7.2 6.2v3.6l3.1-1.8-3.1-1.8Z" stroke-linejoin="round"/><path d="M6 15.5h6" stroke-linecap="round"/></svg>
-              </span>
-              PowerPoint
-            </span>
-            <span class="tech-item tech-item--powerbi">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="10" width="3" height="5" rx=".5"/><rect x="7.5" y="5.5" width="3" height="9.5" rx=".5"/><rect x="12.5" y="8.5" width="3" height="6.5" rx=".5"/></svg>
-              </span>
-              Power BI
-            </span>
-          </div>
-          <p class="tech-group__note">Ajudamos a escolher o plano certo pra cada área da empresa — escritório, contabilidade, advocacia ou engenharia.</p>
-        </div>
-
-        <div class="tech-group reveal">
-          <p class="tech-group__label">Armazenamento em nuvem</p>
-          <div class="tech-row">
-            <span class="tech-item tech-item--onedrive">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.8 12.8h7.6a2.3 2.3 0 0 0 .4-4.6 3.5 3.5 0 0 0-6.6-1.3 2.6 2.6 0 0 0-1.4 5.9Z" stroke-linejoin="round"/></svg>
-              </span>
-              OneDrive
-            </span>
-            <span class="tech-item tech-item--drive">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 3.5 14 12.5H4Z" stroke-linejoin="round"/></svg>
-              </span>
-              Google Drive
-            </span>
-            <span class="tech-item tech-item--dropbox">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 4 13.5 6.8 9 9.6 4.5 6.8Z" stroke-linejoin="round"/><path d="M4.5 10.6 9 13.4l4.5-2.8M4.5 6.8v3.8M13.5 6.8v3.8M9 9.6v3.8" stroke-linejoin="round"/></svg>
-              </span>
-              Dropbox
-            </span>
-          </div>
-        </div>
-
-        <div class="tech-group reveal">
-          <p class="tech-group__label">Marketing digital</p>
-          <div class="tech-row">
-            <span class="tech-item tech-item--google">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="6" cy="6" r="2" fill="#4285F4"/><circle cx="12" cy="6" r="2" fill="#EA4335"/><circle cx="6" cy="12" r="2" fill="#FBBC05"/><circle cx="12" cy="12" r="2" fill="#34A853"/></svg>
-              </span>
-              Google Ads
-            </span>
-            <span class="tech-item tech-item--meta">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="6.5" cy="9" r="4.5"/><circle cx="11.5" cy="9" r="4.5"/></svg>
-              </span>
-              Meta Ads
-            </span>
-          </div>
-        </div>
-
-        <div class="tech-group reveal">
-          <p class="tech-group__label">Sites &amp; E-commerce</p>
-          <div class="tech-row">
-            <span class="tech-item tech-item--brand">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.2 6.5h9.6l-.75 6.6a1.5 1.5 0 0 1-1.5 1.33H6.45a1.5 1.5 0 0 1-1.5-1.33L4.2 6.5Z" stroke-linejoin="round"/><path d="M6.75 6.5V5a2.25 2.25 0 0 1 4.5 0v1.5" stroke-linecap="round"/></svg>
-              </span>
-              Criação de loja virtual (E-commerce)
-            </span>
-            <span class="tech-item tech-item--brand">
-              <span class="tech-item__icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="4" width="13" height="10" rx="1.2"/><path d="M2.5 6.6h13" stroke-linecap="round"/><circle cx="4.4" cy="5.3" r=".45" fill="currentColor" stroke="none"/></svg>
-              </span>
-              Criação de sites sob medida
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       8. SERVIÇOS
-       ====================================================================== -->
-  <section id="servicos" class="section section--bordered">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">O que fazemos</span>
-        <h2 class="section-title">Seis problemas de TI que sua empresa não precisa mais ter.</h2>
-        <p class="section-lead">Cada serviço resolve uma dor concreta — não vendemos pacote genérico de "suporte técnico".</p>
-      </div>
-
-      <div class="section-body grid-3">
-        <div id="m365" class="card reveal">
-          <div class="card__icon">
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2.5 5.5h14v9h-14z" stroke-linejoin="round"/><path d="M2.5 5.5 9.5 11l7-5.5"/></svg>
-          </div>
-          <h3 class="card__title">E-mail que não cai no SPAM</h3>
-          <p class="card__text">Configuramos corretamente SPF, DKIM e DMARC no Microsoft 365 para seus e-mails chegarem na caixa de entrada dos seus clientes — não na lixeira deles.</p>
-          <a class="card__link" href="/suporte-exchange-online/">Suporte Exchange Online</a>
-        </div>
-
-        <div class="card reveal">
-          <div class="card__icon">
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2.5 9.5a7 7 0 0 1 12-4.9M16.5 9.5a7 7 0 0 1-12 4.9" stroke-linecap="round"/><path d="M14.5 2.5v3h-3M4.5 16.5v-3h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="card__title">Troca de sistema sem parar a empresa</h3>
-          <p class="card__text">Migramos e-mail, arquivos e acessos para o Microsoft 365 com janela de corte mínima. Sua equipe trabalha normal enquanto a mudança acontece.</p>
-          <a class="card__link" href="/migracao-microsoft-365/">Migração para Microsoft 365</a>
-        </div>
-
-        <div class="card reveal">
-          <div class="card__icon">
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="4" width="14" height="11" rx="1.5"/><path d="M2.5 8h14" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="card__title">Arquivos organizados e seguros</h3>
-          <p class="card__text">Estrutura de pastas, permissões por setor e backup automático no SharePoint, OneDrive e Teams. Chega de arquivo perdido em pendrive.</p>
-          <a class="card__link" href="/sharepoint-e-teams/">Gestão de SharePoint e Teams</a>
-        </div>
-
-        <div class="card reveal">
-          <div class="card__icon">
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9.5" cy="9.5" r="7"/><path d="M9.5 5.5v4l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="card__title">Você paga só pelo que usa</h3>
-          <p class="card__text">Auditamos as licenças do Microsoft 365 contratadas e ajustamos ao uso real da sua equipe — sem pagar por recursos parados.</p>
-          <a class="card__link" href="/seguranca-e-licenciamento-microsoft-365/">Revisão de licenciamento</a>
-        </div>
-
-        <div id="anuncios" class="card reveal">
-          <div class="card__icon">
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9.5" cy="9.5" r="7"/><circle cx="9.5" cy="9.5" r="3.3"/><circle cx="9.5" cy="9.5" r=".6" fill="currentColor"/></svg>
-          </div>
-          <h3 class="card__title">Loja virtual e anúncios que vendem</h3>
-          <p class="card__text">Configuração técnica de e-commerce e gestão de campanhas no Google Ads e Meta Ads com foco em retorno — não em cliques bonitos no relatório.</p>
-        </div>
-
-        <div class="card reveal">
-          <div class="card__icon">
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9.5 2.5 3.5 5v4.3c0 4.2 2.7 7 6 7.8 3.3-.8 6-3.6 6-7.8V5l-6-2.5Z" stroke-linejoin="round"/><path d="M7 9.7l1.8 1.8 3.7-3.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="card__title">Proteção contra invasão e perda de dados</h3>
-          <p class="card__text">Autenticação em duas etapas, controle de acesso por perfil e backup gerenciado — reduzindo o risco sem travar o dia a dia da equipe.</p>
-          <a class="card__link" href="/seguranca-e-licenciamento-microsoft-365/">Segurança no Microsoft 365</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       9. COMO FUNCIONA
-       ====================================================================== -->
-  <section class="section section--bordered">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Como funciona</span>
-        <h2 class="section-title">Três passos, sem enrolação.</h2>
-      </div>
-
-      <div class="section-body steps">
-        <div class="step reveal">
-          <h3>Diagnóstico gratuito</h3>
-          <p>Em uma chamada de 30 minutos, avaliamos seu e-mail, suas licenças e sua infraestrutura atual.</p>
-        </div>
-        <div class="step reveal">
-          <h3>Plano e execução</h3>
-          <p>Você recebe um plano por escrito, com prazo e custo definidos, antes de qualquer mudança começar.</p>
-        </div>
-        <div class="step reveal">
-          <h3>Suporte contínuo</h3>
-          <p>Depois da entrega, continuamos acompanhando a operação — sem letra miúda e sem sumir.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       10b. PÁGINAS DE SERVIÇO — linkagem interna para as rotas dedicadas,
-            que é o que o Google usa para entender a arquitetura do site.
-       ====================================================================== -->
-  <section class="section section--bordered">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Serviços em detalhe</span>
-        <h2 class="section-title">Cada frente explicada em uma página só dela.</h2>
-        <p class="section-lead">Escopo, prazo, o que está incluído e as dúvidas que sempre aparecem.</p>
-      </div>
-      <div class="section-body grid-3">
-        <div class="card reveal">
-          <h3 class="card__title">Migração para Microsoft 365</h3>
-          <p class="card__text">Inventário, preparação do tenant, cópia em paralelo e corte fora do horário comercial.</p>
-          <a class="card__link" href="/migracao-microsoft-365/">Ver a página de migração</a>
-        </div>
-        <div class="card reveal">
-          <h3 class="card__title">Suporte Exchange Online</h3>
-          <p class="card__text">Entregabilidade, antiphishing, caixas compartilhadas, retenção e atendimento com SLA.</p>
-          <a class="card__link" href="/suporte-exchange-online/">Ver suporte de e-mail</a>
-        </div>
-        <div class="card reveal">
-          <h3 class="card__title">SharePoint &amp; Teams</h3>
-          <p class="card__text">Arquitetura de bibliotecas, permissão por grupo, migração de arquivos e adoção pelo time.</p>
-          <a class="card__link" href="/sharepoint-e-teams/">Ver SharePoint e Teams</a>
-        </div>
-        <div class="card reveal">
-          <h3 class="card__title">Segurança &amp; Licenciamento</h3>
-          <p class="card__text">MFA, acesso condicional, antiphishing e revisão de licenças que devolve dinheiro ao caixa.</p>
-          <a class="card__link" href="/seguranca-e-licenciamento-microsoft-365/">Ver segurança e licenças</a>
-        </div>
-        <div class="card reveal">
-          <h3 class="card__title">Blog Tenant Flow</h3>
-          <p class="card__text">Guias práticos de Microsoft 365 escritos a partir dos chamados que atendemos todo dia.</p>
-          <a class="card__link" href="/blog/">Ler o blog</a>
-        </div>
-        <div class="card reveal">
-          <h3 class="card__title">Diagnóstico M365 gratuito</h3>
-          <p class="card__text">Trinta minutos para mapear risco, desperdício de licença e configuração errada no seu ambiente.</p>
-          <a class="card__link" href="#contato">Solicitar diagnóstico</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ======================================================================
-       10c. PRECO
-            Pagina de servico B2B sem nenhuma ancora de valor perde lead
-            para o concorrente que mostra. O diagnostico e realmente
-            gratuito, entao ele ancora a secao. Os outros dois estao com
-            "Sob consulta" ate as faixas reais serem definidas — veja o
-            comentario TROCAR em cada um.
-       ====================================================================== -->
-  <section id="precos" class="section section--bordered">
-    <div class="container">
-      <div class="section-head section-head--split reveal">
+      <div class="section-head">
+        <p class="section-head__label">Serviços</p>
         <div>
-          <span class="eyebrow">Investimento</span>
-          <h2 class="section-title">Você sabe o preço antes de começar.</h2>
+          <h2>O que fazemos</h2>
+          <p class="section-head__intro">Seis frentes, cada uma com escopo fechado. As quatro primeiras têm página própria com etapas, prazos e perguntas frequentes.</p>
         </div>
-        <p class="section-lead">Nada de orçamento surpresa no meio do projeto. O diagnóstico é gratuito, e o que vier depois sai com escopo, prazo e valor fechados por escrito.</p>
       </div>
-
-      <div class="section-body pricing">
-        <div class="card price-card price-card--featured reveal">
-          <span class="badge">Comece por aqui</span>
-          <h3 class="card__title">Diagnóstico M365</h3>
-          <p class="card__text">Trinta minutos para mapear o que está custando dinheiro ou risco no seu ambiente hoje.</p>
-          <div class="price">
-            <span class="price__from">Investimento</span>
-            <span class="price__value">Gratuito</span>
-            <p class="price__hint">Sem compromisso de contratar nada depois.</p>
+      <ol class="services">
+        <li class="service">
+          <span class="service__number">01</span>
+          <h3 class="service__title"><a href="/suporte-exchange-online/">E-mail que chega na caixa de entrada</a></h3>
+          <div class="service__text">
+            <p>SPF, DKIM e DMARC configurados do jeito certo, proteção contra phishing, caixas compartilhadas e suporte ao Exchange Online no dia a dia.</p>
+            <a class="link-arrow" href="/suporte-exchange-online/">Suporte Exchange Online</a>
           </div>
-          <ul class="checklist">
+        </li>
+        <li class="service">
+          <span class="service__number">02</span>
+          <h3 class="service__title"><a href="/migracao-microsoft-365/">Migração para o Microsoft 365</a></h3>
+          <div class="service__text">
+            <p>Do Google Workspace, Zimbra, cPanel ou servidor próprio para o Microsoft 365, com cópia em paralelo e troca fora do horário comercial.</p>
+            <a class="link-arrow" href="/migracao-microsoft-365/">Migração para Microsoft 365</a>
+          </div>
+        </li>
+        <li class="service">
+          <span class="service__number">03</span>
+          <h3 class="service__title"><a href="/sharepoint-e-teams/">Arquivos no SharePoint e no Teams</a></h3>
+          <div class="service__text">
+            <p>Pastas por departamento, permissões por grupo e backup automático. Acaba o arquivo importante guardado no computador de uma pessoa só.</p>
+            <a class="link-arrow" href="/sharepoint-e-teams/">SharePoint e Teams</a>
+          </div>
+        </li>
+        <li class="service">
+          <span class="service__number">04</span>
+          <h3 class="service__title"><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a></h3>
+          <div class="service__text">
+            <p>Autenticação em duas etapas, acesso condicional e revisão das licenças contratadas contra o uso real de cada pessoa.</p>
+            <a class="link-arrow" href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenciamento</a>
+          </div>
+        </li>
+        <li class="service">
+          <span class="service__number">05</span>
+          <h3 class="service__title"><a href="/?assunto=site#contato">Sites e lojas virtuais</a></h3>
+          <div class="service__text">
+            <p>Site institucional e loja virtual sob medida, com a parte técnica resolvida: domínio, e-mail, velocidade e boas práticas de busca.</p>
+            <a class="link-arrow" href="/?assunto=site#contato">Conversar sobre um projeto</a>
+          </div>
+        </li>
+        <li class="service">
+          <span class="service__number">06</span>
+          <h3 class="service__title"><a href="/?assunto=anuncios#contato">Google Ads e Meta Ads</a></h3>
+          <div class="service__text">
+            <p>Gestão de campanhas com foco em retorno medido, não em cliques bonitos no relatório.</p>
+            <a class="link-arrow" href="/?assunto=anuncios#contato">Conversar sobre anúncios</a>
+          </div>
+        </li>
+      </ol>
+
+      <div class="stack">
+        <div>
+          <p class="stack__title">Microsoft 365</p>
+          <p class="stack__items">Exchange Online, SharePoint, OneDrive, Teams, Outlook, Word, Excel, PowerPoint e Power BI</p>
+        </div>
+        <div>
+          <p class="stack__title">Migramos a partir de</p>
+          <p class="stack__items">Google Workspace, Zimbra, cPanel, Locaweb, HostGator e Exchange local</p>
+        </div>
+        <div>
+          <p class="stack__title">Armazenamento</p>
+          <p class="stack__items">OneDrive, Google Drive e Dropbox</p>
+        </div>
+        <div>
+          <p class="stack__title">Marketing</p>
+          <p class="stack__items">Google Ads e Meta Ads</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="processo">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Como trabalhamos</p>
+        <div>
+          <h2>Três etapas, tudo combinado por escrito.</h2>
+        </div>
+      </div>
+      <ol class="steps-row">
+        <li>
+          <h3>Diagnóstico</h3>
+          <p>Uma chamada de 30 minutos e o levantamento do ambiente: e-mail, licenças, segurança e arquivos. É gratuito.</p>
+        </li>
+        <li>
+          <h3>Proposta</h3>
+          <p>Você recebe por escrito o que vamos fazer, em quanto tempo e por quanto. Nada começa sem a sua aprovação.</p>
+        </li>
+        <li>
+          <h3>Execução e acompanhamento</h3>
+          <p>Fazemos o trabalho com o mínimo de interrupção e ficamos por perto depois da entrega. Se fizer sentido, seguimos com suporte mensal.</p>
+        </li>
+      </ol>
+
+      <dl class="promises">
+        <div class="promise">
+          <dt>30 minutos</dt>
+          <dd>de diagnóstico inicial, gratuito e sem compromisso</dd>
+        </div>
+        <div class="promise">
+          <dt>Zero paradas</dt>
+          <dd>na migração: a cópia roda em paralelo e a troca é fora do expediente</dd>
+        </div>
+        <div class="promise">
+          <dt>1 dia útil</dt>
+          <dd>é o prazo máximo para a primeira resposta depois do seu contato</dd>
+        </div>
+        <div class="promise">
+          <dt>Por escrito</dt>
+          <dd>escopo, prazo e custo definidos antes de qualquer mudança</dd>
+        </div>
+      </dl>
+
+      <p class="independence">Somos uma empresa de TI independente, sem vínculo de revenda com a Microsoft. Trabalhamos do lado do cliente: se a revisão mostrar que dá para pagar menos licença, essa é a nossa recomendação. Veja também <a class="text-link" href="/seguranca-e-privacidade.html">como tratamos os seus dados</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="atendimento">
+    <div class="container reach">
+      <div>
+        <p class="reach__flags"><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Também em Portugal</p>
+        <h2>Atendemos o Brasil inteiro e empresas em Portugal.</h2>
+      </div>
+      <div>
+        <p class="lead">O Microsoft 365 fica na nuvem, e o nosso trabalho também. Por isso atendemos empresas em qualquer estado do Brasil e em Portugal com acesso remoto de alta qualidade, sem deslocamento e sem perder proximidade.</p>
+        <ul class="reach__list">
+          <li>Acesso remoto seguro, sempre com a sua autorização, para configurar, corrigir e treinar a equipe.</li>
+          <li>Chamadas de vídeo no diagnóstico, na entrega e sempre que alguém precisar de ajuda.</li>
+          <li>Relatórios e documentação por escrito, em português, para você guardar e consultar depois.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="precos">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Preços</p>
+        <div>
+          <h2>Você sabe o preço antes de começar.</h2>
+          <p class="section-head__intro">O diagnóstico é gratuito. O que vier depois sai com escopo, prazo e valor fechados por escrito.</p>
+        </div>
+      </div>
+      <div class="plans">
+        <article class="plan plan--featured">
+          <h3 class="plan__name">Diagnóstico</h3>
+          <p class="plan__summary">Trinta minutos para mapear o que está custando dinheiro ou trazendo risco.</p>
+          <p class="plan__price">Investimento <span class="plan__value">Gratuito</span></p>
+          <p class="plan__note">Sem compromisso de contratar depois.</p>
+          <ul class="plan__features">
             <li>Checagem de SPF, DKIM e DMARC</li>
             <li>Licenças contratadas contra uso real</li>
             <li>Revisão de MFA e acesso condicional</li>
             <li>Resumo por escrito do que encontramos</li>
           </ul>
-          <div class="price-card__spacer"></div>
-          <a href="#contato" class="btn btn--primary">Solicitar diagnóstico</a>
-        </div>
+          <a class="button" href="#contato">Agendar diagnóstico</a>
+        </article>
 
-        <div class="card price-card reveal">
-          <h3 class="card__title">Projeto pontual</h3>
-          <p class="card__text">Migração, implantação ou correção com começo, meio e fim definidos.</p>
-          <div class="price">
-            <span class="price__from">A partir de</span>
-            <!-- TROCAR: substitua "Sob consulta" pela faixa real, ex.: R$ 2.400 -->
-            <span class="price__value">Sob consulta</span>
-            <p class="price__hint">O valor varia com o número de caixas de e-mail, o volume de arquivos e o estado do ambiente atual.</p>
-          </div>
-          <ul class="checklist">
+        <article class="plan">
+          <h3 class="plan__name">Projeto pontual</h3>
+          <p class="plan__summary">Migração, implantação ou correção com começo, meio e fim.</p>
+          <!-- Quando tiver o valor, troque "Sob consulta" por, por exemplo, "R$ 1.500" -->
+          <p class="plan__price">A partir de <span class="plan__value">Sob consulta</span></p>
+          <p class="plan__note">Varia com o número de caixas, o volume de arquivos e o estado do ambiente.</p>
+          <ul class="plan__features">
             <li>Escopo e prazo fechados antes de começar</li>
             <li>Migração de e-mail, arquivos e acessos</li>
             <li>Corte fora do horário comercial</li>
             <li>Acompanhamento nas primeiras semanas</li>
           </ul>
-          <div class="price-card__spacer"></div>
-          <a href="/migracao-microsoft-365/" class="btn btn--ghost">Ver o que entra no projeto</a>
-        </div>
+          <a class="button button--outline" href="/migracao-microsoft-365/">Ver o que entra no projeto</a>
+        </article>
 
-        <div class="card price-card reveal">
-          <h3 class="card__title">Suporte mensal</h3>
-          <p class="card__text">Alguém responsável pelo seu Microsoft 365 todo mês, não só quando quebra.</p>
-          <div class="price">
-            <span class="price__from">A partir de</span>
-            <!-- TROCAR: substitua "Sob consulta" pela faixa real, ex.: R$ 890/mês -->
-            <span class="price__value">Sob consulta</span>
-            <p class="price__hint">O valor varia com o número de usuários e o nível de SLA contratado.</p>
-          </div>
-          <ul class="checklist">
-            <li>Atendimento com SLA definido</li>
+        <article class="plan">
+          <h3 class="plan__name">Suporte mensal</h3>
+          <p class="plan__summary">Alguém responsável pelo seu Microsoft 365 todo mês, não só quando quebra.</p>
+          <!-- Quando tiver o valor, troque "Sob consulta" por, por exemplo, "R$ 900/mês" -->
+          <p class="plan__price">A partir de <span class="plan__value">Sob consulta</span></p>
+          <p class="plan__note">Varia com o número de usuários e o nível de atendimento contratado.</p>
+          <ul class="plan__features">
+            <li>Atendimento com prazo de resposta definido</li>
             <li>Administração do tenant Microsoft 365</li>
             <li>Revisão periódica de licenças e segurança</li>
             <li>Canal direto, sem fila de chamado genérico</li>
           </ul>
-          <div class="price-card__spacer"></div>
-          <a href="/suporte-exchange-online/" class="btn btn--ghost">Ver o que entra no suporte</a>
-        </div>
+          <a class="button button--outline" href="/suporte-exchange-online/">Ver o que entra no suporte</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ======================================================================
-       10d. FAQ
-            Responde objecao antes do formulario e alimenta o FAQPage do
-            schema — que e o que o Google usa para montar resposta direta
-            na busca. O texto do JSON-LD e gerado da mesma fonte que este
-            HTML, entao os dois nunca saem de sincronia.
-       ====================================================================== -->
-  <section id="faq" class="section section--bordered">
+  <section class="section" id="blog">
     <div class="container">
-      <div class="section-head section-head--split reveal">
+      <div class="section-head">
+        <p class="section-head__label">Blog</p>
         <div>
-          <span class="eyebrow">Dúvidas frequentes</span>
-          <h2 class="section-title">O que as empresas perguntam antes de contratar.</h2>
+          <h2>Guias escritos a partir dos chamados que atendemos.</h2>
         </div>
-        <p class="section-lead">Se a sua dúvida não estiver aqui, ela cabe no diagnóstico gratuito — é para isso que ele existe.</p>
       </div>
+      <div class="posts">
+        <article class="post">
+          <p class="post__meta"><time datetime="2026-09-02">2 de setembro de 2026</time><span>10 min de leitura</span></p>
+          <h3 class="post__title"><a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">Por que o e-mail da sua empresa cai no spam (SPF, DKIM e DMARC)</a></h3>
+          <p class="post__excerpt">Os três registros que dizem ao mundo que o seu e-mail é legítimo e a sequência segura para arrumar o domínio.</p>
+        </article>
+        <article class="post">
+          <p class="post__meta"><time datetime="2026-08-26">26 de agosto de 2026</time><span>8 min de leitura</span></p>
+          <h3 class="post__title"><a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365 para empresas (e onde o dinheiro escapa)</a></h3>
+          <p class="post__excerpt">A diferença entre os planos e como uma revisão de licenças costuma devolver dinheiro ao caixa todo mês.</p>
+        </article>
+        <article class="post">
+          <p class="post__meta"><time datetime="2026-08-12">12 de agosto de 2026</time><span>9 min de leitura</span></p>
+          <h3 class="post__title"><a href="/blog/migrar-google-workspace-para-microsoft-365/">Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail</a></h3>
+          <p class="post__excerpt">O que acontece em cada etapa, quanto tempo leva de verdade e os erros que transformam a migração em uma semana perdida.</p>
+        </article>
+      </div>
+      <p class="mt-lg"><a class="link-arrow" href="/blog/">Ver todos os artigos</a></p>
+    </div>
+  </section>
 
-      <div class="section-body faq-layout">
-        <div class="faq reveal">
+  <section class="section section--alt" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Perguntas frequentes</p>
+        <div>
+          <h2>O que as empresas perguntam antes de contratar.</h2>
+          <p class="section-head__intro">Se a sua dúvida não estiver aqui, ela cabe no diagnóstico gratuito.</p>
+        </div>
+      </div>
+      <div class="section-body faq">
         <details>
           <summary>Quanto tempo leva a migração para o Microsoft 365?</summary>
-          <div class="faq__body"><p>Depende do volume de caixas de e-mail e de arquivos. Na prática o trabalho tem três etapas: inventário e preparação do tenant, cópia dos dados em paralelo ao ambiente atual, e o corte final. Só a última etapa tem hora marcada, e ela é agendada fora do horário comercial. O prazo exato da sua empresa sai por escrito no <a href="/migracao-microsoft-365/">diagnóstico de migração</a>, antes de qualquer mudança começar.</p></div>
+          <p>Depende do volume de caixas de e-mail e de arquivos. O trabalho tem três etapas: inventário e preparação do tenant, cópia dos dados em paralelo ao ambiente atual e o corte final. Só a última etapa tem hora marcada, e ela acontece fora do horário comercial. O prazo exato da sua empresa sai por escrito no diagnóstico, antes de qualquer mudança começar.</p>
         </details>
         <details>
           <summary>Minha empresa precisa parar durante a migração?</summary>
-          <div class="faq__body"><p>Não. A cópia de e-mails, arquivos e acessos roda em paralelo ao ambiente que a empresa está usando, e a troca definitiva acontece fora do horário comercial. É por isso que o compromisso é de zero paradas: a equipe continua trabalhando normalmente enquanto a mudança acontece por baixo.</p></div>
+          <p>Não. A cópia de e-mails, arquivos e acessos roda em paralelo ao ambiente que a empresa está usando, e a troca definitiva acontece fora do horário comercial. A equipe continua trabalhando normalmente enquanto a mudança acontece.</p>
         </details>
         <details>
           <summary>Por que os e-mails da minha empresa caem no spam?</summary>
-          <div class="faq__body"><p>Na maioria dos casos o problema é SPF, DKIM ou DMARC ausente ou mal configurado no domínio. São os três registros que provam aos provedores que a mensagem saiu mesmo de você — sem eles, o Gmail e o Outlook tratam o seu e-mail como suspeito. Reputação do domínio e listas de bloqueio também pesam, e as duas coisas se corrigem. Explicamos o passo a passo no artigo sobre <a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">e-mail caindo no spam</a>.</p></div>
+          <p>Na maioria dos casos o problema é SPF, DKIM ou DMARC ausente ou mal configurado no domínio. São os três registros que provam aos provedores que a mensagem saiu mesmo de você. Sem eles, o Gmail e o Outlook tratam o seu e-mail como suspeito. Reputação do domínio e listas de bloqueio também pesam, e as duas coisas se corrigem.</p>
         </details>
         <details>
           <summary>Dá para reduzir o que eu pago de licença Microsoft 365?</summary>
-          <div class="faq__body"><p>Quase sempre dá. Os desperdícios mais comuns são licença de gente que já saiu da empresa continuando a ser cobrada, plano acima do que a pessoa realmente usa, e recurso pago em duplicidade com outra ferramenta. A <a href="/seguranca-e-licenciamento-microsoft-365/">revisão de licenciamento</a> compara linha a linha o que está contratado com o uso real de cada usuário.</p></div>
+          <p>Quase sempre dá. Os desperdícios mais comuns são licenças de pessoas que já saíram da empresa, planos acima do que cada usuário realmente usa e recursos pagos em duplicidade com outra ferramenta. A revisão compara, linha a linha, o que está contratado com o uso real de cada pessoa.</p>
         </details>
         <details>
-          <summary>O que está incluído no Diagnóstico M365 gratuito?</summary>
-          <div class="faq__body"><p>Uma chamada de trinta minutos e o levantamento do seu ambiente: entregabilidade de e-mail (SPF, DKIM e DMARC), licenças contratadas contra uso real, configuração de segurança como autenticação em duas etapas e acesso condicional, e como os arquivos estão organizados. Você sai com um resumo do que está errado e do que custa arrumar. Sem compromisso de contratar nada depois.</p></div>
+          <summary>O que está incluído no diagnóstico gratuito?</summary>
+          <p>Uma chamada de trinta minutos e o levantamento do seu ambiente: entregabilidade de e-mail (SPF, DKIM e DMARC), licenças contratadas contra uso real, configuração de segurança, como autenticação em duas etapas e acesso condicional, e a organização dos arquivos. Você recebe um resumo do que está errado e do que custa arrumar, sem compromisso de contratar nada depois.</p>
         </details>
         <details>
-          <summary>Vocês atendem empresas de outras cidades?</summary>
-          <div class="faq__body"><p>Sim. Administração de Microsoft 365, Exchange Online, SharePoint e Teams é remota por natureza — o ambiente já está na nuvem. Atendemos empresas em todo o Brasil, e o atendimento acontece por chamada, e-mail e acesso remoto quando necessário.</p></div>
+          <summary>Vocês atendem empresas de outras cidades e de Portugal?</summary>
+          <p>Sim. Administração de Microsoft 365, Exchange Online, SharePoint e Teams é remota por natureza, porque o ambiente já está na nuvem. Atendemos empresas em todo o Brasil e também em Portugal, por chamada de vídeo, e-mail e acesso remoto de alta qualidade, sempre com a sua autorização.</p>
         </details>
-        </div>
-
-        <aside class="faq-aside card reveal">
-          <h3 class="card__title">Ficou uma dúvida que não está aqui?</h3>
-          <p class="card__text">Ela provavelmente é específica do seu ambiente — e é exatamente para isso que o diagnóstico existe. Trinta minutos, gratuito, sem compromisso.</p>
-          <a href="#contato" class="btn btn--primary btn--block">Falar com a gente</a>
-          <p class="faq-aside__note">Retorno em menos de 1 dia útil.</p>
-        </aside>
       </div>
     </div>
   </section>
 
-  <!-- ======================================================================
-       10. CONTATO
-       ====================================================================== -->
-  <section id="contato" class="section section--bordered">
+  <section class="section" id="contato">
     <div class="container contact">
-      <div class="reveal">
-        <span class="eyebrow">Contato</span>
-        <h2 class="section-title">Solicite o seu Diagnóstico M365 gratuito.</h2>
-        <p class="section-lead">Sem compromisso. Em 30 minutos você já sabe o que está custando dinheiro na sua TI atual.</p>
-
-        <div class="contact-info">
-          <div class="contact-info__row">
-            <span class="contact-info__icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1.5 3.5h11v7h-11z" stroke-linejoin="round"/><path d="M1.5 3.5 7 7.8l5.5-4.3"/></svg>
-            </span>
-            contato@tenantflow.com.br
-          </div>
-          <div class="contact-info__row">
-            <span class="contact-info__icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 3.5c0 5 3.5 8.5 8.5 8.5l1.5-2.3c.1-.2 0-.5-.2-.6L9.4 8c-.2-.1-.4 0-.5.1l-.8 1C7 8.6 5.9 7.5 5.4 6.4l1-.8c.1-.1.2-.3.1-.5L5.4 2.7c-.1-.2-.4-.3-.6-.2L2.5 4C2.2 4.2 2 3.9 2 3.5Z" stroke-linejoin="round"/></svg>
-            </span>
-            +55 (11) 4000-0000
-          </div>
+      <div>
+        <h2>Agende o diagnóstico gratuito.</h2>
+        <p class="lead contact__lead">Em 30 minutos você sabe o que está custando dinheiro ou trazendo risco na TI da sua empresa.</p>
+        <ol class="contact__steps">
+          <li>Você preenche o formulário ao lado. Leva menos de um minuto.</li>
+          <li>Respondemos em até 1 dia útil para marcar a conversa.</li>
+          <li>Na chamada, analisamos o ambiente e você recebe o resumo por escrito.</li>
+        </ol>
+        <div class="contact__direct">
+          <p>Prefere e-mail? <a class="text-link" href="mailto:contato@tenantflow.com.br">contato@tenantflow.com.br</a></p>
+          <p><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Atendimento remoto no Brasil e em Portugal.</p>
         </div>
       </div>
 
-      <form id="leadForm" class="reveal card" novalidate style="display:grid; gap:1.25rem;">
-        <!-- campos ocultos do FormSubmit.co: define assunto do e-mail, formata como
-             tabela legível, desativa o captcha (que quebraria o fluxo via AJAX),
-             envia uma cópia para diego.asmar@gmail.com (_cc) e adiciona um
-             campo-isca (_honey) que só bots preenchem, pra filtrar spam. -->
-        <input type="hidden" name="_subject" value="Novo pedido de diagnóstico — site Tenant Flow" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_cc" value="diego.asmar@gmail.com" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-        <div class="grid-2">
-          <div class="field">
-            <label for="nome">Nome completo</label>
-            <input id="nome" name="nome" type="text" required autocomplete="name" enterkeyhint="next" placeholder="Seu nome" />
+      <div class="contact__card">
+        <form class="form" id="lead-form" novalidate>
+          <input type="hidden" name="_subject" value="Novo pedido de diagnóstico pelo site">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_cc" value="diego.asmar@gmail.com">
+          <div class="form__trap" aria-hidden="true">
+            <label for="website">Não preencha este campo</label>
+            <input type="text" id="website" name="_honey" tabindex="-1" autocomplete="off">
           </div>
-          <div class="field">
-            <label for="empresa">Empresa</label>
-            <input id="empresa" name="empresa" type="text" required autocomplete="organization" enterkeyhint="next" placeholder="Nome da empresa" />
+
+          <div class="form__row">
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" required aria-describedby="nome-error">
+              <p class="field__error" id="nome-error"></p>
+            </div>
+            <div class="field">
+              <label for="empresa">Empresa</label>
+              <input id="empresa" name="empresa" type="text" autocomplete="organization" required aria-describedby="empresa-error">
+              <p class="field__error" id="empresa-error"></p>
+            </div>
           </div>
-        </div>
 
-        <div class="grid-2">
-          <div class="field">
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" required autocomplete="email" inputmode="email" spellcheck="false" enterkeyhint="next" placeholder="voce@empresa.com" />
+          <div class="form__row">
+            <div class="field">
+              <label for="email">E-mail de trabalho</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="email-error">
+              <p class="field__error" id="email-error"></p>
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone ou WhatsApp <span class="field__optional">(opcional)</span></label>
+              <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Com DDD ou código do país">
+            </div>
           </div>
+
           <div class="field">
-            <label for="telefone">Telefone / WhatsApp</label>
-            <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" enterkeyhint="next" placeholder="(11) 90000-0000" />
+            <label for="assunto">Assunto</label>
+            <select id="assunto" name="assunto">
+              <optgroup label="Microsoft 365">
+                <option data-key="migracao">Migração para Microsoft 365</option>
+                <option data-key="email">E-mail corporativo e Exchange Online</option>
+                <option data-key="sharepoint">SharePoint e Teams</option>
+                <option data-key="seguranca">Segurança e licenças</option>
+              </optgroup>
+              <optgroup label="Outros serviços">
+                <option data-key="site">Site ou loja virtual</option>
+                <option data-key="anuncios">Google Ads ou Meta Ads</option>
+                <option data-key="outro">Outro assunto</option>
+              </optgroup>
+            </select>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="necessidade">O que você precisa?</label>
-          <select id="necessidade" name="necessidade">
-            <optgroup label="Microsoft 365">
-              <option>Migração para Microsoft 365</option>
-              <option>E-mail corporativo / Exchange Online</option>
-              <option>SharePoint &amp; Teams</option>
-            </optgroup>
-            <optgroup label="Armazenamento em nuvem">
-              <option>OneDrive</option>
-              <option>Google Drive</option>
-              <option>Dropbox</option>
-            </optgroup>
-            <optgroup label="Sites &amp; e-commerce">
-              <option>Criação de site institucional</option>
-              <option>Loja virtual (e-commerce)</option>
-            </optgroup>
-            <optgroup label="Marketing digital">
-              <option>Google Ads</option>
-              <option>Meta Ads</option>
-            </optgroup>
-            <optgroup label="Outros">
-              <option>Segurança &amp; Conformidade</option>
-              <option>Outro</option>
-            </optgroup>
-          </select>
-        </div>
+          <div class="field">
+            <label for="mensagem">Conte um pouco do cenário <span class="field__optional">(opcional)</span></label>
+            <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+          </div>
 
-        <div class="field">
-          <label for="mensagem">Mensagem <span style="color:var(--text-3);font-weight:400">(opcional)</span></label>
-          <textarea id="mensagem" name="mensagem" rows="4" enterkeyhint="send" placeholder="Conte um pouco sobre o cenário atual (opcional)"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn--primary btn--block">Solicitar Diagnóstico M365</button>
-        <p id="formNote" class="form-note">Leva menos de 1 minuto. Respondemos em até 1 dia útil e nenhum dado é compartilhado com terceiros — veja a <a href="/seguranca-e-privacidade.html" style="color:var(--accent-2)">política de privacidade</a>.</p>
-      </form>
+          <button class="button button--block" type="submit">Enviar pedido de diagnóstico</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+          <p class="form__note">Usamos seus dados só para responder a este pedido. Veja a <a class="text-link" href="/seguranca-e-privacidade.html">política de privacidade</a>.</p>
+        </form>
+      </div>
     </div>
   </section>
-
 
 </main>
 
-<!-- ==========================================================================
-     11. FOOTER
-     ========================================================================== -->
-<footer class="footer section--bordered">
+<footer class="site-footer">
   <div class="container">
-    <div class="footer__grid">
-      <div>
-        <a href="#top" class="brand">
-          <svg width="28" height="28" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <path d="M22 4 L37.6 13 L37.6 31 L22 40 L6.4 31 L6.4 13 Z" stroke="#eceef2" stroke-width="1.4" stroke-linejoin="round"/>
-            <path d="M22 22 L37.6 31" stroke="#9192f8" stroke-width="1.6" stroke-linecap="round"/>
-            <circle cx="22" cy="22" r="1.8" fill="#9192f8"/>
-          </svg>
+    <div class="site-footer__grid">
+      <div class="site-footer__about">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 4 37.6 13v18L22 40 6.4 31V13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M22 22V4M22 22 6.4 31" stroke="currentColor" stroke-width="1.4" stroke-opacity=".45"/><path d="M22 22 37.6 31" stroke="#2f8a9e" stroke-width="2.4" stroke-linecap="round"/><circle cx="22" cy="22" r="2.4" fill="#2f8a9e"/></svg>
           <span class="brand__name">Tenant Flow</span>
         </a>
-        <p class="footer__blurb">Infraestrutura de TI, Microsoft 365 e operação técnica de e-commerce para empresas que não podem parar.</p>
+        <p>Microsoft 365, e-mail corporativo e infraestrutura de TI para empresas que não podem parar. Também fazemos sites, lojas virtuais e gestão de anúncios.</p>
+        <p class="site-footer__reach"><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Atendimento remoto no Brasil e em Portugal</p>
       </div>
 
       <div>
-        <p class="footer__heading">Serviços</p>
-        <ul class="footer__links">
-          <li><a href="/migracao-microsoft-365/">Migração Microsoft 365</a></li>
+        <p class="site-footer__title">Serviços</p>
+        <ul class="site-footer__links">
+          <li><a href="/migracao-microsoft-365/">Migração para Microsoft 365</a></li>
           <li><a href="/suporte-exchange-online/">Suporte Exchange Online</a></li>
-          <li><a href="/sharepoint-e-teams/">SharePoint &amp; Teams</a></li>
-          <li><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança &amp; Licenciamento</a></li>
-          <li><a href="#anuncios">E-commerce &amp; Anúncios</a></li>
+          <li><a href="/sharepoint-e-teams/">SharePoint e Teams</a></li>
+          <li><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a></li>
         </ul>
       </div>
 
       <div>
-        <p class="footer__heading">Conteúdo</p>
-        <ul class="footer__links">
+        <p class="site-footer__title">Conteúdo</p>
+        <ul class="site-footer__links">
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/blog/migrar-google-workspace-para-microsoft-365/">Migrar do Google Workspace</a></li>
           <li><a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365</a></li>
@@ -1792,256 +540,22 @@
       </div>
 
       <div>
-        <p class="footer__heading">Empresa</p>
-        <ul class="footer__links">
-          <li><a href="#servicos">Soluções</a></li>
-          <li><a href="#precos">Preços</a></li>
-          <li><a href="#faq">Dúvidas frequentes</a></li>
-          <li><a href="#contato">Contato</a></li>
-          <li><a href="/seguranca-e-privacidade.html">Segurança e Privacidade</a></li>
+        <p class="site-footer__title">Empresa</p>
+        <ul class="site-footer__links">
+          <li><a href="/#processo">Como trabalhamos</a></li>
+          <li><a href="/#precos">Preços</a></li>
+          <li><a href="/#faq">Perguntas frequentes</a></li>
+          <li><a href="mailto:contato@tenantflow.com.br">contato@tenantflow.com.br</a></li>
         </ul>
       </div>
     </div>
 
-    <!-- aviso de independência: citamos nomes e cores de marcas de terceiros
-         (Microsoft, Google, Meta) só para indicar compatibilidade técnica —
-         este texto deixa claro que não há afiliação, patrocínio ou
-         certificação oficial dessas empresas. -->
-    <p class="footer__disclaimer">
-      A Tenant Flow é uma empresa de TI independente, especializada em infraestrutura, e-mail corporativo e suporte técnico. Não somos a Microsoft, o Google ou a Meta, nem somos afiliados, patrocinados ou certificados por essas empresas — os nomes e as cores de marca citados aqui aparecem apenas para indicar compatibilidade com essas plataformas.
-    </p>
-
-    <div class="footer__bottom">
-      <span>© 2026 Tenant Flow. Todos os direitos reservados.</span>
-      <span>SharePoint · OneDrive · Google Drive · Dropbox · Teams · Exchange Online · Google Ads · Meta Ads · Sites &amp; E-commerce</span>
+    <div class="site-footer__legal">
+      <p>A Tenant Flow é uma empresa de TI independente. Não somos a Microsoft, o Google ou a Meta, nem somos afiliados, patrocinados ou certificados por essas empresas. Os nomes de produtos citados servem apenas para indicar compatibilidade.</p>
+      <p>© 2026 Tenant Flow · <a href="/seguranca-e-privacidade.html">Segurança e privacidade</a></p>
     </div>
   </div>
 </footer>
 
-<!-- ==========================================================================
-     12. JS
-     ========================================================================== -->
-<script>
-  (function(){
-    "use strict";
-
-    /* menu mobile */
-    var toggle = document.getElementById('navToggle');
-    var panel = document.getElementById('mobilePanel');
-    toggle && toggle.addEventListener('click', function(){
-      var open = panel.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    panel && panel.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        panel.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    /* estado de rolagem da navbar: transparente sobre o hero, com fundo
-       e borda depois que a pagina rola. Usa IntersectionObserver com uma
-       sentinela invisivel no topo em vez de escutar 'scroll', que dispara
-       centenas de vezes por segundo e trava a rolagem em celular fraco. */
-    var navbar = document.querySelector('.navbar');
-    if (navbar){
-      var sentinel = document.createElement('div');
-      sentinel.setAttribute('aria-hidden', 'true');
-      sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none';
-      document.body.insertBefore(sentinel, document.body.firstChild);
-      if ('IntersectionObserver' in window){
-        new IntersectionObserver(function(e){
-          navbar.classList.toggle('is-scrolled', !e[0].isIntersecting);
-        }, { threshold: 0 }).observe(sentinel);
-      } else {
-        navbar.classList.add('is-scrolled');
-      }
-    }
-
-    /* scroll reveal */
-    var revealEls = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window){
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting){
-            entry.target.classList.add('is-visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
-      revealEls.forEach(function(el){ io.observe(el); });
-    } else {
-      revealEls.forEach(function(el){ el.classList.add('is-visible'); });
-    }
-
-    /* formulário de lead — envia via FormSubmit.co direto para o e-mail da
-       Tenant Flow (contato@tenantflow.com.br), sem servidor próprio. O link é
-       público (fica visível no código-fonte), mas isso não é um problema: ele
-       só permite ENVIAR para esse e-mail fixo, configurado no lado do
-       FormSubmit — ninguém consegue usá-lo pra ler ou desviar os envios.
-       IMPORTANTE: no primeiro envio, o FormSubmit manda um e-mail de
-       confirmação pra contato@tenantflow.com.br — é preciso clicar no link
-       daquele e-mail pra ativar o recebimento. */
-    var FORM_ENDPOINT = 'https://formsubmit.co/ajax/contato@tenantflow.com.br';
-    var form = document.getElementById('leadForm');
-    var note = document.getElementById('formNote');
-
-    form && form.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (!form.checkValidity()){ form.reportValidity(); return; }
-
-      var btn = form.querySelector('button[type="submit"]');
-      var original = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = 'Enviando...';
-
-      var send = FORM_ENDPOINT
-        ? fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-            .then(function(res){ if (!res.ok) throw new Error('form submission failed'); return res; })
-        : new Promise(function(resolve){ setTimeout(resolve, 500); });
-
-      send
-        .then(function(){
-          form.reset();
-          note.textContent = 'Recebemos sua solicitação. Retornaremos em até 1 dia útil.';
-          note.style.color = 'var(--success)';
-        })
-        .catch(function(){
-          note.textContent = 'Não foi possível enviar agora. Tente novamente ou use o e-mail acima.';
-          note.style.color = '#f87171';
-        })
-        .finally(function(){
-          btn.disabled = false;
-          btn.textContent = original;
-        });
-    });
-
-    /* ----------------------------------------------------------------------
-       Mockups flutuantes do hero (Teams / caixa de entrada) — decorativos.
-       As mensagens e e-mails alternam sozinhos pra dar sensação de atividade
-       real. A janela já flutua sozinha via @keyframes CSS, e ganha um
-       empurrão extra ao mover o mouse (desktop) e ao rolar a página — isso
-       funciona em qualquer dispositivo, inclusive touch, onde não existe
-       mouse. Tudo desligado se o usuário pedir menos movimento no sistema
-       operacional. */
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var heroVisual = document.querySelector('.hero__visual');
-
-    /* So mexe as janelas em aparelho com mouse de precisao. A versao
-       anterior tambem ouvia o evento de scroll e reposicionava as duas
-       janelas a cada quadro rolado, em qualquer aparelho — no celular
-       isso lia como a pagina inteira balancando. O listener de scroll
-       saiu por completo. */
-    var pontDePrecisao = window.matchMedia &&
-      window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (heroVisual && !reduceMotion && pontDePrecisao) {
-      var floatCards = heroVisual.querySelectorAll('.float-card');
-      var raf = null;
-      var alvoX = 0, alvoY = 0;
-
-      var aplicar = function(){
-        raf = null;
-        floatCards.forEach(function(card, i){
-          var prof = (i + 1) * 6;
-          card.style.setProperty('--px', (alvoX * prof).toFixed(1) + 'px');
-          card.style.setProperty('--py', (alvoY * prof).toFixed(1) + 'px');
-        });
-      };
-      var agendar = function(){ if (!raf) raf = requestAnimationFrame(aplicar); };
-
-      heroVisual.addEventListener('mousemove', function(e){
-        var r = heroVisual.getBoundingClientRect();
-        alvoX = (e.clientX - r.left) / r.width - 0.5;
-        alvoY = (e.clientY - r.top) / r.height - 0.5;
-        agendar();
-      });
-      heroVisual.addEventListener('mouseleave', function(){
-        alvoX = 0; alvoY = 0; agendar();
-      });
-    }
-
-    /* Teams: mensagens alternando com indicador de "digitando" antes de cada troca */
-    var teamsChat = document.getElementById('teamsChat');
-    var teamsTyping = document.getElementById('teamsTyping');
-    if (teamsChat && !reduceMotion) {
-      var teamsMsgs = [
-        { initials: 'AR', bg: 'rgba(123,131,235,.22)', color: '#9aa0f5', name: 'Ana Ribeiro',      time: '09:41', text: 'Pessoal, o backup de ontem rodou 100% ✅' },
-        { initials: 'CL', bg: 'rgba(58,160,255,.2)',   color: '#3aa0ff', name: 'Carlos Lima',       time: '09:42', text: 'Show! Já libero a migração do financeiro então.' },
-        { initials: 'BS', bg: 'rgba(61,220,151,.2)',   color: '#3ddc97', name: 'Bianca Souza',      time: '09:47', text: 'Fechamento contábil de agosto bateu certinho 📊' },
-        { initials: 'RN', bg: 'rgba(240,171,85,.2)',   color: '#f0ab55', name: 'Rafael Nogueira',   time: '09:52', text: 'Contrato revisado pelo jurídico, só falta assinar.' }
-      ];
-      var teamsSlots = teamsChat.querySelectorAll('.float-card__msg');
-      var teamsIndex = 0;
-
-      var paintTeams = function(i){
-        [0, 1].forEach(function(offset){
-          var msg = teamsMsgs[(i + offset) % teamsMsgs.length];
-          var slot = teamsSlots[offset];
-          if (!slot) return;
-          var avatar = slot.querySelector('.float-card__avatar');
-          avatar.textContent = msg.initials;
-          avatar.style.background = msg.bg;
-          avatar.style.color = msg.color;
-          slot.querySelector('.float-card__msg-top b').textContent = msg.name;
-          slot.querySelector('.float-card__msg-top span').textContent = msg.time;
-          slot.querySelector('p').textContent = msg.text;
-        });
-      };
-      paintTeams(teamsIndex);
-
-      setInterval(function(){
-        if (teamsTyping) teamsTyping.classList.add('is-active');
-        setTimeout(function(){
-          if (teamsTyping) teamsTyping.classList.remove('is-active');
-          teamsSlots.forEach(function(s){ s.classList.add('is-fading'); });
-          setTimeout(function(){
-            teamsIndex = (teamsIndex + 1) % teamsMsgs.length;
-            paintTeams(teamsIndex);
-            teamsSlots.forEach(function(s){ s.classList.remove('is-fading'); });
-          }, 320);
-        }, 1300);
-      }, 4600);
-    }
-
-    /* Caixa de entrada: e-mails de financeiro, contabilidade e jurídico alternando */
-    var mailList = document.getElementById('mailList');
-    if (mailList && !reduceMotion) {
-      var mailMsgs = [
-        { unread: true,  sender: 'Financeiro',            time: 'há 2 min',  subject: 'Conciliação bancária de agosto concluída',      preview: 'Todas as contas foram conferidas e fechadas sem...' },
-        { unread: false, sender: 'Contabilidade',          time: 'há 40 min', subject: 'Balancete mensal pronto para revisão',           preview: 'Relatório consolidado disponível no SharePoint...' },
-        { unread: true,  sender: 'Jurídico',               time: 'há 1h',     subject: 'Parecer sobre novo contrato de fornecimento',    preview: 'Cláusulas revisadas, aguardando aprovação final...' },
-        { unread: false, sender: 'Suporte Tenant Flow',    time: 'ontem',     subject: 'Seu diagnóstico técnico está pronto',            preview: 'Encontramos 3 pontos de economia na sua infraestrutura...' }
-      ];
-      var mailSlots = mailList.querySelectorAll('.float-card__mail-item');
-      var mailIndex = 0;
-
-      var paintMail = function(i){
-        [0, 1].forEach(function(offset){
-          var item = mailMsgs[(i + offset) % mailMsgs.length];
-          var slot = mailSlots[offset];
-          if (!slot) return;
-          var dot = slot.querySelector('.float-card__dot');
-          dot.classList.toggle('float-card__dot--muted', !item.unread);
-          slot.querySelector('.float-card__mail-top b').textContent = item.sender;
-          slot.querySelector('.float-card__mail-top span').textContent = item.time;
-          slot.querySelector('.float-card__mail-subject').textContent = item.subject;
-          var preview = slot.querySelector('.float-card__mail-preview');
-          if (preview) preview.textContent = item.preview || '';
-        });
-      };
-      paintMail(mailIndex);
-
-      setInterval(function(){
-        mailSlots.forEach(function(s){ s.classList.add('is-fading'); });
-        setTimeout(function(){
-          mailIndex = (mailIndex + 1) % mailMsgs.length;
-          paintMail(mailIndex);
-          mailSlots.forEach(function(s){ s.classList.remove('is-fading'); });
-        }, 320);
-      }, 5200);
-    }
-  })();
-</script>
 </body>
 </html>
