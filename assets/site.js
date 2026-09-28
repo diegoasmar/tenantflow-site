@@ -24,6 +24,7 @@
   const LEAD_RECIPIENTS = ['suporte@tenantflow.com.br', 'tenantflow@outlook.com', 'diego.asmar@gmail.com'];
   const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${LEAD_RECIPIENTS[0]}`;
   const LEAD_CC = LEAD_RECIPIENTS.slice(1).join(',');
+  const LEAD_CC_SEMI = LEAD_RECIPIENTS.slice(1).join('; ');
   const CONTACT_EMAIL = LEAD_RECIPIENTS.join(',');
 
   const prefersReducedMotion = () =>
@@ -208,44 +209,54 @@
     return fetch(url, { ...options, signal: controller.signal }).finally(() => clearTimeout(timer));
   };
 
+  /* Os dois serviços abaixo recebem os dados como FormData (o mesmo formato
+     de um <form> comum), nunca como JSON: pedir Content-Type: application/json
+     obriga o navegador a fazer uma verificação extra (preflight) antes de
+     enviar, e em várias redes/antivírus essa verificação é bloqueada — o
+     pedido nem chega a saber se o serviço está de pé. Com FormData isso não
+     acontece. */
   async function viaWeb3Forms(lead) {
+    const fd = new FormData();
+    fd.append('access_key', WEB3FORMS_KEY);
+    fd.append('subject', `Novo pedido de diagnóstico: ${lead.fields.Empresa}`);
+    fd.append('from_name', 'Site Tenant Flow');
+    fd.append('replyto', lead.fields['E-mail']);
+    fd.append('ccemail', LEAD_CC_SEMI); // recurso Pro do Web3Forms; sem plano Pro, é ignorado.
+    Object.entries(lead.fields).forEach(([key, value]) => fd.append(key, value));
+
     const response = await withTimeout('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_KEY,
-        subject: `Novo pedido de diagnóstico: ${lead.fields.Empresa}`,
-        from_name: 'Site Tenant Flow',
-        replyto: lead.fields['E-mail'],
-        cc: LEAD_CC,
-        ...lead.fields
-      })
+      headers: { Accept: 'application/json' },
+      body: fd
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || !result.success) throw new Error(result.message || `HTTP ${response.status}`);
   }
 
   async function viaFormSubmit(lead) {
+    const fd = new FormData();
+    fd.append('_subject', `Novo pedido de diagnóstico: ${lead.fields.Empresa}`);
+    fd.append('_template', 'table');
+    fd.append('_captcha', 'false');
+    fd.append('_replyto', lead.fields['E-mail']);
+    fd.append('_cc', LEAD_CC);
+    Object.entries(lead.fields).forEach(([key, value]) => fd.append(key, value));
+
     const response = await withTimeout(FORMSUBMIT_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        _subject: `Novo pedido de diagnóstico: ${lead.fields.Empresa}`,
-        _template: 'table',
-        _captcha: 'false',
-        _replyto: lead.fields['E-mail'],
-        _cc: LEAD_CC,
-        ...lead.fields
-      })
+      headers: { Accept: 'application/json' },
+      body: fd
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || String(result.success) === 'false') throw new Error(result.message || `HTTP ${response.status}`);
   }
 
-  /* Tenta os serviços em ordem; só falha se todos falharem. */
+  /* Tenta os serviços em ordem; só falha se todos falharem. FormSubmit vai
+     primeiro porque, de graça, ele copia os três endereços; o Web3Forms
+     entra como reforço (de graça, avisa só o endereço principal). */
   async function sendLead(lead) {
     if (lead.trap) return;
-    const senders = WEB3FORMS_KEY ? [viaWeb3Forms, viaFormSubmit] : [viaFormSubmit];
+    const senders = WEB3FORMS_KEY ? [viaFormSubmit, viaWeb3Forms] : [viaFormSubmit];
     let lastError;
     for (const send of senders) {
       try {
