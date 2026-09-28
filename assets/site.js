@@ -19,8 +19,12 @@
 
   const GA_MEASUREMENT_ID = '';
   const WEB3FORMS_KEY = '';
-  const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/contato@tenantflow.com.br';
-  const CONTACT_EMAIL = 'contato@tenantflow.com.br';
+  /* Todo pedido de diagnóstico chega para os três endereços abaixo (o primeiro
+     recebe o e-mail, os outros entram em cópia). */
+  const LEAD_RECIPIENTS = ['suporte@tenantflow.com.br', 'tenantflow@outlook.com', 'diego.asmar@gmail.com'];
+  const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${LEAD_RECIPIENTS[0]}`;
+  const LEAD_CC = LEAD_RECIPIENTS.slice(1).join(',');
+  const CONTACT_EMAIL = LEAD_RECIPIENTS.join(',');
 
   const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -213,6 +217,7 @@
         subject: `Novo pedido de diagnóstico: ${lead.fields.Empresa}`,
         from_name: 'Site Tenant Flow',
         replyto: lead.fields['E-mail'],
+        cc: LEAD_CC,
         ...lead.fields
       })
     });
@@ -229,7 +234,7 @@
         _template: 'table',
         _captcha: 'false',
         _replyto: lead.fields['E-mail'],
-        _cc: 'diego.asmar@gmail.com',
+        _cc: LEAD_CC,
         ...lead.fields
       })
     });
