@@ -792,6 +792,28 @@ code {
   }
 }
 
+/* Chamada para ação com destaque sutil */
+
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(15, 76, 92, 0.32); }
+  50% { box-shadow: 0 0 0 7px rgba(15, 76, 92, 0); }
+}
+
+.site-header__cta .button {
+  animation: cta-pulse 2.8s ease-in-out infinite;
+}
+
+.site-header__cta .button:hover,
+.site-header__cta .button:focus-visible {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__cta .button {
+    animation: none;
+  }
+}
+
 .site-footer {
   padding-block: clamp(3.5rem, 3rem + 3vw, 5rem) 2rem;
   background: var(--ink);
@@ -2417,6 +2439,41 @@ code {
 }
 
 /* Serviços em lista numerada */
+
+.services-group + .services-group {
+  margin-top: 0.5rem;
+}
+
+.services-group__label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 2rem;
+  padding-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.services-group:first-child .services-group__label {
+  padding-top: 0;
+}
+
+.services-group__label::before {
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 2px;
+  background: var(--accent);
+  flex: none;
+}
+
+.services-group + .services-group .services {
+  border-top: none;
+}
 
 .services {
   border-top: 1px solid var(--ink);
