@@ -2612,6 +2612,21 @@ code {
   color: var(--ink-3);
 }
 
+@media (min-width: 48rem) {
+  .promises--3 {
+    grid-template-columns: 1fr;
+  }
+  .promises--3 .promise {
+    border-right: 0;
+  }
+}
+
+@media (min-width: 72rem) {
+  .promises--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* Atendimento remoto: Brasil e Portugal */
 
 .reach {
