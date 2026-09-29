@@ -4,12 +4,13 @@
   Configuração:
   - GA_MEASUREMENT_ID: cole o ID do Google Analytics 4 (ex.: G-ABC123XYZ).
     Enquanto ele não for preenchido, nenhum script de análise é carregado.
-  - WEB3FORMS_KEY: chave de acesso do Web3Forms (web3forms.com). Com ela
-    preenchida, os pedidos do formulário chegam por ali. É uma chave pública,
-    feita para ficar no código do site.
-  - FORMSUBMIT_ENDPOINT: segundo caminho de envio, usado se o primeiro falhar.
-  - Se nenhum serviço responder, o visitante recebe um botão que abre o
-    e-mail dele com o pedido já escrito. Nenhum pedido se perde em silêncio.
+  - WEB3FORMS_KEY: chave de acesso do Web3Forms (web3forms.com). É uma
+    chave pública, feita para ficar no código do site. No plano grátis, o
+    Web3Forms avisa só o endereço principal (o primeiro de LEAD_RECIPIENTS);
+    copiar os outros dois automaticamente exige o plano Pro.
+  - Se o Web3Forms não responder, o visitante recebe um botão que abre o
+    e-mail dele com o pedido já escrito para os três endereços. Nenhum
+    pedido se perde em silêncio.
 
   Movimento: tudo que anima respeita a opção "reduzir movimento" do sistema
   e fica parado quando a parte da página não está visível.
@@ -19,12 +20,10 @@
 
   const GA_MEASUREMENT_ID = '';
   const WEB3FORMS_KEY = '0accbd87-fab3-454a-b154-7d1735454c19';
-  /* Todo pedido de diagnóstico chega para os três endereços abaixo (o primeiro
-     recebe o e-mail, os outros entram em cópia). */
+  /* O Web3Forms (plano grátis) só avisa o primeiro endereço da lista. Os
+     três continuam aqui porque o botão de fallback (e-mail manual) sempre
+     escreve para os três. */
   const LEAD_RECIPIENTS = ['suporte@tenantflow.com.br', 'tenantflow@outlook.com', 'diego.asmar@gmail.com'];
-  const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${LEAD_RECIPIENTS[0]}`;
-  const LEAD_CC = LEAD_RECIPIENTS.slice(1).join(',');
-  const LEAD_CC_SEMI = LEAD_RECIPIENTS.slice(1).join('; ');
   const CONTACT_EMAIL = LEAD_RECIPIENTS.join(',');
 
   const prefersReducedMotion = () =>
@@ -209,12 +208,11 @@
     return fetch(url, { ...options, signal: controller.signal }).finally(() => clearTimeout(timer));
   };
 
-  /* Os dois serviços abaixo recebem os dados como FormData (o mesmo formato
-     de um <form> comum), nunca como JSON: pedir Content-Type: application/json
-     obriga o navegador a fazer uma verificação extra (preflight) antes de
-     enviar, e em várias redes/antivírus essa verificação é bloqueada — o
-     pedido nem chega a saber se o serviço está de pé. Com FormData isso não
-     acontece. */
+  /* Os dados vão como FormData (o mesmo formato de um <form> comum), nunca
+     como JSON: pedir Content-Type: application/json obriga o navegador a
+     fazer uma verificação extra (preflight) antes de enviar, e em várias
+     redes/antivírus essa verificação é bloqueada — o pedido nem chega a
+     saber se o serviço está de pé. Com FormData isso não acontece. */
   async function viaWeb3Forms(lead) {
     const fd = new FormData();
     fd.append('access_key', WEB3FORMS_KEY);
@@ -222,8 +220,8 @@
     fd.append('from_name', 'Site Tenant Flow');
     fd.append('replyto', lead.fields['E-mail']);
     // ccemail é recurso Pro do Web3Forms: no plano grátis ele não é ignorado,
-    // ele rejeita o pedido inteiro (HTTP 400). Por isso não é enviado aqui;
-    // esse serviço só avisa o endereço principal, o FormSubmit é quem copia os três.
+    // ele rejeita o pedido inteiro (HTTP 400). Por isso não é enviado aqui —
+    // este serviço avisa só o endereço principal (LEAD_RECIPIENTS[0]).
     Object.entries(lead.fields).forEach(([key, value]) => fd.append(key, value));
 
     const response = await withTimeout('https://api.web3forms.com/submit', {
@@ -235,40 +233,11 @@
     if (!response.ok || !result.success) throw new Error(result.message || `HTTP ${response.status}`);
   }
 
-  async function viaFormSubmit(lead) {
-    const fd = new FormData();
-    fd.append('_subject', `Novo pedido de diagnóstico: ${lead.fields.Empresa}`);
-    fd.append('_template', 'table');
-    fd.append('_captcha', 'false');
-    fd.append('_replyto', lead.fields['E-mail']);
-    fd.append('_cc', LEAD_CC);
-    Object.entries(lead.fields).forEach(([key, value]) => fd.append(key, value));
-
-    const response = await withTimeout(FORMSUBMIT_ENDPOINT, {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: fd
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || String(result.success) === 'false') throw new Error(result.message || `HTTP ${response.status}`);
-  }
-
-  /* Tenta os serviços em ordem; só falha se todos falharem. FormSubmit vai
-     primeiro porque, de graça, ele copia os três endereços; o Web3Forms
-     entra como reforço (de graça, avisa só o endereço principal). */
+  /* Envio único e direto pelo Web3Forms. Se falhar, quem chama mostra o
+     botão de fallback (e-mail manual para os três endereços). */
   async function sendLead(lead) {
     if (lead.trap) return;
-    const senders = WEB3FORMS_KEY ? [viaFormSubmit, viaWeb3Forms] : [viaFormSubmit];
-    let lastError;
-    for (const send of senders) {
-      try {
-        await send(lead);
-        return;
-      } catch (error) {
-        lastError = error;
-      }
-    }
-    throw lastError;
+    await viaWeb3Forms(lead);
   }
 
   function mailtoFor(lead) {
