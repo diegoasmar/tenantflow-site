@@ -221,7 +221,9 @@
     fd.append('subject', `Novo pedido de diagnóstico: ${lead.fields.Empresa}`);
     fd.append('from_name', 'Site Tenant Flow');
     fd.append('replyto', lead.fields['E-mail']);
-    fd.append('ccemail', LEAD_CC_SEMI); // recurso Pro do Web3Forms; sem plano Pro, é ignorado.
+    // ccemail é recurso Pro do Web3Forms: no plano grátis ele não é ignorado,
+    // ele rejeita o pedido inteiro (HTTP 400). Por isso não é enviado aqui;
+    // esse serviço só avisa o endereço principal, o FormSubmit é quem copia os três.
     Object.entries(lead.fields).forEach(([key, value]) => fd.append(key, value));
 
     const response = await withTimeout('https://api.web3forms.com/submit', {
