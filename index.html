@@ -1,1 +1,728 @@
-undefined
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Microsoft 365, Sites e Lojas Virtuais para Empresas | Tenant Flow</title>
+  <meta name="description" content="Microsoft 365, e-mail corporativo, sites, lojas virtuais e domínios para empresas no Brasil e em Portugal. Diagnóstico gratuito.">
+  <link rel="canonical" href="https://tenantflow.com.br/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#f6f4ef">
+  <!-- Google Search Console: troque o valor abaixo pelo token da sua propriedade -->
+  <meta name="google-site-verification" content="COLE_AQUI_O_TOKEN_DO_SEARCH_CONSOLE">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Tenant Flow">
+  <meta property="og:title" content="Microsoft 365, Sites e Lojas Virtuais para Empresas | Tenant Flow">
+  <meta property="og:description" content="Microsoft 365, e-mail corporativo, sites, lojas virtuais e domínios para empresas no Brasil e em Portugal. Diagnóstico gratuito.">
+  <meta property="og:url" content="https://tenantflow.com.br/">
+  <meta property="og:image" content="https://tenantflow.com.br/assets/og-tenant-flow.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/assets/newsreader-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css?v=20260927d">
+  <script src="/assets/site.js?v=20260927d" defer></script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://tenantflow.com.br/#organization","name":"Tenant Flow","url":"https://tenantflow.com.br/","email":"contato@tenantflow.com.br","logo":{"@type":"ImageObject","url":"https://tenantflow.com.br/assets/logo-tenant-flow.png","width":512,"height":512},"description":"Empresa de TI para pequenas e médias empresas: Microsoft 365, e-mail corporativo, segurança, sites, lojas virtuais, administração de domínios e gestão de anúncios.","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"knowsAbout":["Microsoft 365","Exchange Online","SharePoint Online","Microsoft Teams","OneDrive","Segurança da informação","Licenciamento Microsoft","Criação de sites","Lojas virtuais","Registro e administração de domínios","DNS","Google Ads","Meta Ads"],"contactPoint":[{"@type":"ContactPoint","contactType":"vendas","email":"contato@tenantflow.com.br","availableLanguage":["Portuguese"],"areaServed":["BR","PT"]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://tenantflow.com.br/#website","url":"https://tenantflow.com.br/","name":"Tenant Flow","inLanguage":"pt-BR","publisher":{"@id":"https://tenantflow.com.br/#organization"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://tenantflow.com.br/#business","name":"Tenant Flow","url":"https://tenantflow.com.br/","image":"https://tenantflow.com.br/assets/og-tenant-flow.png","parentOrganization":{"@id":"https://tenantflow.com.br/#organization"},"description":"Empresa de TI para pequenas e médias empresas: Microsoft 365, e-mail corporativo, segurança e licenciamento, sites, lojas virtuais e administração de domínios.","email":"contato@tenantflow.com.br","priceRange":"$$","areaServed":[{"@type":"Country","name":"Brasil"},{"@type":"Country","name":"Portugal"}],"address":{"@type":"PostalAddress","addressCountry":"BR"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Serviços Tenant Flow","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Migração para Microsoft 365","url":"https://tenantflow.com.br/migracao-microsoft-365/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Suporte Exchange Online","url":"https://tenantflow.com.br/suporte-exchange-online/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"SharePoint e Teams","url":"https://tenantflow.com.br/sharepoint-e-teams/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Segurança e licenças","url":"https://tenantflow.com.br/seguranca-e-licenciamento-microsoft-365/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Sites, lojas e domínios","url":"https://tenantflow.com.br/sites-e-lojas-virtuais/"}}]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://tenantflow.com.br/#faq","inLanguage":"pt-BR","mainEntity":[{"@type":"Question","name":"Quanto tempo leva a migração para o Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"Depende do volume de caixas de e-mail e de arquivos. O trabalho tem três etapas: inventário e preparação do tenant, cópia dos dados em paralelo ao ambiente atual e o corte final. Só a última etapa tem hora marcada, e ela acontece fora do horário comercial. O prazo exato da sua empresa sai por escrito no diagnóstico, antes de qualquer mudança começar."}},{"@type":"Question","name":"Minha empresa precisa parar durante a migração?","acceptedAnswer":{"@type":"Answer","text":"Não. A cópia de e-mails, arquivos e acessos roda em paralelo ao ambiente que a empresa está usando, e a troca definitiva acontece fora do horário comercial. A equipe continua trabalhando normalmente enquanto a mudança acontece."}},{"@type":"Question","name":"Por que os e-mails da minha empresa caem no spam?","acceptedAnswer":{"@type":"Answer","text":"Na maioria dos casos o problema é SPF, DKIM ou DMARC ausente ou mal configurado no domínio. São os três registros que provam aos provedores que a mensagem saiu mesmo de você. Sem eles, o Gmail e o Outlook tratam o seu e-mail como suspeito. Reputação do domínio e listas de bloqueio também pesam, e as duas coisas se corrigem."}},{"@type":"Question","name":"Dá para reduzir o que eu pago de licença Microsoft 365?","acceptedAnswer":{"@type":"Answer","text":"Quase sempre dá. Os desperdícios mais comuns são licenças de pessoas que já saíram da empresa, planos acima do que cada usuário realmente usa e recursos pagos em duplicidade com outra ferramenta. A revisão compara, linha a linha, o que está contratado com o uso real de cada pessoa."}},{"@type":"Question","name":"O que está incluído no diagnóstico gratuito?","acceptedAnswer":{"@type":"Answer","text":"Uma chamada de trinta minutos e o levantamento do seu ambiente: entregabilidade de e-mail (SPF, DKIM e DMARC), licenças contratadas contra uso real, configuração de segurança, como autenticação em duas etapas e acesso condicional, e a organização dos arquivos. Você recebe um resumo do que está errado e do que custa arrumar, sem compromisso de contratar nada depois."}},{"@type":"Question","name":"Vocês também criam sites e lojas virtuais?","acceptedAnswer":{"@type":"Answer","text":"Sim. Criamos site institucional e loja virtual e cuidamos da parte técnica que costuma ficar solta: registro e administração do domínio, DNS, e-mail, certificado de segurança e velocidade. O domínio fica no nome da sua empresa, com os acessos entregues a você."}},{"@type":"Question","name":"Vocês atendem empresas de outras cidades e de Portugal?","acceptedAnswer":{"@type":"Answer","text":"Sim. Administração de Microsoft 365, Exchange Online, SharePoint e Teams é remota por natureza, porque o ambiente já está na nuvem. Atendemos empresas em todo o Brasil e também em Portugal, por chamada de vídeo, e-mail e acesso remoto de alta qualidade, sempre com a sua autorização."}}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="notice">
+  <div class="container notice__inner">
+    <svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg>
+    <p>Atendimento remoto em todo o Brasil e também para empresas em Portugal. <a href="/#atendimento">Como funciona</a></p>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Tenant Flow, página inicial">
+      <svg class="brand__mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 4 37.6 13v18L22 40 6.4 31V13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M22 22V4M22 22 6.4 31" stroke="currentColor" stroke-width="1.4" stroke-opacity=".45"/><path d="M22 22 37.6 31" stroke="#2f8a9e" stroke-width="2.4" stroke-linecap="round"/><circle cx="22" cy="22" r="2.4" fill="#2f8a9e"/></svg>
+      <span class="brand__name">Tenant Flow</span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <ul class="nav__list">
+        <li class="nav__item--menu">
+          <a class="nav__link" href="/#servicos">Serviços</a>
+          <div class="nav__panel">
+              <a href="/migracao-microsoft-365/"><strong>Migração para Microsoft 365</strong><span>Google Workspace, Zimbra ou servidor próprio</span></a>
+              <a href="/suporte-exchange-online/"><strong>Suporte Exchange Online</strong><span>E-mail corporativo e entregabilidade</span></a>
+              <a href="/sharepoint-e-teams/"><strong>SharePoint e Teams</strong><span>Arquivos, permissões e colaboração</span></a>
+              <a href="/seguranca-e-licenciamento-microsoft-365/"><strong>Segurança e licenças</strong><span>MFA, acesso condicional e custos</span></a>
+              <a href="/sites-e-lojas-virtuais/"><strong>Sites, lojas e domínios</strong><span>Site institucional, e-commerce e DNS</span></a>
+          </div>
+        </li>
+        <li><a class="nav__link" href="/#processo">Como trabalhamos</a></li>
+        <li><a class="nav__link" href="/#precos">Preços</a></li>
+        <li><a class="nav__link" href="/blog/">Blog</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-header__cta">
+      <a class="button" href="/#contato">Agendar diagnóstico</a>
+    </div>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="menu-toggle__icon" aria-hidden="true"></span>
+      <span class="menu-toggle__label">Menu</span>
+    </button>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menu" hidden>
+    <div class="container mobile-menu__inner">
+      <a href="/migracao-microsoft-365/">Migração para Microsoft 365</a>
+      <a href="/suporte-exchange-online/">Suporte Exchange Online</a>
+      <a href="/sharepoint-e-teams/">SharePoint e Teams</a>
+      <a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a>
+      <a href="/sites-e-lojas-virtuais/">Sites, lojas e domínios</a>
+      <a href="/#processo">Como trabalhamos</a>
+      <a href="/#precos">Preços</a>
+      <a href="/blog/">Blog</a>
+      <a class="button button--block" href="/#contato">Agendar diagnóstico</a>
+    </div>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <h1 class="display">TI de ponta a ponta, para empresas que não podem parar.</h1>
+        <p class="lead">Somos a empresa de TI em nuvem que a sua empresa contrata para cuidar do Microsoft 365, e-mail corporativo, segurança, site, loja virtual e domínio — tudo sob o mesmo teto. Escopo, prazo e preço saem combinados por escrito antes de qualquer mudança começar.</p>
+        <div class="hero__actions">
+          <a class="button" href="#contato">Agendar diagnóstico gratuito</a>
+          <a class="link-arrow" href="#servicos">Ver serviços</a>
+        </div>
+        <p class="hero__meta"><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Diagnóstico de 30 minutos, sem compromisso. Atendemos todo o Brasil e empresas em Portugal.</p>
+      </div>
+
+      <figure class="scene" aria-label="Ilustração: Outlook e Teams em uso numa empresa atendida pela Tenant Flow">
+        <div class="scene__canvas" aria-hidden="true">
+
+          <div class="win win--outlook">
+            <div class="ol-top">
+              <span class="ol-top__app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g fill="currentColor" stroke="none"><rect x="3" y="3" width="3" height="3" rx=".6"/><rect x="8.5" y="3" width="3" height="3" rx=".6"/><rect x="14" y="3" width="3" height="3" rx=".6"/><rect x="3" y="8.5" width="3" height="3" rx=".6"/><rect x="8.5" y="8.5" width="3" height="3" rx=".6"/><rect x="14" y="8.5" width="3" height="3" rx=".6"/><rect x="3" y="14" width="3" height="3" rx=".6"/><rect x="8.5" y="14" width="3" height="3" rx=".6"/><rect x="14" y="14" width="3" height="3" rx=".6"/></g></svg><b>Outlook</b></span>
+              <span class="ol-search"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5"/><path d="m12.3 12.3 4.2 4.2"/></svg>Pesquisar</span>
+              <span class="ol-top__me">EC</span>
+              <span class="winctl"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="9" height="9" rx="1"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5.5 5.5 9 9M14.5 5.5l-9 9"/></svg></span>
+            </div>
+            <div class="ol-bar">
+              <span class="ol-new"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16h3.2L16 7.2 12.8 4 4 12.8z"/><path d="m11.2 5.6 3.2 3.2"/></svg>Novo e-mail</span>
+              <span class="ol-bar__sep"></span>
+              <span class="ol-tool"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 6h11M8 6V4.5h4V6M6 6l.7 10h6.6L14 6"/></svg>Excluir</span>
+              <span class="ol-tool"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="13" height="3.5" rx=".8"/><path d="M4.5 7.5V16h11V7.5M8.5 10.5h3"/></svg>Arquivar</span>
+              <span class="ol-tool"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17V3.5M5 4h9l-2 3.5 2 3.5H5"/></svg></span>
+            </div>
+            <div class="ol-body">
+              <nav class="ol-folders">
+                <p class="ol-folders__title">Favoritos</p>
+                <span class="ol-folder is-active"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 5.5 4.5h9l2 6.5V15.5h-13z"/><path d="M3.5 11h4l1 2h3l1-2h4"/></svg><span class="ol-folder__name">Caixa de Entrada</span><b class="ol-count">2</b></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10 16.5 4l-4.5 12-2.5-5z"/><path d="m9.5 11 7-7"/></svg><span class="ol-folder__name">Itens Enviados</span></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h6l3 3v10H6z"/><path d="M12 3.5v3h3"/></svg><span class="ol-folder__name">Rascunhos</span><em>1</em></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="13" height="3.5" rx=".8"/><path d="M4.5 7.5V16h11V7.5M8.5 10.5h3"/></svg><span class="ol-folder__name">Arquivo Morto</span></span>
+                <span class="ol-folder"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m5.5 14.5 9-9"/></svg><span class="ol-folder__name">Lixo Eletrônico</span></span>
+              </nav>
+              <div class="ol-list">
+                <div class="ol-tabs"><span class="is-active">Destaques</span><span>Outros</span><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h12M6.5 10h7M9 14h2"/></svg></div>
+                <div class="ol-mails">
+              <div class="ol-mail is-unread">
+                <div class="ol-mail__top"><b>Recursos Humanos</b><time>09:12</time></div>
+                <p class="ol-mail__subject">Férias de outubro aprovadas</p>
+                <p class="ol-mail__preview">A escala da equipe já está no calendário.</p>
+              </div>
+              <div class="ol-mail is-unread">
+                <div class="ol-mail__top"><b>Comercial</b><time>08:47</time></div>
+                <p class="ol-mail__subject">Proposta enviada ao cliente</p>
+                <p class="ol-mail__preview">Mandei a versão final com os ajustes de prazo.</p>
+              </div>
+              <div class="ol-mail is-selected">
+                <div class="ol-mail__top"><b>Tenant Flow Suporte</b><time>08:05</time></div>
+                <p class="ol-mail__subject">Migração concluída: 23 caixas</p>
+                <p class="ol-mail__preview">Corte feito às 22h, sem parada. Tudo conferido.</p>
+              </div>
+              <div class="ol-mail">
+                <div class="ol-mail__top"><b>Recepção</b><time>Ontem</time></div>
+                <p class="ol-mail__subject">Visita do cliente às 15h</p>
+                <p class="ol-mail__preview">A sala de reunião do 2º andar já está reservada.</p>
+              </div>
+                </div>
+              </div>
+              <article class="ol-read">
+                <p class="ol-read__subject">Migração concluída: 23 caixas</p>
+                <div class="ol-read__from">
+                  <span class="av av--teal">TF</span>
+                  <p><b>Tenant Flow Suporte</b><span>Para: Equipe do escritório</span></p>
+                  <time>08:05</time>
+                </div>
+                <div class="ol-read__body">
+                  <p>Bom dia! A migração terminou ontem às 22h. As 23 caixas estão no Microsoft 365 e ninguém perdeu e-mail.</p>
+                  <p>No celular, basta abrir o Outlook e entrar com a mesma senha.</p>
+                </div>
+                <span class="ol-attach"><i class="ol-attach__tile ol-attach__tile--pdf"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h5.5L15 7v9.5H6z"/><path d="M11.5 3.5V7H15"/></svg></i>relatorio-migracao.pdf</span>
+                <div class="ol-read__actions"><span><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 5 4 9.5 8.5 14"/><path d="M4 9.5h7a5 5 0 0 1 5 5v1"/></svg>Responder</span><span><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 5 16 9.5 11.5 14"/><path d="M16 9.5H9a5 5 0 0 0-5 5v1"/></svg>Encaminhar</span></div>
+              </article>
+            </div>
+          </div>
+
+          <div class="win win--teams">
+            <div class="tm-top">
+              <span class="tm-nav"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 5-5 5 5 5"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg></span>
+              <span class="tm-search"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5"/><path d="m12.3 12.3 4.2 4.2"/></svg>Pesquisar</span>
+              <span class="av av--sm av--teal">EC<i class="pres pres--on"></i></span>
+              <span class="winctl"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="5.5" width="9" height="9" rx="1"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5.5 5.5 9 9M14.5 5.5l-9 9"/></svg></span>
+            </div>
+            <div class="tm-body">
+              <nav class="tm-rail">
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13.5h10l-1.3-2V8.3a3.7 3.7 0 0 0-7.4 0v3.2z"/><path d="M8.5 15.5a1.6 1.6 0 0 0 3 0"/></svg>Atividade<b class="tm-badge">3</b></span>
+                <span class="tm-app is-active"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5v6a1.5 1.5 0 0 1-1.5 1.5H9l-3.5 3v-3h0A1.5 1.5 0 0 1 4 11.5z"/></svg>Chat</span>
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="2.5"/><path d="M3 16a4.5 4.5 0 0 1 9 0"/><circle cx="13.5" cy="8.5" r="2"/><path d="M12.5 12.3A3.8 3.8 0 0 1 17 16"/></svg>Equipes</span>
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="13" height="12" rx="1.5"/><path d="M3.5 8h13M7 3v3M13 3v3"/></svg>Calendário</span>
+                <span class="tm-app"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h2.5l1.3 3.2-1.6 1a8 8 0 0 0 5.1 5.1l1-1.6 3.2 1.3V15a1.5 1.5 0 0 1-1.6 1.5A12 12 0 0 1 3.5 5.1 1.5 1.5 0 0 1 5 3.5z"/></svg>Chamadas</span>
+              </nav>
+              <div class="tm-main">
+                <div class="tm-head">
+                  <span class="tm-group">ES</span>
+                  <p class="tm-head__name">Escritório · Geral</p>
+                  <span class="tm-tab is-active">Chat</span>
+                  <span class="tm-tab">Arquivos</span>
+                  <span class="tm-meet"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="10" height="8" rx="1.5"/><path d="m13 9 4-2.3v6.6L13 11"/></svg>Reunir</span>
+                </div>
+                <div class="tm-feed">
+              <div class="tm-msg is-in">
+                <div class="tm-msg__in"><div class="tm-msg__row">
+                  <span class="av av--berry">AR<i class="pres pres--on"></i></span>
+                  <div class="tm-bubble"><p class="tm-bubble__meta"><b>Ana Ribeiro</b><time>09:14</time></p><p class="tm-bubble__text">Bom dia! O e-mail novo já está no celular de vocês?</p></div>
+                </div></div>
+              </div>
+              <div class="tm-msg tm-msg--me is-in">
+                <div class="tm-msg__in"><div class="tm-msg__row">
+                  <div class="tm-bubble"><p class="tm-bubble__meta"><time>09:15</time></p><p class="tm-bubble__text">Aqui sim, entrou tudo certinho</p></div>
+                </div></div>
+              </div>
+              <div class="tm-msg is-in">
+                <div class="tm-msg__in"><div class="tm-msg__row">
+                  <span class="av av--blue">CL<i class="pres pres--away"></i></span>
+                  <div class="tm-bubble"><p class="tm-bubble__meta"><b>Carlos Lima</b><time>09:16</time></p><p class="tm-bubble__text">Aqui também. Nem percebi a troca, foi à noite.</p><span class="tm-react">👍 2</span></div>
+                </div></div>
+              </div>
+                </div>
+                <p class="tm-typing"><span class="tm-typing__dots"><i></i><i></i><i></i></span><span class="tm-typing__who">Bianca está digitando</span></p>
+                <div class="tm-compose">
+                  <span class="tm-compose__text"><span class="tm-compose__ph">Digite uma mensagem</span></span>
+                  <span class="tm-compose__tools"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M7.3 11.8a3.4 3.4 0 0 0 5.4 0"/><circle cx="7.8" cy="8.5" r=".5" fill="currentColor"/><circle cx="12.2" cy="8.5" r=".5" fill="currentColor"/></svg><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 7.5 8 13a2 2 0 0 1-2.8-2.8l6.4-6.4a3.2 3.2 0 0 1 4.5 4.5l-6.6 6.6"/></svg><i class="tm-send"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10 16.5 4.5 13 16l-3-4.5z"/><path d="M10 11.5 16.5 4.5"/></svg></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="job is-done">
+            <p class="job__kicker"><svg class="ic job__spin" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 8A5.8 5.8 0 0 0 5 6.5M4.5 12A5.8 5.8 0 0 0 15 13.5"/><path d="M5 3.5v3h3M15 16.5v-3h-3"/></svg><svg class="ic job__ok" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 10.5 3.2 3L15 6.5"/></svg><span class="job__state">Migração concluída</span></p>
+            <p class="job__count"><b class="job__n">23</b> de 23 caixas</p>
+            <span class="job__bar"><i class="job__fill"></i></span>
+            <p class="job__note">escritorio-exemplo.com.br · sem parada</p>
+          </div>
+
+          <div class="toast">
+            <p class="toast__app"><i class="toast__tile"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 5.5 4.5h9l2 6.5V15.5h-13z"/><path d="M3.5 11h4l1 2h3l1-2h4"/></svg></i>Outlook<time>agora</time></p>
+            <div class="toast__body">
+              <span class="av av--amber toast__av">CT</span>
+              <p><b class="toast__from">Contabilidade</b><span class="toast__subject">Balancete de agosto pronto</span></p>
+            </div>
+          </div>
+
+          <span class="cursor">
+            <svg viewBox="0 0 16 22" aria-hidden="true"><path d="M1 1v17.5l4.6-4.4 3 6.6 3-1.4-3-6.4H15z" fill="#fff" stroke="#16181d" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track"><ul><li>Exchange Online</li><li>Outlook</li><li>Teams</li><li>SharePoint</li><li>OneDrive</li><li>Entra ID</li><li>Intune</li><li>Defender</li><li>Power BI</li><li>SPF, DKIM e DMARC</li><li>Acesso condicional</li><li>Licenciamento</li><li>Sites institucionais</li><li>Lojas virtuais</li><li>Domínios e DNS</li></ul><ul><li>Exchange Online</li><li>Outlook</li><li>Teams</li><li>SharePoint</li><li>OneDrive</li><li>Entra ID</li><li>Intune</li><li>Defender</li><li>Power BI</li><li>SPF, DKIM e DMARC</li><li>Acesso condicional</li><li>Licenciamento</li><li>Sites institucionais</li><li>Lojas virtuais</li><li>Domínios e DNS</li></ul></div>
+  </div>
+
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Serviços</p>
+        <div>
+          <h2>O que fazemos</h2>
+          <p class="section-head__intro">Duas frentes complementares, com o mesmo padrão de qualidade: o que roda dentro do Microsoft 365 e o que sustenta a sua presença digital fora dele. Cada serviço abaixo tem página própria, com etapas, prazos e perguntas frequentes.</p>
+        </div>
+      </div>
+
+      <div class="services-group">
+        <p class="services-group__label">No seu Microsoft 365</p>
+        <ol class="services">
+          <li class="service">
+            <span class="service__number">01</span>
+            <h3 class="service__title"><a href="/suporte-exchange-online/">E-mail corporativo que chega na caixa de entrada</a></h3>
+            <div class="service__text">
+              <p>E-mail corporativo no seu domínio, com SPF, DKIM e DMARC configurados do jeito certo, proteção contra phishing e caixas compartilhadas. Cuidamos de todo o fluxo — do DNS ao suporte do dia a dia no Exchange Online.</p>
+              <a class="link-arrow" href="/suporte-exchange-online/">Suporte Exchange Online</a>
+            </div>
+          </li>
+          <li class="service">
+            <span class="service__number">02</span>
+            <h3 class="service__title"><a href="/migracao-microsoft-365/">Migração para o Microsoft 365</a></h3>
+            <div class="service__text">
+              <p>Tiramos sua empresa do e-mail antigo, do Google Workspace, Zimbra, cPanel ou servidor próprio, com histórico preservado, cópia em paralelo e troca fora do horário comercial. Acompanhamento nos primeiros dias para não sobrar ponta solta.</p>
+              <a class="link-arrow" href="/migracao-microsoft-365/">Migração para Microsoft 365</a>
+            </div>
+          </li>
+          <li class="service">
+            <span class="service__number">03</span>
+            <h3 class="service__title"><a href="/sharepoint-e-teams/">Arquivos no SharePoint e no Teams</a></h3>
+            <div class="service__text">
+              <p>Estrutura de pastas por área de negócio, permissão por grupo, versionamento ligado e backup automático. Acaba o arquivo importante guardado no notebook de uma pessoa só — e o time realmente passa a usar.</p>
+              <a class="link-arrow" href="/sharepoint-e-teams/">SharePoint e Teams</a>
+            </div>
+          </li>
+          <li class="service">
+            <span class="service__number">04</span>
+            <h3 class="service__title"><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a></h3>
+            <div class="service__text">
+              <p>Autenticação em duas etapas, acesso condicional e políticas antiphishing configuradas de verdade — a segurança que evita prejuízo. Revisão das licenças contratadas contra o uso real, para devolver dinheiro ao caixa todo mês.</p>
+              <a class="link-arrow" href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenciamento</a>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="services-group">
+        <p class="services-group__label">Fora do Microsoft 365</p>
+        <ol class="services">
+          <li class="service">
+            <span class="service__number">05</span>
+            <h3 class="service__title"><a href="/sites-e-lojas-virtuais/">Sites, lojas virtuais e domínios</a></h3>
+            <div class="service__text">
+              <p>Site institucional ou loja virtual com a parte técnica resolvida: domínio, DNS, e-mail corporativo, certificado de segurança e velocidade. Você recebe tudo funcionando e sabe onde cada coisa está.</p>
+              <a class="link-arrow" href="/sites-e-lojas-virtuais/">Sites, lojas e domínios</a>
+            </div>
+          </li>
+          <li class="service">
+            <span class="service__number">06</span>
+            <h3 class="service__title"><a href="/?assunto=anuncios#contato">Google Ads e Meta Ads</a></h3>
+            <div class="service__text">
+              <p>Gestão de campanhas com foco em retorno medido, não em cliques bonitos no relatório. Acompanhamos os resultados com você e ajustamos o que não estiver performando.</p>
+              <a class="link-arrow" href="/?assunto=anuncios#contato">Conversar sobre anúncios</a>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="stack">
+        <div>
+          <p class="stack__title">Microsoft 365</p>
+          <p class="stack__items">Exchange Online, SharePoint, OneDrive, Teams, Outlook, Word, Excel, PowerPoint e Power BI</p>
+        </div>
+        <div>
+          <p class="stack__title">Migramos a partir de</p>
+          <p class="stack__items">Google Workspace, Zimbra, cPanel, Locaweb, HostGator e Exchange local</p>
+        </div>
+        <div>
+          <p class="stack__title">Armazenamento</p>
+          <p class="stack__items">OneDrive, Google Drive e Dropbox</p>
+        </div>
+        <div>
+          <p class="stack__title">Sites e lojas virtuais</p>
+          <p class="stack__items">WordPress, WooCommerce, Nuvemshop e sites sob medida</p>
+        </div>
+        <div>
+          <p class="stack__title">Domínios</p>
+          <p class="stack__items">.com.br, .com e .pt, DNS e certificados de segurança</p>
+        </div>
+        <div>
+          <p class="stack__title">Marketing</p>
+          <p class="stack__items">Google Ads e Meta Ads</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="processo">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Como trabalhamos</p>
+        <div>
+          <h2>Três etapas, tudo combinado por escrito.</h2>
+        </div>
+      </div>
+      <ol class="steps-row">
+        <li>
+          <h3>Diagnóstico</h3>
+          <p>Uma chamada de 30 minutos e o levantamento do ambiente: e-mail, licenças, segurança e arquivos. É gratuito.</p>
+        </li>
+        <li>
+          <h3>Proposta</h3>
+          <p>Você recebe por escrito o que vamos fazer, em quanto tempo e por quanto. Nada começa sem a sua aprovação.</p>
+        </li>
+        <li>
+          <h3>Execução e acompanhamento</h3>
+          <p>Fazemos o trabalho com o mínimo de interrupção e ficamos por perto depois da entrega. Se fizer sentido, seguimos com suporte mensal.</p>
+        </li>
+      </ol>
+
+      <div class="dx">
+        <div class="dx__copy">
+          <h3 class="dx__title">O que você recebe no diagnóstico</h3>
+          <p>Um relatório curto, em linguagem direta, com o estado do seu Microsoft 365 e as correções em ordem de prioridade. Cada item diz o que está errado, o risco que traz e quanto custa arrumar.</p>
+          <p>Ele é seu, mesmo que você decida não contratar nada depois.</p>
+        </div>
+        <figure class="report" aria-label="Exemplo de relatório entregue no diagnóstico">
+          <div class="report__head">
+            <div>
+              <p class="report__kicker">Relatório de diagnóstico</p>
+              <p class="report__title">Microsoft 365</p>
+              <p class="report__domain">escritorio-exemplo.com.br</p>
+            </div>
+            <span class="report__tag">Exemplo</span>
+          </div>
+          <dl class="report__rows">
+            <div class="report__row">
+              <dt>Registro SPF</dt>
+              <dd>include:spf.protection.outlook.com</dd>
+              <span class="status status--ok">Correto</span>
+            </div>
+            <div class="report__row">
+              <dt>Assinatura DKIM</dt>
+              <dd>não habilitada no domínio</dd>
+              <span class="status status--bad">Corrigir</span>
+            </div>
+            <div class="report__row">
+              <dt>Política DMARC</dt>
+              <dd>p=none, só monitora</dd>
+              <span class="status status--warn">Ajustar</span>
+            </div>
+            <div class="report__row">
+              <dt>Autenticação em duas etapas</dt>
+              <dd>ativa para 7 de 23 usuários</dd>
+              <span class="status status--warn">Ajustar</span>
+            </div>
+            <div class="report__row">
+              <dt>Licenças</dt>
+              <dd>23 contratadas, 18 em uso</dd>
+              <span class="status status--warn">Revisar</span>
+            </div>
+          </dl>
+          <figcaption class="report__foot">
+            <span><strong>3 correções prioritárias</strong></span>
+            <span>Resumo com prioridade e custo de cada ajuste</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <dl class="promises">
+        <div class="promise">
+          <dt><span data-count="30">30</span> minutos</dt>
+          <dd>de diagnóstico inicial, gratuito e sem compromisso</dd>
+        </div>
+        <div class="promise">
+          <dt>Zero paradas</dt>
+          <dd>na migração: a cópia roda em paralelo e a troca é fora do expediente</dd>
+        </div>
+        <div class="promise">
+          <dt>1 dia útil</dt>
+          <dd>é o prazo máximo para a primeira resposta depois do seu contato</dd>
+        </div>
+        <div class="promise">
+          <dt>Por escrito</dt>
+          <dd>tudo confirmado com você antes de qualquer mudança começar</dd>
+        </div>
+      </dl>
+
+      <p class="independence">Somos uma empresa de TI independente, sem vínculo de revenda com a Microsoft. Trabalhamos do lado do cliente: se a revisão mostrar que dá para pagar menos licença, essa é a nossa recomendação. Veja também <a class="text-link" href="/seguranca-e-privacidade.html">como tratamos os seus dados</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="atendimento">
+    <div class="container reach">
+      <div>
+        <p class="reach__flags"><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Também em Portugal</p>
+        <h2>Presença remota, do Brasil a Portugal.</h2>
+      </div>
+      <div>
+        <p class="lead">O Microsoft 365 fica na nuvem, e o nosso trabalho também. Por isso atendemos empresas em qualquer estado do Brasil e em Portugal com acesso remoto de alta qualidade, sem deslocamento e sem perder proximidade.</p>
+        <ul class="reach__list">
+          <li>Acesso remoto seguro, sempre com a sua autorização, para configurar, corrigir e treinar a equipe.</li>
+          <li>Chamadas de vídeo no diagnóstico, na entrega e sempre que alguém precisar de ajuda.</li>
+          <li>Relatórios e documentação por escrito, em português, para você guardar e consultar depois.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="precos">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Preços</p>
+        <div>
+          <h2>Você sabe o preço antes de começar.</h2>
+          <p class="section-head__intro">O diagnóstico não custa nada. A partir dele, você aprova cada etapa antes de ela começar.</p>
+        </div>
+      </div>
+      <div class="plans">
+        <article class="plan plan--featured">
+          <h3 class="plan__name">Diagnóstico</h3>
+          <p class="plan__summary">Trinta minutos para mapear o que está custando dinheiro ou trazendo risco.</p>
+          <p class="plan__price">Investimento <span class="plan__value">Gratuito</span></p>
+          <p class="plan__note">Sem compromisso de contratar depois.</p>
+          <ul class="plan__features">
+            <li>Checagem de SPF, DKIM e DMARC</li>
+            <li>Licenças contratadas contra uso real</li>
+            <li>Revisão de MFA e acesso condicional</li>
+            <li>Resumo por escrito do que encontramos</li>
+          </ul>
+          <a class="button" href="#contato">Agendar diagnóstico</a>
+        </article>
+
+        <article class="plan">
+          <h3 class="plan__name">Projeto pontual</h3>
+          <p class="plan__summary">Migração, site, loja virtual ou correção com começo, meio e fim.</p>
+          <!-- Quando tiver o valor, troque "Sob consulta" por, por exemplo, "R$ 1.500" -->
+          <p class="plan__price">A partir de <span class="plan__value">Sob consulta</span></p>
+          <p class="plan__note">Varia com o número de caixas, o volume de arquivos e o estado do ambiente.</p>
+          <ul class="plan__features">
+            <li>Escopo e prazo fechados antes de começar</li>
+            <li>Migração de e-mail, arquivos e acessos</li>
+            <li>Corte fora do horário comercial</li>
+            <li>Acompanhamento nas primeiras semanas</li>
+          </ul>
+          <a class="button button--outline" href="/migracao-microsoft-365/">Ver o que entra no projeto</a>
+        </article>
+
+        <article class="plan">
+          <h3 class="plan__name">Suporte mensal</h3>
+          <p class="plan__summary">Alguém responsável pelo seu Microsoft 365 todo mês, não só quando quebra.</p>
+          <!-- Quando tiver o valor, troque "Sob consulta" por, por exemplo, "R$ 900/mês" -->
+          <p class="plan__price">A partir de <span class="plan__value">Sob consulta</span></p>
+          <p class="plan__note">Varia com o número de usuários e o nível de atendimento contratado.</p>
+          <ul class="plan__features">
+            <li>Atendimento com prazo de resposta definido</li>
+            <li>Administração do tenant Microsoft 365</li>
+            <li>Revisão periódica de licenças e segurança</li>
+            <li>Canal direto, sem fila de chamado genérico</li>
+          </ul>
+          <a class="button button--outline" href="/suporte-exchange-online/">Ver o que entra no suporte</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="blog">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Blog</p>
+        <div>
+          <h2>Guias escritos a partir dos chamados que atendemos.</h2>
+        </div>
+      </div>
+      <div class="posts">
+        <article class="post">
+          <p class="post__meta"><time datetime="2026-09-02">2 de setembro de 2026</time><span>10 min de leitura</span></p>
+          <h3 class="post__title"><a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">Por que o e-mail da sua empresa cai no spam (SPF, DKIM e DMARC)</a></h3>
+          <p class="post__excerpt">Os três registros que dizem ao mundo que o seu e-mail é legítimo e a sequência segura para arrumar o domínio.</p>
+        </article>
+        <article class="post">
+          <p class="post__meta"><time datetime="2026-08-26">26 de agosto de 2026</time><span>8 min de leitura</span></p>
+          <h3 class="post__title"><a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365 para empresas (e onde o dinheiro escapa)</a></h3>
+          <p class="post__excerpt">A diferença entre os planos e como uma revisão de licenças costuma devolver dinheiro ao caixa todo mês.</p>
+        </article>
+        <article class="post">
+          <p class="post__meta"><time datetime="2026-08-12">12 de agosto de 2026</time><span>9 min de leitura</span></p>
+          <h3 class="post__title"><a href="/blog/migrar-google-workspace-para-microsoft-365/">Como migrar do Google Workspace para o Microsoft 365 sem perder e-mail</a></h3>
+          <p class="post__excerpt">O que acontece em cada etapa, quanto tempo leva de verdade e os erros que transformam a migração em uma semana perdida.</p>
+        </article>
+      </div>
+      <p class="mt-lg"><a class="link-arrow" href="/blog/">Ver todos os artigos</a></p>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-head__label">Perguntas frequentes</p>
+        <div>
+          <h2>O que as empresas perguntam antes de contratar.</h2>
+          <p class="section-head__intro">Se a sua dúvida não estiver aqui, ela cabe no diagnóstico gratuito.</p>
+        </div>
+      </div>
+      <div class="section-body faq">
+        <details>
+          <summary>Quanto tempo leva a migração para o Microsoft 365?</summary>
+          <p>Depende do volume de caixas de e-mail e de arquivos. O trabalho tem três etapas: inventário e preparação do tenant, cópia dos dados em paralelo ao ambiente atual e o corte final. Só a última etapa tem hora marcada, e ela acontece fora do horário comercial. O prazo exato da sua empresa sai por escrito no diagnóstico, antes de qualquer mudança começar.</p>
+        </details>
+        <details>
+          <summary>Minha empresa precisa parar durante a migração?</summary>
+          <p>Não. A cópia de e-mails, arquivos e acessos roda em paralelo ao ambiente que a empresa está usando, e a troca definitiva acontece fora do horário comercial. A equipe continua trabalhando normalmente enquanto a mudança acontece.</p>
+        </details>
+        <details>
+          <summary>Por que os e-mails da minha empresa caem no spam?</summary>
+          <p>Na maioria dos casos o problema é SPF, DKIM ou DMARC ausente ou mal configurado no domínio. São os três registros que provam aos provedores que a mensagem saiu mesmo de você. Sem eles, o Gmail e o Outlook tratam o seu e-mail como suspeito. Reputação do domínio e listas de bloqueio também pesam, e as duas coisas se corrigem.</p>
+        </details>
+        <details>
+          <summary>Dá para reduzir o que eu pago de licença Microsoft 365?</summary>
+          <p>Quase sempre dá. Os desperdícios mais comuns são licenças de pessoas que já saíram da empresa, planos acima do que cada usuário realmente usa e recursos pagos em duplicidade com outra ferramenta. A revisão compara, linha a linha, o que está contratado com o uso real de cada pessoa.</p>
+        </details>
+        <details>
+          <summary>O que está incluído no diagnóstico gratuito?</summary>
+          <p>Uma chamada de trinta minutos e o levantamento do seu ambiente: entregabilidade de e-mail (SPF, DKIM e DMARC), licenças contratadas contra uso real, configuração de segurança, como autenticação em duas etapas e acesso condicional, e a organização dos arquivos. Você recebe um resumo do que está errado e do que custa arrumar, sem compromisso de contratar nada depois.</p>
+        </details>
+        <details>
+          <summary>Vocês também criam sites e lojas virtuais?</summary>
+          <p>Sim. Criamos site institucional e loja virtual e cuidamos da parte técnica que costuma ficar solta: registro e administração do domínio, DNS, e-mail, certificado de segurança e velocidade. O domínio fica no nome da sua empresa, com os acessos entregues a você.</p>
+        </details>
+        <details>
+          <summary>Vocês atendem empresas de outras cidades e de Portugal?</summary>
+          <p>Sim. Administração de Microsoft 365, Exchange Online, SharePoint e Teams é remota por natureza, porque o ambiente já está na nuvem. Atendemos empresas em todo o Brasil e também em Portugal, por chamada de vídeo, e-mail e acesso remoto de alta qualidade, sempre com a sua autorização.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="container contact">
+      <div>
+        <h2>Agende o diagnóstico gratuito.</h2>
+        <p class="lead contact__lead">Em 30 minutos você sabe o que está custando dinheiro ou trazendo risco na TI da sua empresa.</p>
+        <ol class="contact__steps">
+          <li>Você preenche o formulário ao lado. Leva menos de um minuto.</li>
+          <li>Respondemos em até 1 dia útil para marcar a conversa.</li>
+          <li>Na chamada, analisamos o ambiente e você recebe o resumo por escrito.</li>
+        </ol>
+        <div class="contact__direct">
+          <p>Prefere e-mail? <a class="text-link" href="mailto:contato@tenantflow.com.br">contato@tenantflow.com.br</a></p>
+          <p><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Atendimento remoto no Brasil e em Portugal.</p>
+        </div>
+      </div>
+
+      <div class="contact__card">
+        <form class="form" id="lead-form" novalidate>
+          <div class="form__trap" aria-hidden="true">
+            <label for="website">Não preencha este campo</label>
+            <input type="text" id="website" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" required aria-describedby="nome-error">
+              <p class="field__error" id="nome-error"></p>
+            </div>
+            <div class="field">
+              <label for="empresa">Empresa</label>
+              <input id="empresa" name="empresa" type="text" autocomplete="organization" required aria-describedby="empresa-error">
+              <p class="field__error" id="empresa-error"></p>
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="email">E-mail de trabalho</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="email-error">
+              <p class="field__error" id="email-error"></p>
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone ou WhatsApp <span class="field__optional">(opcional)</span></label>
+              <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Com DDD ou código do país">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="assunto">Assunto</label>
+            <select id="assunto" name="assunto">
+              <optgroup label="Microsoft 365">
+                <option data-key="migracao">Migração para Microsoft 365</option>
+                <option data-key="email">E-mail corporativo e Exchange Online</option>
+                <option data-key="sharepoint">SharePoint e Teams</option>
+                <option data-key="seguranca">Segurança e licenças</option>
+              </optgroup>
+              <optgroup label="Outros serviços">
+                <option data-key="site">Site, loja virtual ou domínio</option>
+                <option data-key="anuncios">Google Ads ou Meta Ads</option>
+                <option data-key="outro">Outro assunto</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="mensagem">Conte um pouco do cenário <span class="field__optional">(opcional)</span></label>
+            <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+          </div>
+
+          <button class="button button--block" type="submit">Enviar pedido de diagnóstico</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+          <p class="form__note">Usamos seus dados só para responder a este pedido. Veja a <a class="text-link" href="/seguranca-e-privacidade.html">política de privacidade</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__about">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 4 37.6 13v18L22 40 6.4 31V13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M22 22V4M22 22 6.4 31" stroke="currentColor" stroke-width="1.4" stroke-opacity=".45"/><path d="M22 22 37.6 31" stroke="#2f8a9e" stroke-width="2.4" stroke-linecap="round"/><circle cx="22" cy="22" r="2.4" fill="#2f8a9e"/></svg>
+          <span class="brand__name">Tenant Flow</span>
+        </a>
+        <p>Microsoft 365, e-mail corporativo e infraestrutura de TI para empresas que não podem parar. Também fazemos sites, lojas virtuais e gestão de anúncios.</p>
+        <p class="site-footer__reach"><svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Bandeira de Portugal"><rect width="12" height="20" fill="#046a38"/><rect x="12" width="18" height="20" fill="#da291c"/><circle cx="12" cy="10" r="4.6" fill="none" stroke="#ffe900" stroke-width="1.3"/><path d="M7.6 10h8.8M12 5.4v9.2" stroke="#ffe900" stroke-width=".7"/><path d="M10.1 7.6h3.8v3.3c0 1.2-.9 2-1.9 2.3-1-.3-1.9-1.1-1.9-2.3z" fill="#fff" stroke="#da291c" stroke-width=".8"/></svg> Atendimento remoto no Brasil e em Portugal</p>
+        <p class="site-footer__audience">Atendemos escritórios de contabilidade, escritórios de advocacia e empresas do setor financeiro.</p>
+      </div>
+
+      <div>
+        <p class="site-footer__title">Serviços</p>
+        <ul class="site-footer__links">
+          <li><a href="/migracao-microsoft-365/">Migração para Microsoft 365</a></li>
+          <li><a href="/suporte-exchange-online/">Suporte Exchange Online</a></li>
+          <li><a href="/sharepoint-e-teams/">SharePoint e Teams</a></li>
+          <li><a href="/seguranca-e-licenciamento-microsoft-365/">Segurança e licenças</a></li>
+          <li><a href="/sites-e-lojas-virtuais/">Sites, lojas e domínios</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="site-footer__title">Conteúdo</p>
+        <ul class="site-footer__links">
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/migrar-google-workspace-para-microsoft-365/">Migrar do Google Workspace</a></li>
+          <li><a href="/blog/quanto-custa-microsoft-365-para-empresas/">Quanto custa o Microsoft 365</a></li>
+          <li><a href="/blog/email-caindo-no-spam-spf-dkim-dmarc/">E-mail caindo no spam</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="site-footer__title">Empresa</p>
+        <ul class="site-footer__links">
+          <li><a href="/#processo">Como trabalhamos</a></li>
+          <li><a href="/#precos">Preços</a></li>
+          <li><a href="/#faq">Perguntas frequentes</a></li>
+          <li><a href="mailto:contato@tenantflow.com.br">contato@tenantflow.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>A Tenant Flow é uma empresa de TI independente. Não somos a Microsoft, o Google ou a Meta, nem somos afiliados, patrocinados ou certificados por essas empresas. Os nomes de produtos citados servem apenas para indicar compatibilidade.</p>
+      <p>© 2026 Tenant Flow · <a href="/seguranca-e-privacidade.html">Segurança e privacidade</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
