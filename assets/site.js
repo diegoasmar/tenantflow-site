@@ -18,7 +18,7 @@
   'use strict';
 
   const GA_MEASUREMENT_ID = '';
-  const WEB3FORMS_KEY = '';
+  const WEB3FORMS_KEY = '0accbd87-fab3-454a-b154-7d1735454c19';
   /* Todo pedido de diagnóstico chega para os três endereços abaixo (o primeiro
      recebe o e-mail, os outros entram em cópia). */
   const LEAD_RECIPIENTS = ['suporte@tenantflow.com.br', 'tenantflow@outlook.com', 'diego.asmar@gmail.com'];
