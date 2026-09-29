@@ -97,6 +97,22 @@
     });
   }
 
+  /* Botão "Agendar diagnóstico" que fica sempre visível na tela, em toda
+     página do site, para quem rolar não perder o caminho até o formulário.
+     O pulso ao redor é decorativo (feito em CSS) e já respeita a opção
+     "reduzir movimento" do sistema. */
+  function initFloatingCta() {
+    if (document.querySelector('.floating-cta')) return;
+
+    const link = document.createElement('a');
+    link.className = 'floating-cta';
+    link.href = '/#contato';
+    link.textContent = 'Agendar diagnóstico';
+    link.addEventListener('click', () => track('floating_cta_click', {}));
+
+    document.body.appendChild(link);
+  }
+
   /* Formulário de diagnóstico. */
   function initLeadForm() {
     const form = document.getElementById('lead-form');
@@ -703,6 +719,7 @@
   initAnalytics();
   initStickyHeader();
   initMobileMenu();
+  initFloatingCta();
   initLeadForm();
   initReveal();
   initHeroScene();
