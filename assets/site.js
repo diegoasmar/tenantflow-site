@@ -21,7 +21,7 @@
 (() => {
   'use strict';
 
-  const GA_MEASUREMENT_ID = '';
+  const GA_MEASUREMENT_ID = 'G-DSCJDVT76G';
   const WEB3FORMS_KEY = '0accbd87-fab3-454a-b154-7d1735454c19';
   /* Principal: contato@tenantflow.com.br (precisa ser o destinatário
      cadastrado no painel do Web3Forms.com — ver nota no topo do arquivo).
