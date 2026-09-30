@@ -8,9 +8,12 @@
     chave pública, feita para ficar no código do site. No plano grátis, o
     Web3Forms só permite 1 destinatário, e esse destinatário é configurado
     no PAINEL do Web3Forms.com (na chave de acesso), não aqui no código.
-    LEAD_RECIPIENTS[0] (contato@tenantflow.com.br) precisa ser o mesmo
-    e-mail cadastrado como destinatário lá no painel — trocar aqui não
-    troca lá. Cópia automática (ccemail) para os demais exige o plano Pro.
+    Esta chave foi criada em 30/09/2026 com diego.asmar@gmail.com como
+    destinatário, porque a chave anterior parou de entregar e-mail (o
+    painel dela nunca foi confirmado). LEAD_RECIPIENTS[0] precisa ser
+    sempre o mesmo e-mail cadastrado como destinatário lá no painel —
+    trocar aqui não troca lá. Cópia automática (ccemail) para os demais
+    exige o plano Pro.
   - Se o Web3Forms não responder, o visitante recebe um botão que abre o
     e-mail dele com o pedido já escrito para os quatro endereços. Nenhum
     pedido se perde em silêncio.
@@ -22,12 +25,12 @@
   'use strict';
 
   const GA_MEASUREMENT_ID = 'G-DSCJDVT76G';
-  const WEB3FORMS_KEY = '0accbd87-fab3-454a-b154-7d1735454c19';
-  /* Principal: contato@tenantflow.com.br (precisa ser o destinatário
-     cadastrado no painel do Web3Forms.com — ver nota no topo do arquivo).
-     Os outros três ficam aqui porque o botão de fallback (e-mail manual)
-     sempre escreve para todos. */
-  const LEAD_RECIPIENTS = ['contato@tenantflow.com.br', 'suporte@tenantflow.com.br', 'tenantflow@outlook.com', 'diego.asmar@gmail.com'];
+  const WEB3FORMS_KEY = '34eeddd8-7b11-44cd-8210-9bc5eee2cfbb';
+  /* Principal: diego.asmar@gmail.com (é o destinatário cadastrado no
+     painel do Web3Forms.com para esta chave — ver nota no topo do
+     arquivo). Os outros três ficam aqui porque o botão de fallback
+     (e-mail manual) sempre escreve para todos. */
+  const LEAD_RECIPIENTS = ['diego.asmar@gmail.com', 'contato@tenantflow.com.br', 'suporte@tenantflow.com.br', 'tenantflow@outlook.com'];
   const CONTACT_EMAIL = LEAD_RECIPIENTS.join(',');
 
   const prefersReducedMotion = () =>
@@ -242,7 +245,7 @@
     // ccemail é recurso Pro do Web3Forms: no plano grátis ele não é ignorado,
     // ele rejeita o pedido inteiro (HTTP 400). Por isso não é enviado aqui —
     // este serviço avisa só o destinatário cadastrado no painel do Web3Forms
-    // (precisa ser LEAD_RECIPIENTS[0], contato@tenantflow.com.br).
+    // (precisa ser LEAD_RECIPIENTS[0], diego.asmar@gmail.com).
     Object.entries(lead.fields).forEach(([key, value]) => fd.append(key, value));
 
     const response = await withTimeout('https://api.web3forms.com/submit', {
