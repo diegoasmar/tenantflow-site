@@ -82,6 +82,7 @@
       toggle.setAttribute('aria-expanded', String(open));
       toggle.querySelector('.menu-toggle__label').textContent = open ? 'Fechar' : 'Menu';
       menu.hidden = !open;
+      document.documentElement.classList.toggle('menu-open', open);
     };
 
     toggle.addEventListener('click', () => {
@@ -708,9 +709,20 @@
     });
   }
 
+  function initMobileCtaBar() {
+    if (document.querySelector('.mobile-cta-bar')) return;
+    const link = document.createElement('a');
+    link.className = 'mobile-cta-bar';
+    link.href = '/#contato';
+    link.textContent = 'Agendar diagnóstico';
+    link.addEventListener('click', () => track('mobile_cta_bar_click', {}));
+    document.body.appendChild(link);
+  }
+
   initAnalytics();
   initStickyHeader();
   initMobileMenu();
+  initMobileCtaBar();
   initLeadForm();
   initReveal();
   initHeroScene();

@@ -525,6 +525,47 @@ code {
   display: none;
 }
 
+/* Barra de ação fixa no rodapé da tela: aparece só no celular, já que no
+   desktop o botão "Agendar diagnóstico" já fica sempre visível no cabeçalho
+   fixo. Sem brilho nem pulso — só garante que o CTA principal fique a um
+   toque de distância em qualquer parte da página. Fica escondida quando o
+   menu mobile está aberto, pra nunca mostrar dois botões ao mesmo tempo. */
+
+.mobile-cta-bar {
+  display: none;
+}
+
+@media (max-width: 47.9375rem) {
+  body {
+    padding-bottom: 4.5rem;
+  }
+
+  .mobile-cta-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 55;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.25rem;
+    padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom));
+    background: var(--ink);
+    color: var(--paper);
+    border-top: 1px solid var(--rule-strong);
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .menu-open .mobile-cta-bar {
+    display: none;
+  }
+}
+
 /* 6. Faixa de aviso, cabeçalho e rodapé ------------------------------------ */
 
 .notice {
