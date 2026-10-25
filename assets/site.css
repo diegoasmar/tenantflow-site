@@ -2562,6 +2562,45 @@ code {
   margin-top: 1rem;
 }
 
+.service__teaser {
+  color: var(--ink-3);
+}
+
+.service__more {
+  margin-top: 0.35rem;
+}
+
+.service__more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+}
+
+.service__more summary::-webkit-details-marker {
+  display: none;
+}
+
+.service__more summary::after {
+  content: "+";
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.service__more[open] summary::after {
+  content: "−";
+}
+
+.service__more p {
+  margin-top: 0.6rem;
+  max-width: 34rem;
+}
+
 @media (min-width: 48rem) {
   .service {
     grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 1.15fr);
@@ -2923,6 +2962,41 @@ code {
     grid-row: span 2;
     padding-top: 0.4rem;
   }
+}
+
+/* Ver mais (seções longas) */
+
+.section__more {
+  margin-top: 2rem;
+}
+
+.section__more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+}
+
+.section__more summary::-webkit-details-marker {
+  display: none;
+}
+
+.section__more summary::after {
+  content: "+";
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.section__more[open] summary::after {
+  content: "−";
+}
+
+.section__more[open] summary {
+  margin-bottom: 1.5rem;
 }
 
 /* Perguntas frequentes */
