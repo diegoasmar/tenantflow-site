@@ -110,6 +110,16 @@
     body.hide-mobile-cta .mobile-cta-bar {
       display: none !important;
     }
+
+    /* A classe .form (de assets/site.css) define display: grid, e por vir
+       de uma folha de estilo do autor ela vence a regra padrão do navegador
+       para [hidden] mesmo com especificidade igual. Sem este ajuste, o
+       formulário de chamado continuaria visível por baixo da tela de
+       sucesso. Resolvido aqui, sem precisar tocar em assets/site.css. */
+    #ticket-form[hidden],
+    #identify-form[hidden] {
+      display: none;
+    }
   </style>
 </head>
 <body class="hide-mobile-cta">
