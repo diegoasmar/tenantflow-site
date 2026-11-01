@@ -257,6 +257,16 @@
           </div>
 
           <div class="field">
+            <label for="chamado-resposta">Como prefere que a gente responda?</label>
+            <select id="chamado-resposta" name="resposta" required>
+              <option selected>E-mail</option>
+              <option>WhatsApp</option>
+              <option>Telefone</option>
+              <option>Grupo do projeto</option>
+            </select>
+          </div>
+
+          <div class="field">
             <label for="chamado-resumo">Resumo do problema</label>
             <input id="chamado-resumo" name="resumo" type="text" required placeholder="Ex.: Não consigo enviar e-mail">
           </div>
@@ -491,6 +501,7 @@
       'E-mail': identity.email,
       'Serviço': String(data.get('servico') || ''),
       'Urgência': String(data.get('urgencia') || ''),
+      'Resposta preferida': String(data.get('resposta') || ''),
       Resumo: String(data.get('resumo') || ''),
       'Descrição': String(data.get('descricao') || '')
     };
