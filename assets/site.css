@@ -739,6 +739,20 @@ code {
   display: none;
 }
 
+/* Link discreto pro cliente já existente achar a página de abrir chamado
+   (/suporte/). Fica separado do menu principal e do botão de venda, com
+   cor mais apagada, pra quem ainda não é cliente nem reparar — e quem é
+   cliente reconhecer de cara que aquele link é pra ele. */
+
+.nav__client {
+  display: none;
+}
+
+.mobile-menu a.mobile-menu__client {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
 .menu-toggle {
   display: inline-flex;
   align-items: center;
@@ -813,6 +827,20 @@ code {
   .nav,
   .site-header__cta {
     display: block;
+  }
+  .nav__client {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--ink-3);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav__client:hover {
+    color: var(--accent);
   }
   .menu-toggle,
   .mobile-menu {
